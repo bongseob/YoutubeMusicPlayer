@@ -81,6 +81,8 @@ docker compose up -d --wait # 다시 실행
 
 `docker compose down -v`는 곡 DB 볼륨까지 삭제하므로 사용하지 마세요. 곡 정보는 Docker named volume `youtubemusicplayer_mysql_data`에 저장됩니다. 중요한 곡 목록은 원본 CSV와 DB 덤프를 별도 보관하세요.
 
+기존 PM2 서버에서는 [PM2 배포 안내](docs/pm2-deploy.md)에 따라 이 앱만 등록·재시작하세요. 설정 파일은 `deploy/pm2/ecosystem.config.js`입니다.
+
 ## 검증
 
 ```sh

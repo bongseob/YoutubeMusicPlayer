@@ -89,6 +89,8 @@ Compose는 이 프로젝트 전용 MySQL을 호스트의 `127.0.0.1:3307`에 제
 
 ## 3. Node를 서비스로 실행
 
+기존 서버가 PM2를 사용하면 [PM2 배포 안내](pm2-deploy.md)를 적용하고 이 절의 독립 systemd 서비스 등록은 건너뜁니다. 두 방식 중 하나만 사용합니다.
+
 `deploy/systemd/youtube-music-player.service`의 `ExecStart`를 서버의 `command -v node` 절대 경로에 맞추세요. 예를 들어 Node가 `/opt/bitnami/node/bin/node`에 있다면 템플릿의 `/usr/bin/node`를 해당 경로로 바꿉니다. systemd는 대화형 셸의 nvm 설정을 자동으로 읽지 않습니다.
 
 ```sh
