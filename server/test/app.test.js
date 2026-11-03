@@ -30,3 +30,19 @@ test('HTTP API enforces auth, validates import before writing, and hides server 
   const failed = await fetch(base + '/api/songs');
   assert.equal(failed.status, 500); assert.doesNotMatch(await failed.text(), /password/);
 });
+
+test('A local trusted proxy preserves individual client rate limits', async t => {
+  const repository = { health: async () => {}, list: async () => ({ songs: [], total: 0 }), upsert: async () => ({}) };
+  const app = createApp({ repository, adminToken, trustProxy: 'loopback', staticDir: '/nonexistent' });
+  app.get('/inspect-client', (req, res) => res.json({ ip: req.ip, protocol: req.protocol }));
+  const server = app.listen(0, '127.0.0.1');
+  await new Promise(resolve => server.once('listening', resolve));
+  t.after(() => new Promise(resolve => server.close(resolve)));
+  const base = `http://127.0.0.1:${server.address().port}`;
+  const inspected = await fetch(base + '/inspect-client', { headers: { 'X-Forwarded-For': '198.51.100.99, 203.0.113.10', 'X-Forwarded-Proto': 'https' } });
+  assert.deepEqual(await inspected.json(), { ip: '203.0.113.10', protocol: 'https' });
+  const post = ip => fetch(base + '/api/admin/songs', { method: 'POST', headers: { 'X-Forwarded-For': ip, Authorization: 'Bearer invalid' } });
+  for (let i = 0; i < 30; i++) assert.equal((await post('203.0.113.10')).status, 401);
+  assert.equal((await post('203.0.113.10')).status, 429);
+  assert.equal((await post('203.0.113.11')).status, 401);
+});

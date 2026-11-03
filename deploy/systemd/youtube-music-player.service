@@ -1,0 +1,24 @@
+[Unit]
+Description=YoutubeMusicPlayer web and API
+Wants=network-online.target
+After=network-online.target docker.service
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+User=bitnami
+Group=bitnami
+WorkingDirectory=/home/bitnami/projects/YoutubeMusicPlayer
+Environment=NODE_ENV=production
+# Replace /usr/bin/node with the server's absolute `command -v node` result.
+# The application loads its root .env itself; credentials do not belong here.
+ExecStart=/usr/bin/node /home/bitnami/projects/YoutubeMusicPlayer/server/src/index.js
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+NoNewPrivileges=true
+PrivateTmp=true
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

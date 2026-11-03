@@ -63,6 +63,8 @@ brand,song_number,title,artist,youtube_url
 
 ## 빌드 / 운영 실행
 
+Bitnami Apache에서 여러 가상호스트와 함께 운영하는 설정은 [Bitnami 배포 안내](docs/bitnami-apache-deploy.md)를 참고하세요. `kbigstar.kr → 127.0.0.1:3004` 전용 vhost와 systemd 예제를 포함합니다.
+
 ```sh
 npm run build
 npm start

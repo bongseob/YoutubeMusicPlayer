@@ -4,10 +4,12 @@ import { createApp } from './app.js';
 
 dotenv.config({ path: new URL('../../.env', import.meta.url), quiet: true });
 const pool = createPool();
-const app = createApp({ repository: songRepository(pool), adminToken: process.env.ADMIN_TOKEN });
+const app = createApp({ repository: songRepository(pool), adminToken: process.env.ADMIN_TOKEN,
+  trustProxy: process.env.TRUST_PROXY === 'loopback' ? 'loopback' : false });
 try {
   await initSchema(pool);
-  const server = app.listen(Number(process.env.PORT || 3001), '0.0.0.0', () => console.log(`TJ 노래방: http://localhost:${process.env.PORT || 3001}`));
+  const host = process.env.HOST || '0.0.0.0';
+  const server = app.listen(Number(process.env.PORT || 3001), host, () => console.log(`TJ 노래방: http://${host}:${process.env.PORT || 3001}`));
   const stop = () => server.close(async () => { await pool.end(); process.exit(0); });
   process.on('SIGTERM', stop);
   process.on('SIGINT', stop);

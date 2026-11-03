@@ -6,9 +6,10 @@ import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { normalizeSong, parseSongsCsv, searchParams } from './songs.js';
 
-export function createApp({ repository, adminToken, staticDir = fileURLToPath(new URL('../../web/dist', import.meta.url)) }) {
+export function createApp({ repository, adminToken, trustProxy = false, staticDir = fileURLToPath(new URL('../../web/dist', import.meta.url)) }) {
   if (!adminToken || adminToken.length < 24) throw new Error('ADMIN_TOKEN을 24자 이상으로 설정해 주세요.');
   const app = express();
+  app.set('trust proxy', trustProxy);
   app.disable('x-powered-by');
   app.use(helmet({ contentSecurityPolicy: {
     directives: {
