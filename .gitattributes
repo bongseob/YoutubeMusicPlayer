@@ -1,0 +1,3 @@
+# Preserve CSV BOM/CRLF bytes and avoid enormous generated catalog diffs.
+*.csv -text -diff
+*.png binary

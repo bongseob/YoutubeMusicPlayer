@@ -1,0 +1,52 @@
+{
+  "started_at_utc": "2026-11-03T13:42:48.445544+00:00",
+  "finished_at_utc": "2026-11-03T13:43:31.153542+00:00",
+  "source": "https://api.manana.kr/v2/karaoke/search.json",
+  "source_docs": "https://api.manana.kr/v2/karaoke/search",
+  "official_vendor_catalog": false,
+  "vendor_completeness_verified": false,
+  "youtube_links_included": false,
+  "pages_downloaded": 34,
+  "api_total_first": 677361,
+  "api_total_last": 677361,
+  "api_total_changed_during_download": false,
+  "rows_seen_by_brand": {
+    "dam": 298415,
+    "joysound": 237017,
+    "kumyoung": 57036,
+    "tj": 57934,
+    "uga": 26959
+  },
+  "skipped_invalid_rows": [
+    {
+      "brand": "kumyoung",
+      "song_number": "",
+      "title": "",
+      "reason": "missing_number_or_title"
+    },
+    {
+      "brand": "tj",
+      "song_number": "",
+      "title": "",
+      "reason": "missing_number_or_title"
+    }
+  ],
+  "duplicate_brand_numbers": 0,
+  "files": {
+    "tj-catalog.csv": {
+      "rows": 57933,
+      "bytes": 8690271,
+      "sha256": "abb0f7e4d247c609faf338b210f00583ef3935cb708bd241b562aed5caa75164"
+    },
+    "ky-catalog.csv": {
+      "rows": 57035,
+      "bytes": 7713798,
+      "sha256": "249df3c5ac04f50ec627e33e7714a1c03ff6a4fb08800c735445b65c75c32c21"
+    },
+    "tj-ky-combined-catalog.csv": {
+      "rows": 114968,
+      "bytes": 16403960,
+      "sha256": "4aed0c504f8bcdffb09646f011349ce0b2e4b0d1f01cc9b8ce2ed80e6968a1b5"
+    }
+  }
+}

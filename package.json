@@ -1,0 +1,18 @@
+{
+  "name": "tj-my-karaoke",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": ["server", "web"],
+  "scripts": {
+    "dev": "concurrently -k -n api,web \"npm run dev -w server\" \"npm run dev -w web\"",
+    "build": "npm run build -w web",
+    "start": "npm start -w server",
+    "test": "node --test server/test/*.test.js web/test/*.test.js",
+    "test:integration": "node --test server/test/mysql.integration.js",
+    "test:e2e": "playwright test",
+    "verify:running": "node scripts/smoke.js"
+  },
+  "devDependencies": {"concurrently": "^9.2.1", "@playwright/test": "^1.56.1"},
+  "engines": {"node": ">=22.12"}
+}

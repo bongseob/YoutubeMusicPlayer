@@ -1,0 +1,25 @@
+{
+  "source": "examples/catalog/tj-ky-combined-catalog.csv",
+  "whitespace_normalized_rows": 1433,
+  "starter_video_links_reused": 19,
+  "files": {
+    "tj-songs-import.csv": {
+      "rows": 57933,
+      "bytes": 2577169,
+      "with_video": 19,
+      "sha256": "8527cb7a1bf7c260a6d4b17fa14c408995afeddfea8ed6c5af6748f490e4c5a2"
+    },
+    "ky-songs-import.csv": {
+      "rows": 57035,
+      "bytes": 2608056,
+      "with_video": 0,
+      "sha256": "47f2a2bf24ce0fb80480f4c23882fa0281d72b1f2f4e4b50557a015e91decbbe"
+    },
+    "tj-ky-songs-import.csv": {
+      "rows": 114968,
+      "bytes": 5185178,
+      "with_video": 19,
+      "sha256": "0c6a2c9af3d2c9a3af4f34f2db7ed008b028a806dc28703b3aa2a1d4d16f3991"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+CREATE TABLE IF NOT EXISTS karaoke_songs (
+  id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+  song_key VARCHAR(40) CHARACTER SET ascii COLLATE ascii_bin NOT NULL,
+  brand VARCHAR(2) NOT NULL DEFAULT 'TJ',
+  song_number VARCHAR(10) NULL,
+  tj_number VARCHAR(10) NULL,
+  ky_number VARCHAR(10) NULL,
+  title VARCHAR(200) NOT NULL,
+  artist VARCHAR(200) NOT NULL DEFAULT '',
+  youtube_video_id CHAR(11) CHARACTER SET ascii COLLATE ascii_bin NULL,
+  source_url VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  UNIQUE KEY uk_song_key (song_key),
+  INDEX idx_video (youtube_video_id),
+  INDEX idx_brand_number (brand, song_number),
+  INDEX idx_tj_number (tj_number),
+  INDEX idx_title (title),
+  INDEX idx_artist (artist)
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
