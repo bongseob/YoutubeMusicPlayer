@@ -1,0 +1,41 @@
+{
+  "exportedAt": "2026-11-03T15:16:48.545Z",
+  "total": 114968,
+  "linked": 40473,
+  "unlinked": 74495,
+  "statusCounts": {
+    "not_found_in_indexed_public_videos": 58691,
+    "needs_review": 15804,
+    "linked": 40473
+  },
+  "scanComplete": false,
+  "allCatalogSongsLinked": false,
+  "allPublicVideosCovered": false,
+  "stopReason": "오늘의 영상 검색 한도 100회에 도달했습니다. 다음 할당량 날짜에 같은 명령으로 이어서 조회할 수 있습니다.",
+  "coverage": [
+    {
+      "brand": "TJ",
+      "publicVideoCount": 75043,
+      "uniqueVideosIndexed": 41265,
+      "publicPlaylists": 256,
+      "unavailablePlaylists": 0
+    },
+    {
+      "brand": "KY",
+      "publicVideoCount": 76902,
+      "uniqueVideosIndexed": 50400,
+      "publicPlaylists": 548,
+      "unavailablePlaylists": 0
+    }
+  ],
+  "searchRequests": {
+    "2026-11-03": 100
+  },
+  "playbackTested": false,
+  "primarySource": "YouTube Data API v3",
+  "files": [
+    "examples/import/tj-ky-songs-with-videos.csv",
+    "examples/import/linked-songs-only.csv",
+    "examples/import/tj-ky-video-link-status.csv"
+  ]
+}

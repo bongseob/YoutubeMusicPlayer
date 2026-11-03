@@ -35,7 +35,7 @@ PC: **http://localhost:5173**
 1. **한 곡 등록**: 브랜드(TJ/태진 또는 KY/금영), 제목, 가수, 곡 번호를 입력합니다. 영상 링크는 선택이며, 곡 번호와 영상 ID 중 하나는 필요합니다. 확인한 영상은 `watch`, `youtu.be`, `shorts`, `live`, `embed` 링크 또는 11자리 ID로 등록할 수 있습니다.
 2. **CSV 가져오기**: UTF-8(UTF-8 BOM 허용) CSV를 업로드합니다. 최대 **20MB·120,000행**입니다. Excel에서는 CSV UTF-8로 저장하세요.
 
-**바로 등록할 전체 파일: [examples/import/tj-ky-songs-import.csv](examples/import/tj-ky-songs-import.csv)** — 태진 57,933곡 + 금영 57,035곡. 자세한 설명은 [등록용 CSV 안내](examples/import/README.md)를 확인하세요.
+**최신 전체 등록 파일: [examples/import/tj-ky-songs-with-videos.csv](examples/import/tj-ky-songs-with-videos.csv)** — 태진·금영 총 114,968곡 중 40,473곡에 영상 링크가 연결되어 있습니다(2026-11-04). 자세한 설명은 [등록용 CSV 안내](examples/import/README.md)를 확인하세요.
 
 ```csv
 brand,song_number,title,artist,youtube_url
@@ -52,6 +52,8 @@ brand,song_number,title,artist,youtube_url
 영상이 없는 곡은 검색·즐겨찾기에 사용할 수 있고 **영상 미연결**로 표시됩니다. 곡 옆 **영상 연결**에서 관리자 토큰과 확인한 링크를 입력하면 예약·재생할 수 있습니다. YouTube 채널 전체 자동 수집이나 YouTube 전체 검색 기능은 포함하지 않습니다.
 
 ## 사용법
+
+전체 공식 채널과 곡 목록을 대조하려면 [전곡 영상 대조 안내](docs/youtube-full-sync.md)를 참고하세요. YouTube Data API 키를 `.env`에 설정한 뒤 `npm run videos:apply -- --allow-mr --search-backfill`로 공개 목록 조회·MR 대체·과거 검색 보완을 이어서 실행할 수 있습니다. 현재 전체 연결은 완료되지 않았으며, 검색 한도로 중단한 위치를 저장했습니다. API 키는 일반 검색·기존 영상 재생에는 필요하지 않습니다.
 
 검색 결과의 `+ 예약`으로 대기열에 추가한 뒤 **노래 시작하기**를 누릅니다. 같은 곡도 여러 번 예약할 수 있습니다. 위·아래 버튼으로 순서를 바꾸고 `×`로 취소합니다. 재생 중인 곡과 대기열은 별개이며 다음 곡 버튼은 현재 곡을 마치고 첫 예약곡을 시작합니다. 예약곡이 없으면 재생을 종료합니다.
 

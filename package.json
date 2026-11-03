@@ -11,7 +11,11 @@
     "test": "node --test server/test/*.test.js web/test/*.test.js",
     "test:integration": "node --test server/test/mysql.integration.js",
     "test:e2e": "playwright test",
-    "verify:running": "node scripts/smoke.js"
+    "verify:running": "node scripts/smoke.js",
+    "videos:plan": "node scripts/sync-youtube-catalog.js --plan",
+    "videos:sync": "node scripts/sync-youtube-catalog.js",
+    "videos:apply": "node scripts/sync-youtube-catalog.js --apply",
+    "videos:export": "node scripts/export-linked-catalog.js"
   },
   "devDependencies": {"concurrently": "^9.2.1", "@playwright/test": "^1.56.1"},
   "engines": {"node": ">=22.12"}

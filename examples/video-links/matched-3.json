@@ -1,0 +1,34 @@
+{
+  "checked_date": "2026-11-03",
+  "verification": "YouTube official-channel search records matched by brand, song number, title and artist. Direct video playback not verified; direct page/oEmbed access failed.",
+  "artist_correction": {
+    "brand": "KY",
+    "song_number": "27410",
+    "before": "임영",
+    "after": "임영웅",
+    "source": "https://www.youtube.com/watch?v=ZdT6TSlipq0"
+  },
+  "songs": [
+    {
+      "brand": "TJ",
+      "song_number": "37195",
+      "title": "안동역에서",
+      "artist": "진성",
+      "youtube_url": "https://www.youtube.com/watch?v=L26jSx5TZns"
+    },
+    {
+      "brand": "KY",
+      "song_number": "29234",
+      "title": "헤어지자 말해요",
+      "artist": "박재정",
+      "youtube_url": "https://www.youtube.com/watch?v=jCrlsY5e_xw"
+    },
+    {
+      "brand": "KY",
+      "song_number": "27410",
+      "title": "바램",
+      "artist": "임영웅",
+      "youtube_url": "https://www.youtube.com/watch?v=ZdT6TSlipq0"
+    }
+  ]
+}

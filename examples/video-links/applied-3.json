@@ -1,0 +1,89 @@
+{
+  "applied_at": "2026-11-03T14:13:58.117Z",
+  "changes": [
+    {
+      "song_key": "TJ:n:37195",
+      "before": {
+        "id": "84172",
+        "tj_number": "37195",
+        "title": "안동역에서",
+        "artist": "진성",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:18.000Z",
+        "updated_at": "2026-11-03T05:06:18.000Z",
+        "song_key": "TJ:n:37195",
+        "brand": "TJ",
+        "song_number": "37195",
+        "ky_number": null
+      },
+      "after": {
+        "song_key": "TJ:n:37195",
+        "brand": "TJ",
+        "song_number": "37195",
+        "title": "안동역에서",
+        "artist": "진성",
+        "tj_number": "37195",
+        "ky_number": null,
+        "youtube_video_id": "L26jSx5TZns",
+        "source_url": "https://www.youtube.com/watch?v=L26jSx5TZns"
+      }
+    },
+    {
+      "song_key": "KY:n:29234",
+      "before": {
+        "id": "7348",
+        "tj_number": null,
+        "title": "헤어지자 말해요",
+        "artist": "박재정",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:13.000Z",
+        "updated_at": "2026-11-03T05:06:13.000Z",
+        "song_key": "KY:n:29234",
+        "brand": "KY",
+        "song_number": "29234",
+        "ky_number": "29234"
+      },
+      "after": {
+        "song_key": "KY:n:29234",
+        "brand": "KY",
+        "song_number": "29234",
+        "title": "헤어지자 말해요",
+        "artist": "박재정",
+        "tj_number": null,
+        "ky_number": "29234",
+        "youtube_video_id": "jCrlsY5e_xw",
+        "source_url": "https://www.youtube.com/watch?v=jCrlsY5e_xw"
+      }
+    },
+    {
+      "song_key": "KY:n:27410",
+      "before": {
+        "id": "5485",
+        "tj_number": null,
+        "title": "바램",
+        "artist": "임영",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:13.000Z",
+        "updated_at": "2026-11-03T05:06:13.000Z",
+        "song_key": "KY:n:27410",
+        "brand": "KY",
+        "song_number": "27410",
+        "ky_number": "27410"
+      },
+      "after": {
+        "song_key": "KY:n:27410",
+        "brand": "KY",
+        "song_number": "27410",
+        "title": "바램",
+        "artist": "임영웅",
+        "tj_number": null,
+        "ky_number": "27410",
+        "youtube_video_id": "ZdT6TSlipq0",
+        "source_url": "https://www.youtube.com/watch?v=ZdT6TSlipq0"
+      }
+    }
+  ]
+}

@@ -1,0 +1,3548 @@
+{
+  "mode": "apply",
+  "checked_at": "2026-11-03T14:21:29.647Z",
+  "playback_verified": false,
+  "results": [
+    {
+      "song": {
+        "song_key": "TJ:n:80548",
+        "brand": "TJ",
+        "song_number": "80548",
+        "title": "사랑은 늘 도망가(신사와 아가씨 OST)",
+        "artist": "임영웅",
+        "tj_number": "80548",
+        "ky_number": null,
+        "youtube_video_id": "fmiEetlCGtA",
+        "source_url": "https://www.youtube.com/watch?v=fmiEetlCGtA",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "already_linked"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:83490",
+        "brand": "TJ",
+        "song_number": "83490",
+        "title": "헤어지자 말해요",
+        "artist": "박재정",
+        "tj_number": "83490",
+        "ky_number": null,
+        "youtube_video_id": "hEQyYQUOBMU",
+        "source_url": "https://www.youtube.com/watch?v=hEQyYQUOBMU",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "already_linked"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:10842",
+        "brand": "TJ",
+        "song_number": "10842",
+        "title": "희재(국화꽃향기OST)",
+        "artist": "성시경",
+        "tj_number": "10842",
+        "ky_number": null,
+        "youtube_video_id": "fvQrxlKxed8",
+        "source_url": "https://www.youtube.com/watch?v=fvQrxlKxed8",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "already_linked"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:97511",
+        "brand": "TJ",
+        "song_number": "97511",
+        "title": "모든날 모든순간",
+        "artist": "폴킴",
+        "tj_number": "97511",
+        "ky_number": null,
+        "youtube_video_id": "cp1-o4_H4qM",
+        "source_url": "https://www.youtube.com/watch?v=cp1-o4_H4qM",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "already_linked"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:46108",
+        "brand": "TJ",
+        "song_number": "46108",
+        "title": "다시 사랑한다면",
+        "artist": "김필",
+        "tj_number": "46108",
+        "ky_number": null,
+        "youtube_video_id": "dLdU5RC8I4w",
+        "source_url": "https://www.youtube.com/watch?v=dLdU5RC8I4w",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "already_linked"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:46772",
+        "brand": "TJ",
+        "song_number": "46772",
+        "title": "사랑해요(함부로애틋하게OST)",
+        "artist": "김범수",
+        "tj_number": "46772",
+        "ky_number": null,
+        "youtube_video_id": "3oYDy147yQg",
+        "source_url": "https://www.youtube.com/watch?v=3oYDy147yQg",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "already_linked"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:38028",
+        "brand": "TJ",
+        "song_number": "38028",
+        "title": "너의 모든 순간(별에서온그대OST)",
+        "artist": "성시경",
+        "tj_number": "38028",
+        "ky_number": null,
+        "youtube_video_id": "cUlDEVp7GIY",
+        "source_url": "https://www.youtube.com/watch?v=cUlDEVp7GIY",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "already_linked"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:49818",
+        "brand": "TJ",
+        "song_number": "49818",
+        "title": "좋니",
+        "artist": "윤종신",
+        "tj_number": "49818",
+        "ky_number": null,
+        "youtube_video_id": "GJEDpYI8JuU",
+        "source_url": "https://www.youtube.com/watch?v=GJEDpYI8JuU",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "already_linked"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:89245",
+        "brand": "TJ",
+        "song_number": "89245",
+        "title": "아로하(슬기로운의사생활OST)",
+        "artist": "조정석",
+        "tj_number": "89245",
+        "ky_number": null,
+        "youtube_video_id": "kKmG_rl1qZE",
+        "source_url": "https://www.youtube.com/watch?v=kKmG_rl1qZE",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "already_linked"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:16503",
+        "brand": "TJ",
+        "song_number": "16503",
+        "title": "거리에서",
+        "artist": "성시경",
+        "tj_number": "16503",
+        "ky_number": null,
+        "youtube_video_id": "MKf9CK1Y2-s",
+        "source_url": "https://www.youtube.com/watch?v=MKf9CK1Y2-s",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "already_linked"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:48470",
+        "brand": "TJ",
+        "song_number": "48470",
+        "title": "첫눈처럼 너에게가겠다(도깨비OST)",
+        "artist": "에일리",
+        "tj_number": "48470",
+        "ky_number": null,
+        "youtube_video_id": "dJue1gj4nx8",
+        "source_url": "https://www.youtube.com/watch?v=dJue1gj4nx8",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "already_linked"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:2730",
+        "brand": "TJ",
+        "song_number": "2730",
+        "title": "가질 수 없는 너",
+        "artist": "뱅크",
+        "tj_number": "2730",
+        "ky_number": null,
+        "youtube_video_id": "xSo4LwSKMDM",
+        "source_url": "https://www.youtube.com/watch?v=xSo4LwSKMDM",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "already_linked"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:272",
+        "brand": "TJ",
+        "song_number": "272",
+        "title": "내사랑 내곁에",
+        "artist": "김현식",
+        "tj_number": "272",
+        "ky_number": null,
+        "youtube_video_id": "tiDffcCcWwU",
+        "source_url": "https://www.youtube.com/watch?v=tiDffcCcWwU",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "already_linked"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:11491",
+        "brand": "TJ",
+        "song_number": "11491",
+        "title": "소주한잔",
+        "artist": "임창정",
+        "tj_number": "11491",
+        "ky_number": null,
+        "youtube_video_id": "uWjfn_PZuxc",
+        "source_url": "https://www.youtube.com/watch?v=uWjfn_PZuxc",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "already_linked"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:15527",
+        "brand": "TJ",
+        "song_number": "15527",
+        "title": "서쪽하늘(청연OST)",
+        "artist": "이승철",
+        "tj_number": "15527",
+        "ky_number": null,
+        "youtube_video_id": "A_J7319Ix8k",
+        "source_url": "https://www.youtube.com/watch?v=A_J7319Ix8k",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "already_linked"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:34409",
+        "brand": "TJ",
+        "song_number": "34409",
+        "title": "Hello",
+        "artist": "허각",
+        "tj_number": "34409",
+        "ky_number": null,
+        "youtube_video_id": "8kvA5vDII1U",
+        "source_url": "https://www.youtube.com/watch?v=8kvA5vDII1U",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "already_linked"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:14814",
+        "brand": "TJ",
+        "song_number": "14814",
+        "title": "인연(동녘바람)",
+        "artist": "이선희",
+        "tj_number": "14814",
+        "ky_number": null,
+        "youtube_video_id": "gGoWI6I58g0",
+        "source_url": "https://www.youtube.com/watch?v=gGoWI6I58g0",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "already_linked"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:332",
+        "brand": "TJ",
+        "song_number": "332",
+        "title": "소녀",
+        "artist": "이문세",
+        "tj_number": "332",
+        "ky_number": null,
+        "youtube_video_id": "d7XzBNtCgck",
+        "source_url": "https://www.youtube.com/watch?v=d7XzBNtCgck",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "catalog_row_missing"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:34452",
+        "brand": "TJ",
+        "song_number": "34452",
+        "title": "나에게 그대만이",
+        "artist": "유해준",
+        "tj_number": "34452",
+        "ky_number": null,
+        "youtube_video_id": "vbZTS6R255I",
+        "source_url": "https://www.youtube.com/watch?v=vbZTS6R255I",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "catalog_title_or_artist_mismatch"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:2337",
+        "brand": "TJ",
+        "song_number": "2337",
+        "title": "서른즈음에",
+        "artist": "김광석",
+        "tj_number": "2337",
+        "ky_number": null,
+        "youtube_video_id": "b_BjJ1-EtLw",
+        "source_url": "https://www.youtube.com/watch?v=b_BjJ1-EtLw",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "already_linked"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:1102",
+        "brand": "TJ",
+        "song_number": "1102",
+        "title": "사랑했지만",
+        "artist": "김광석",
+        "tj_number": "1102",
+        "ky_number": null,
+        "youtube_video_id": "2c5QNxBRE0Q",
+        "source_url": "https://www.youtube.com/watch?v=2c5QNxBRE0Q",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "already_linked"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:9429",
+        "brand": "TJ",
+        "song_number": "9429",
+        "title": "비상",
+        "artist": "임재범",
+        "tj_number": "9429",
+        "ky_number": null,
+        "youtube_video_id": "Hgrt77TscPU",
+        "source_url": "https://www.youtube.com/watch?v=Hgrt77TscPU",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "catalog_row_missing"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:48879",
+        "brand": "TJ",
+        "song_number": "48879",
+        "title": "밤편지",
+        "artist": "아이유",
+        "tj_number": "48879",
+        "ky_number": null,
+        "youtube_video_id": "Glcf-665ZkM",
+        "source_url": "https://www.youtube.com/watch?v=Glcf-665ZkM",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "already_linked"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:91512",
+        "brand": "TJ",
+        "song_number": "91512",
+        "title": "오늘도빛나는너에게",
+        "artist": "마크튭",
+        "tj_number": "91512",
+        "ky_number": null,
+        "youtube_video_id": "lCBMDQiz594",
+        "source_url": "https://www.youtube.com/watch?v=lCBMDQiz594",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "catalog_title_or_artist_mismatch"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:203",
+        "brand": "TJ",
+        "song_number": "203",
+        "title": "동행",
+        "artist": "최성수",
+        "tj_number": "203",
+        "ky_number": null,
+        "youtube_video_id": "TnOH_JsfNfw",
+        "source_url": "https://www.youtube.com/watch?v=TnOH_JsfNfw",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "catalog_row_missing"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:3294",
+        "brand": "TJ",
+        "song_number": "3294",
+        "title": "너에게로의초대",
+        "artist": "정경화",
+        "tj_number": "3294",
+        "ky_number": null,
+        "youtube_video_id": "z8TbYGfz3Wo",
+        "source_url": "https://www.youtube.com/watch?v=z8TbYGfz3Wo",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "catalog_title_or_artist_mismatch"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:9610",
+        "brand": "TJ",
+        "song_number": "9610",
+        "title": "화장을고치고",
+        "artist": "왁스",
+        "tj_number": "9610",
+        "ky_number": null,
+        "youtube_video_id": "YKo9eHNICcw",
+        "source_url": "https://www.youtube.com/watch?v=YKo9eHNICcw",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "catalog_title_or_artist_mismatch"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:9568",
+        "brand": "TJ",
+        "song_number": "9568",
+        "title": "일기(신라의달밤OST)",
+        "artist": "캔디맨",
+        "tj_number": "9568",
+        "ky_number": null,
+        "youtube_video_id": "VBmuDu6vQJg",
+        "source_url": "https://www.youtube.com/watch?v=VBmuDu6vQJg",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "catalog_row_missing"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:428",
+        "brand": "TJ",
+        "song_number": "428",
+        "title": "너를사랑하고도",
+        "artist": "전유나",
+        "tj_number": "428",
+        "ky_number": null,
+        "youtube_video_id": "9LBIO4sL0u4",
+        "source_url": "https://www.youtube.com/watch?v=9LBIO4sL0u4",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "status": "skipped",
+      "reason": "catalog_row_missing"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:37195",
+        "brand": "TJ",
+        "song_number": "37195",
+        "title": "안동역에서",
+        "artist": "진성",
+        "tj_number": "37195",
+        "ky_number": null,
+        "youtube_video_id": "L26jSx5TZns",
+        "source_url": "https://www.youtube.com/watch?v=L26jSx5TZns",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡트로트-TJ"
+      },
+      "status": "skipped",
+      "reason": "already_linked"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:3631",
+        "brand": "TJ",
+        "song_number": "3631",
+        "title": "보고싶은여인",
+        "artist": "현철",
+        "tj_number": "3631",
+        "ky_number": null,
+        "youtube_video_id": "Po2LS_LFiUA",
+        "source_url": "https://www.youtube.com/watch?v=Po2LS_LFiUA",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡트로트-TJ"
+      },
+      "status": "skipped",
+      "reason": "catalog_row_missing"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:485",
+        "brand": "TJ",
+        "song_number": "485",
+        "title": "당신께만",
+        "artist": "이은하",
+        "tj_number": "485",
+        "ky_number": null,
+        "youtube_video_id": "Q2A78P-om8o",
+        "source_url": "https://www.youtube.com/watch?v=Q2A78P-om8o",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡트로트-TJ"
+      },
+      "status": "skipped",
+      "reason": "catalog_row_missing"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:4047",
+        "brand": "TJ",
+        "song_number": "4047",
+        "title": "애인",
+        "artist": "태진아",
+        "tj_number": "4047",
+        "ky_number": null,
+        "youtube_video_id": "jRmB84nCUCQ",
+        "source_url": "https://www.youtube.com/watch?v=jRmB84nCUCQ",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡트로트-TJ"
+      },
+      "status": "skipped",
+      "reason": "catalog_row_missing"
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:76095",
+        "brand": "TJ",
+        "song_number": "76095",
+        "title": "문어의 꿈",
+        "artist": "안예은",
+        "tj_number": "76095",
+        "ky_number": null,
+        "youtube_video_id": "YmEOTOMeAFo",
+        "source_url": "https://www.youtube.com/watch?v=YmEOTOMeAFo",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "99842",
+        "tj_number": "76095",
+        "title": "문어의꿈",
+        "artist": "안예은",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:19.000Z",
+        "updated_at": "2026-11-03T05:06:19.000Z",
+        "song_key": "TJ:n:76095",
+        "brand": "TJ",
+        "song_number": "76095",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:03.004Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DYmEOTOMeAFo",
+      "metadata": {
+        "title": "[TJ노래방] 문어의꿈 - 안예은 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=YmEOTOMeAFo"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:83703",
+        "brand": "TJ",
+        "song_number": "83703",
+        "title": "이 새벽에 전화하는건",
+        "artist": "황인욱",
+        "tj_number": "83703",
+        "ky_number": null,
+        "youtube_video_id": "aud5GMterR4",
+        "source_url": "https://www.youtube.com/watch?v=aud5GMterR4",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "105685",
+        "tj_number": "83703",
+        "title": "이새벽에전화하는건",
+        "artist": "황인욱",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:20.000Z",
+        "updated_at": "2026-11-03T05:06:20.000Z",
+        "song_key": "TJ:n:83703",
+        "brand": "TJ",
+        "song_number": "83703",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:03.007Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Daud5GMterR4",
+      "metadata": {
+        "title": "[TJ노래방] 이새벽에전화하는건 - 황인욱 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=aud5GMterR4"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:8890",
+        "brand": "TJ",
+        "song_number": "8890",
+        "title": "너를위해",
+        "artist": "임재범",
+        "tj_number": "8890",
+        "ky_number": null,
+        "youtube_video_id": "AA_sS7irbeo",
+        "source_url": "https://www.youtube.com/watch?v=AA_sS7irbeo",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "110102",
+        "tj_number": "8890",
+        "title": "너를위해",
+        "artist": "임재범",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:20.000Z",
+        "updated_at": "2026-11-03T05:06:20.000Z",
+        "song_key": "TJ:n:8890",
+        "brand": "TJ",
+        "song_number": "8890",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:03.695Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DAA_sS7irbeo",
+      "metadata": {
+        "title": "[TJ노래방] 너를위해 - 임재범 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=AA_sS7irbeo"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:14352",
+        "brand": "TJ",
+        "song_number": "14352",
+        "title": "참다행이야",
+        "artist": "SPAPA",
+        "tj_number": "14352",
+        "ky_number": null,
+        "youtube_video_id": "PB2rzhkEcN0",
+        "source_url": "https://www.youtube.com/watch?v=PB2rzhkEcN0",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "61639",
+        "tj_number": "14352",
+        "title": "참다행이야",
+        "artist": "SPAPA",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:17.000Z",
+        "updated_at": "2026-11-03T05:06:17.000Z",
+        "song_key": "TJ:n:14352",
+        "brand": "TJ",
+        "song_number": "14352",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:03.704Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DPB2rzhkEcN0",
+      "metadata": {
+        "title": "[TJ노래방] 참다행이야 - SPAPA / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=PB2rzhkEcN0"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:8941",
+        "brand": "TJ",
+        "song_number": "8941",
+        "title": "말리꽃(비천무OST)",
+        "artist": "이승철",
+        "tj_number": "8941",
+        "ky_number": null,
+        "youtube_video_id": "Uuptw1uHXmo",
+        "source_url": "https://www.youtube.com/watch?v=Uuptw1uHXmo",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "110539",
+        "tj_number": "8941",
+        "title": "말리꽃(비천무OST)",
+        "artist": "이승철",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:20.000Z",
+        "updated_at": "2026-11-03T05:06:20.000Z",
+        "song_key": "TJ:n:8941",
+        "brand": "TJ",
+        "song_number": "8941",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:04.457Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DUuptw1uHXmo",
+      "metadata": {
+        "title": "[TJ노래방] 말리꽃(비천무OST) - 이승철 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=Uuptw1uHXmo"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:49941",
+        "brand": "TJ",
+        "song_number": "49941",
+        "title": "선물",
+        "artist": "멜로망스",
+        "tj_number": "49941",
+        "ky_number": null,
+        "youtube_video_id": "T2RwvoLaj1c",
+        "source_url": "https://www.youtube.com/watch?v=T2RwvoLaj1c",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "91956",
+        "tj_number": "49941",
+        "title": "선물",
+        "artist": "멜로망스",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:19.000Z",
+        "updated_at": "2026-11-03T05:06:19.000Z",
+        "song_key": "TJ:n:49941",
+        "brand": "TJ",
+        "song_number": "49941",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:04.458Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DT2RwvoLaj1c",
+      "metadata": {
+        "title": "[TJ노래방] 선물 - 멜로망스 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=T2RwvoLaj1c"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:80906",
+        "brand": "TJ",
+        "song_number": "80906",
+        "title": "취중고백",
+        "artist": "김민석",
+        "tj_number": "80906",
+        "ky_number": null,
+        "youtube_video_id": "FS7afCSdb9c",
+        "source_url": "https://www.youtube.com/watch?v=FS7afCSdb9c",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "102890",
+        "tj_number": "80906",
+        "title": "취중고백",
+        "artist": "김민석",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:20.000Z",
+        "updated_at": "2026-11-03T05:06:20.000Z",
+        "song_key": "TJ:n:80906",
+        "brand": "TJ",
+        "song_number": "80906",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:05.145Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DFS7afCSdb9c",
+      "metadata": {
+        "title": "[TJ노래방] 취중고백 - 김민석 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=FS7afCSdb9c"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:30751",
+        "brand": "TJ",
+        "song_number": "30751",
+        "title": "그런사람 또 없습니다",
+        "artist": "이승철",
+        "tj_number": "30751",
+        "ky_number": null,
+        "youtube_video_id": "qmCCaUxzVPs",
+        "source_url": "https://www.youtube.com/watch?v=qmCCaUxzVPs",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "77665",
+        "tj_number": "30751",
+        "title": "그런사람또없습니다",
+        "artist": "이승철",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:18.000Z",
+        "updated_at": "2026-11-03T05:06:18.000Z",
+        "song_key": "TJ:n:30751",
+        "brand": "TJ",
+        "song_number": "30751",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:05.185Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DqmCCaUxzVPs",
+      "metadata": {
+        "title": "[TJ노래방] 그런 사람 또 없습니다 - 이승철 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=qmCCaUxzVPs"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:9774",
+        "brand": "TJ",
+        "song_number": "9774",
+        "title": "HEAVEN",
+        "artist": "김현성",
+        "tj_number": "9774",
+        "ky_number": null,
+        "youtube_video_id": "nqofM6kXk-k",
+        "source_url": "https://www.youtube.com/watch?v=nqofM6kXk-k",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "113412",
+        "tj_number": "9774",
+        "title": "Heaven",
+        "artist": "김현성",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:20.000Z",
+        "updated_at": "2026-11-03T05:06:20.000Z",
+        "song_key": "TJ:n:9774",
+        "brand": "TJ",
+        "song_number": "9774",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:05.897Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DnqofM6kXk-k",
+      "metadata": {
+        "title": "[TJ노래방] Heaven - 김현성 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=nqofM6kXk-k"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:46490",
+        "brand": "TJ",
+        "song_number": "46490",
+        "title": "너였다면(또오해영OST)",
+        "artist": "정승환",
+        "tj_number": "46490",
+        "ky_number": null,
+        "youtube_video_id": "Gdz_FRZ7kPw",
+        "source_url": "https://www.youtube.com/watch?v=Gdz_FRZ7kPw",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "89661",
+        "tj_number": "46490",
+        "title": "너였다면(또오해영OST)",
+        "artist": "정승환",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:19.000Z",
+        "updated_at": "2026-11-03T05:06:19.000Z",
+        "song_key": "TJ:n:46490",
+        "brand": "TJ",
+        "song_number": "46490",
+        "ky_number": null
+      },
+      "status": "skipped",
+      "reason": "metadata_unavailable: 403 Forbidden",
+      "checked_at": "2026-11-03T14:21:05.898Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DGdz_FRZ7kPw",
+      "metadata": {
+        "url": "https://www.youtube.com/watch?v=Gdz_FRZ7kPw",
+        "error": "403 Forbidden"
+      }
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:89266",
+        "brand": "TJ",
+        "song_number": "89266",
+        "title": "이제나만믿어요",
+        "artist": "임영웅",
+        "tj_number": "89266",
+        "ky_number": null,
+        "youtube_video_id": "Q3MPhPf-Ucg",
+        "source_url": "https://www.youtube.com/watch?v=Q3MPhPf-Ucg",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "110391",
+        "tj_number": "89266",
+        "title": "이제나만믿어요",
+        "artist": "임영웅",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:20.000Z",
+        "updated_at": "2026-11-03T05:06:20.000Z",
+        "song_key": "TJ:n:89266",
+        "brand": "TJ",
+        "song_number": "89266",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:06.606Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DQ3MPhPf-Ucg",
+      "metadata": {
+        "title": "[TJ노래방] 이제나만믿어요 - 임영웅 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=Q3MPhPf-Ucg"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:15871",
+        "brand": "TJ",
+        "song_number": "15871",
+        "title": "사랑안해",
+        "artist": "백지영",
+        "tj_number": "15871",
+        "ky_number": null,
+        "youtube_video_id": "aBMVSa3ZVgc",
+        "source_url": "https://www.youtube.com/watch?v=aBMVSa3ZVgc",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "63293",
+        "tj_number": "15871",
+        "title": "사랑안해",
+        "artist": "백지영",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:17.000Z",
+        "updated_at": "2026-11-03T05:06:17.000Z",
+        "song_key": "TJ:n:15871",
+        "brand": "TJ",
+        "song_number": "15871",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:06.607Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DaBMVSa3ZVgc",
+      "metadata": {
+        "title": "[TJ노래방] 사랑안해 - 백지영 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=aBMVSa3ZVgc"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:16208",
+        "brand": "TJ",
+        "song_number": "16208",
+        "title": "미친사랑의노래(투명인간최장수OST)",
+        "artist": "SeeYa",
+        "tj_number": "16208",
+        "ky_number": null,
+        "youtube_video_id": "E4ZOlAHAIo4",
+        "source_url": "https://www.youtube.com/watch?v=E4ZOlAHAIo4",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "63648",
+        "tj_number": "16208",
+        "title": "미친사랑의노래(투명인간최장수OST)",
+        "artist": "SeeYa",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:17.000Z",
+        "updated_at": "2026-11-03T05:06:17.000Z",
+        "song_key": "TJ:n:16208",
+        "brand": "TJ",
+        "song_number": "16208",
+        "ky_number": null
+      },
+      "status": "skipped",
+      "reason": "metadata_unavailable: 403 Forbidden",
+      "checked_at": "2026-11-03T14:21:07.326Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DE4ZOlAHAIo4",
+      "metadata": {
+        "url": "https://www.youtube.com/watch?v=E4ZOlAHAIo4",
+        "error": "403 Forbidden"
+      }
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:81061",
+        "brand": "TJ",
+        "song_number": "81061",
+        "title": "호랑수월가",
+        "artist": "탑현",
+        "tj_number": "81061",
+        "ky_number": null,
+        "youtube_video_id": "IwnOvxCzALo",
+        "source_url": "https://www.youtube.com/watch?v=IwnOvxCzALo",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "103030",
+        "tj_number": "81061",
+        "title": "호랑수월가",
+        "artist": "탑현",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:20.000Z",
+        "updated_at": "2026-11-03T05:06:20.000Z",
+        "song_key": "TJ:n:81061",
+        "brand": "TJ",
+        "song_number": "81061",
+        "ky_number": null
+      },
+      "status": "skipped",
+      "reason": "alternate_version",
+      "checked_at": "2026-11-03T14:21:07.326Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DIwnOvxCzALo",
+      "metadata": {
+        "title": "[TJ노래방 / 멜로디제거] 호랑수월가 - 탑현 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=IwnOvxCzALo"
+      }
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:14980",
+        "brand": "TJ",
+        "song_number": "14980",
+        "title": "서울의달",
+        "artist": "김건모",
+        "tj_number": "14980",
+        "ky_number": null,
+        "youtube_video_id": "dT_h9y_28zs",
+        "source_url": "https://www.youtube.com/watch?v=dT_h9y_28zs",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "62322",
+        "tj_number": "14980",
+        "title": "서울의달",
+        "artist": "김건모",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:17.000Z",
+        "updated_at": "2026-11-03T05:06:17.000Z",
+        "song_key": "TJ:n:14980",
+        "brand": "TJ",
+        "song_number": "14980",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:08.046Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DdT_h9y_28zs",
+      "metadata": {
+        "title": "[TJ노래방] 서울의달 - 김건모 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=dT_h9y_28zs"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:19510",
+        "brand": "TJ",
+        "song_number": "19510",
+        "title": "라라라",
+        "artist": "SG워너비",
+        "tj_number": "19510",
+        "ky_number": null,
+        "youtube_video_id": "bWmcsYiVvPc",
+        "source_url": "https://www.youtube.com/watch?v=bWmcsYiVvPc",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "67195",
+        "tj_number": "19510",
+        "title": "라라라",
+        "artist": "SG워너비",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:17.000Z",
+        "updated_at": "2026-11-03T05:06:17.000Z",
+        "song_key": "TJ:n:19510",
+        "brand": "TJ",
+        "song_number": "19510",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:08.047Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DbWmcsYiVvPc",
+      "metadata": {
+        "title": "[TJ노래방] 라라라 - SG워너비 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=bWmcsYiVvPc"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:11095",
+        "brand": "TJ",
+        "song_number": "11095",
+        "title": "보고싶다",
+        "artist": "김범수",
+        "tj_number": "11095",
+        "ky_number": null,
+        "youtube_video_id": "3gA79nZpOks",
+        "source_url": "https://www.youtube.com/watch?v=3gA79nZpOks",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "58225",
+        "tj_number": "11095",
+        "title": "보고싶다",
+        "artist": "김범수",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:17.000Z",
+        "updated_at": "2026-11-03T05:06:17.000Z",
+        "song_key": "TJ:n:11095",
+        "brand": "TJ",
+        "song_number": "11095",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:08.365Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D3gA79nZpOks",
+      "metadata": {
+        "title": "[TJ노래방] 보고싶다 - 김범수 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=3gA79nZpOks"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:19187",
+        "brand": "TJ",
+        "song_number": "19187",
+        "title": "만약에",
+        "artist": "태연",
+        "tj_number": "19187",
+        "ky_number": null,
+        "youtube_video_id": "Kyem4O1xHMo",
+        "source_url": "https://www.youtube.com/watch?v=Kyem4O1xHMo",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "66843",
+        "tj_number": "19187",
+        "title": "만약에(쾌도홍길동OST)",
+        "artist": "태연(소녀시대)",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:17.000Z",
+        "updated_at": "2026-11-03T05:06:17.000Z",
+        "song_key": "TJ:n:19187",
+        "brand": "TJ",
+        "song_number": "19187",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:08.764Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DKyem4O1xHMo",
+      "metadata": {
+        "title": "[TJ노래방] 만약에(쾌도홍길동OST) - 태연(TAEYEON) / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=Kyem4O1xHMo"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:11030",
+        "brand": "TJ",
+        "song_number": "11030",
+        "title": "친구",
+        "artist": "안재욱",
+        "tj_number": "11030",
+        "ky_number": null,
+        "youtube_video_id": "l5cXZArFpyY",
+        "source_url": "https://www.youtube.com/watch?v=l5cXZArFpyY",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "58159",
+        "tj_number": "11030",
+        "title": "친구",
+        "artist": "안재욱",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:17.000Z",
+        "updated_at": "2026-11-03T05:06:17.000Z",
+        "song_key": "TJ:n:11030",
+        "brand": "TJ",
+        "song_number": "11030",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:09.084Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dl5cXZArFpyY",
+      "metadata": {
+        "title": "[TJ노래방] 친구 - 안재욱 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=l5cXZArFpyY"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:11019",
+        "brand": "TJ",
+        "song_number": "11019",
+        "title": "체념",
+        "artist": "빅마마",
+        "tj_number": "11019",
+        "ky_number": null,
+        "youtube_video_id": "MMgr01eV_yo",
+        "source_url": "https://www.youtube.com/watch?v=MMgr01eV_yo",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "58147",
+        "tj_number": "11019",
+        "title": "체념",
+        "artist": "빅마마",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:17.000Z",
+        "updated_at": "2026-11-03T05:06:17.000Z",
+        "song_key": "TJ:n:11019",
+        "brand": "TJ",
+        "song_number": "11019",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:09.475Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DMMgr01eV_yo",
+      "metadata": {
+        "title": "[TJ노래방] 체념 - 빅마마 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=MMgr01eV_yo"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:817",
+        "brand": "TJ",
+        "song_number": "817",
+        "title": "세월이가면",
+        "artist": "최호섭",
+        "tj_number": "817",
+        "ky_number": null,
+        "youtube_video_id": "ag8LqxIXmhI",
+        "source_url": "https://www.youtube.com/watch?v=ag8LqxIXmhI",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "103671",
+        "tj_number": "817",
+        "title": "세월이가면",
+        "artist": "최호섭",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:20.000Z",
+        "updated_at": "2026-11-03T05:06:20.000Z",
+        "song_key": "TJ:n:817",
+        "brand": "TJ",
+        "song_number": "817",
+        "ky_number": null
+      },
+      "status": "skipped",
+      "reason": "metadata_unavailable: 403 Forbidden",
+      "checked_at": "2026-11-03T14:21:09.804Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dag8LqxIXmhI",
+      "metadata": {
+        "url": "https://www.youtube.com/watch?v=ag8LqxIXmhI",
+        "error": "403 Forbidden"
+      }
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:14238",
+        "brand": "TJ",
+        "song_number": "14238",
+        "title": "눈의꽃(미안하다사랑한다OST)",
+        "artist": "박효신",
+        "tj_number": "14238",
+        "ky_number": null,
+        "youtube_video_id": "sqQyhBTmndU",
+        "source_url": "https://www.youtube.com/watch?v=sqQyhBTmndU",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "61515",
+        "tj_number": "14238",
+        "title": "눈의꽃(미안하다사랑한다OST)",
+        "artist": "박효신",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:17.000Z",
+        "updated_at": "2026-11-03T05:06:17.000Z",
+        "song_key": "TJ:n:14238",
+        "brand": "TJ",
+        "song_number": "14238",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:10.165Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DsqQyhBTmndU",
+      "metadata": {
+        "title": "[TJ노래방] 눈의꽃(미안하다사랑한다OST) - 박효신 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=sqQyhBTmndU"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:81405",
+        "brand": "TJ",
+        "song_number": "81405",
+        "title": "내가아니라도",
+        "artist": "주호",
+        "tj_number": "81405",
+        "ky_number": null,
+        "youtube_video_id": "EwBN2mdBeG4",
+        "source_url": "https://www.youtube.com/watch?v=EwBN2mdBeG4",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "103379",
+        "tj_number": "81405",
+        "title": "내가아니라도",
+        "artist": "주호",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:20.000Z",
+        "updated_at": "2026-11-03T05:06:20.000Z",
+        "song_key": "TJ:n:81405",
+        "brand": "TJ",
+        "song_number": "81405",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:10.484Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DEwBN2mdBeG4",
+      "metadata": {
+        "title": "[TJ노래방] 내가아니라도 - 주호 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=EwBN2mdBeG4"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:81601",
+        "brand": "TJ",
+        "song_number": "81601",
+        "title": "오르막길",
+        "artist": "윤종신",
+        "tj_number": "81601",
+        "ky_number": null,
+        "youtube_video_id": "dc6D3fYw--k",
+        "source_url": "https://www.youtube.com/watch?v=dc6D3fYw--k",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "103574",
+        "tj_number": "81601",
+        "title": "오르막길",
+        "artist": "윤종신",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:20.000Z",
+        "updated_at": "2026-11-03T05:06:20.000Z",
+        "song_key": "TJ:n:81601",
+        "brand": "TJ",
+        "song_number": "81601",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:10.855Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Ddc6D3fYw--k",
+      "metadata": {
+        "title": "[TJ노래방] 오르막길 - 윤종신 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=dc6D3fYw--k"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:178",
+        "brand": "TJ",
+        "song_number": "178",
+        "title": "희나리",
+        "artist": "구창모",
+        "tj_number": "178",
+        "ky_number": null,
+        "youtube_video_id": "ex1y3E6BgoQ",
+        "source_url": "https://www.youtube.com/watch?v=ex1y3E6BgoQ",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "65346",
+        "tj_number": "178",
+        "title": "희나리",
+        "artist": "구창모",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:17.000Z",
+        "updated_at": "2026-11-03T05:06:17.000Z",
+        "song_key": "TJ:n:178",
+        "brand": "TJ",
+        "song_number": "178",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:11.145Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dex1y3E6BgoQ",
+      "metadata": {
+        "title": "[TJ노래방] 희나리 - 구창모 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=ex1y3E6BgoQ"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:17468",
+        "brand": "TJ",
+        "song_number": "17468",
+        "title": "감사",
+        "artist": "김동률",
+        "tj_number": "17468",
+        "ky_number": null,
+        "youtube_video_id": "HqMpHGkPoQQ",
+        "source_url": "https://www.youtube.com/watch?v=HqMpHGkPoQQ",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "64983",
+        "tj_number": "17468",
+        "title": "감사",
+        "artist": "김동률",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:17.000Z",
+        "updated_at": "2026-11-03T05:06:17.000Z",
+        "song_key": "TJ:n:17468",
+        "brand": "TJ",
+        "song_number": "17468",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:11.535Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DHqMpHGkPoQQ",
+      "metadata": {
+        "title": "[TJ노래방] 감사 - 김동률 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=HqMpHGkPoQQ"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:16677",
+        "brand": "TJ",
+        "song_number": "16677",
+        "title": "기다리다",
+        "artist": "윤하",
+        "tj_number": "16677",
+        "ky_number": null,
+        "youtube_video_id": "YWnn_VcQ1hk",
+        "source_url": "https://www.youtube.com/watch?v=YWnn_VcQ1hk",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "64165",
+        "tj_number": "16677",
+        "title": "기다리다",
+        "artist": "윤하",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:17.000Z",
+        "updated_at": "2026-11-03T05:06:17.000Z",
+        "song_key": "TJ:n:16677",
+        "brand": "TJ",
+        "song_number": "16677",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:11.834Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DYWnn_VcQ1hk",
+      "metadata": {
+        "title": "[TJ노래방] 기다리다 - 윤하 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=YWnn_VcQ1hk"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:2917",
+        "brand": "TJ",
+        "song_number": "2917",
+        "title": "처음느낌그대로",
+        "artist": "이소라",
+        "tj_number": "2917",
+        "ky_number": null,
+        "youtube_video_id": "XGln12i3d70",
+        "source_url": "https://www.youtube.com/watch?v=XGln12i3d70",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "76418",
+        "tj_number": "2917",
+        "title": "처음느낌그대로",
+        "artist": "이소라",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:18.000Z",
+        "updated_at": "2026-11-03T05:06:18.000Z",
+        "song_key": "TJ:n:2917",
+        "brand": "TJ",
+        "song_number": "2917",
+        "ky_number": null
+      },
+      "status": "skipped",
+      "reason": "metadata_unavailable: 403 Forbidden",
+      "checked_at": "2026-11-03T14:21:12.234Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DXGln12i3d70",
+      "metadata": {
+        "url": "https://www.youtube.com/watch?v=XGln12i3d70",
+        "error": "403 Forbidden"
+      }
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:17772",
+        "brand": "TJ",
+        "song_number": "17772",
+        "title": "다행이다",
+        "artist": "이적",
+        "tj_number": "17772",
+        "ky_number": null,
+        "youtube_video_id": "XhaQyiPoRaU",
+        "source_url": "https://www.youtube.com/watch?v=XhaQyiPoRaU",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "65316",
+        "tj_number": "17772",
+        "title": "다행이다",
+        "artist": "이적",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:17.000Z",
+        "updated_at": "2026-11-03T05:06:17.000Z",
+        "song_key": "TJ:n:17772",
+        "brand": "TJ",
+        "song_number": "17772",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:12.515Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DXhaQyiPoRaU",
+      "metadata": {
+        "title": "[TJ노래방] 다행이다 - 이적 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=XhaQyiPoRaU"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:16790",
+        "brand": "TJ",
+        "song_number": "16790",
+        "title": "별(미녀는괴로워OST)",
+        "artist": "유미",
+        "tj_number": "16790",
+        "ky_number": null,
+        "youtube_video_id": "s9cnnsjRPJU",
+        "source_url": "https://www.youtube.com/watch?v=s9cnnsjRPJU",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "64289",
+        "tj_number": "16790",
+        "title": "별(미녀는괴로워OST)",
+        "artist": "유미",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:17.000Z",
+        "updated_at": "2026-11-03T05:06:17.000Z",
+        "song_key": "TJ:n:16790",
+        "brand": "TJ",
+        "song_number": "16790",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:12.925Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Ds9cnnsjRPJU",
+      "metadata": {
+        "title": "[TJ노래방] 별(미녀는괴로워OST) - 유미 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=s9cnnsjRPJU"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:17884",
+        "brand": "TJ",
+        "song_number": "17884",
+        "title": "사랑아",
+        "artist": "The One",
+        "tj_number": "17884",
+        "ky_number": null,
+        "youtube_video_id": "lOOMT4CtNXs",
+        "source_url": "https://www.youtube.com/watch?v=lOOMT4CtNXs",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "65439",
+        "tj_number": "17884",
+        "title": "사랑아(내남자의여자OST)",
+        "artist": "The One",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:17.000Z",
+        "updated_at": "2026-11-03T05:06:17.000Z",
+        "song_key": "TJ:n:17884",
+        "brand": "TJ",
+        "song_number": "17884",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:13.205Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DlOOMT4CtNXs",
+      "metadata": {
+        "title": "[TJ노래방] 사랑아(내남자의여자OST) - The One / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=lOOMT4CtNXs"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:45592",
+        "brand": "TJ",
+        "song_number": "45592",
+        "title": "걱정말아요 그대",
+        "artist": "이적",
+        "tj_number": "45592",
+        "ky_number": null,
+        "youtube_video_id": "AB-h6emH1Eg",
+        "source_url": "https://www.youtube.com/watch?v=AB-h6emH1Eg",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "88854",
+        "tj_number": "45592",
+        "title": "걱정말아요그대(응답하라1988 OST)",
+        "artist": "이적",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:19.000Z",
+        "updated_at": "2026-11-03T05:06:19.000Z",
+        "song_key": "TJ:n:45592",
+        "brand": "TJ",
+        "song_number": "45592",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:13.594Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DAB-h6emH1Eg",
+      "metadata": {
+        "title": "[TJ노래방] 걱정말아요그대(응답하라1988 OST) - 이적 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=AB-h6emH1Eg"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:83622",
+        "brand": "TJ",
+        "song_number": "83622",
+        "title": "저곳으로(인어공주OST)",
+        "artist": "다니엘",
+        "tj_number": "83622",
+        "ky_number": null,
+        "youtube_video_id": "M8Y6cs7piDI",
+        "source_url": "https://www.youtube.com/watch?v=M8Y6cs7piDI",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "105603",
+        "tj_number": "83622",
+        "title": "저곳으로(인어공주OST)",
+        "artist": "다니엘(DANIELLE)",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:20.000Z",
+        "updated_at": "2026-11-03T05:06:20.000Z",
+        "song_key": "TJ:n:83622",
+        "brand": "TJ",
+        "song_number": "83622",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:13.895Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DM8Y6cs7piDI",
+      "metadata": {
+        "title": "[TJ노래방] 저곳으로(인어공주OST) - 다니엘(DANIELLE) / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=M8Y6cs7piDI"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:31981",
+        "brand": "TJ",
+        "song_number": "31981",
+        "title": "술한잔해요",
+        "artist": "지아",
+        "tj_number": "31981",
+        "ky_number": null,
+        "youtube_video_id": "t7RyAgvI6L4",
+        "source_url": "https://www.youtube.com/watch?v=t7RyAgvI6L4",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "78895",
+        "tj_number": "31981",
+        "title": "술한잔해요",
+        "artist": "지아",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:18.000Z",
+        "updated_at": "2026-11-03T05:06:18.000Z",
+        "song_key": "TJ:n:31981",
+        "brand": "TJ",
+        "song_number": "31981",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:14.264Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dt7RyAgvI6L4",
+      "metadata": {
+        "title": "[TJ노래방] 술한잔해요 - 지아 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=t7RyAgvI6L4"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:81242",
+        "brand": "TJ",
+        "song_number": "81242",
+        "title": "사랑인가봐",
+        "artist": "멜로망스",
+        "tj_number": "81242",
+        "ky_number": null,
+        "youtube_video_id": "TRccCmjfgHc",
+        "source_url": "https://www.youtube.com/watch?v=TRccCmjfgHc",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "103216",
+        "tj_number": "81242",
+        "title": "사랑인가봐(사내맞선OST)",
+        "artist": "멜로망스",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:20.000Z",
+        "updated_at": "2026-11-03T05:06:20.000Z",
+        "song_key": "TJ:n:81242",
+        "brand": "TJ",
+        "song_number": "81242",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:14.574Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DTRccCmjfgHc",
+      "metadata": {
+        "title": "[TJ노래방] 사랑인가봐(사내맞선OST) - 멜로망스 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=TRccCmjfgHc"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:47835",
+        "brand": "TJ",
+        "song_number": "47835",
+        "title": "그대라는사치",
+        "artist": "한동근",
+        "tj_number": "47835",
+        "ky_number": null,
+        "youtube_video_id": "GnmCx12QvzE",
+        "source_url": "https://www.youtube.com/watch?v=GnmCx12QvzE",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "90274",
+        "tj_number": "47835",
+        "title": "그대라는사치",
+        "artist": "한동근",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:19.000Z",
+        "updated_at": "2026-11-03T05:06:19.000Z",
+        "song_key": "TJ:n:47835",
+        "brand": "TJ",
+        "song_number": "47835",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:14.914Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DGnmCx12QvzE",
+      "metadata": {
+        "title": "[TJ노래방] 그대라는사치 - 한동근 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=GnmCx12QvzE"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:32718",
+        "brand": "TJ",
+        "song_number": "32718",
+        "title": "녹턴",
+        "artist": "이은미",
+        "tj_number": "32718",
+        "ky_number": null,
+        "youtube_video_id": "XsHTq1weRc4",
+        "source_url": "https://www.youtube.com/watch?v=XsHTq1weRc4",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "79647",
+        "tj_number": "32718",
+        "title": "녹턴(Nocturn)",
+        "artist": "이은미",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:18.000Z",
+        "updated_at": "2026-11-03T05:06:18.000Z",
+        "song_key": "TJ:n:32718",
+        "brand": "TJ",
+        "song_number": "32718",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:15.264Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DXsHTq1weRc4",
+      "metadata": {
+        "title": "[TJ노래방] 녹턴 - 이은미 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=XsHTq1weRc4"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:2827",
+        "brand": "TJ",
+        "song_number": "2827",
+        "title": "준비없는이별",
+        "artist": "녹색지대",
+        "tj_number": "2827",
+        "ky_number": null,
+        "youtube_video_id": "W19UCZecXvM",
+        "source_url": "https://www.youtube.com/watch?v=W19UCZecXvM",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "75969",
+        "tj_number": "2827",
+        "title": "준비없는이별",
+        "artist": "녹색지대",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:18.000Z",
+        "updated_at": "2026-11-03T05:06:18.000Z",
+        "song_key": "TJ:n:2827",
+        "brand": "TJ",
+        "song_number": "2827",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:15.615Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DW19UCZecXvM",
+      "metadata": {
+        "title": "[TJ노래방] 준비없는이별 - 녹색지대 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=W19UCZecXvM"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:9732",
+        "brand": "TJ",
+        "song_number": "9732",
+        "title": "늦은후회",
+        "artist": "보보",
+        "tj_number": "9732",
+        "ky_number": null,
+        "youtube_video_id": "ev1O5eUJOfk",
+        "source_url": "https://www.youtube.com/watch?v=ev1O5eUJOfk",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "113102",
+        "tj_number": "9732",
+        "title": "늦은후회",
+        "artist": "보보",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:20.000Z",
+        "updated_at": "2026-11-03T05:06:20.000Z",
+        "song_key": "TJ:n:9732",
+        "brand": "TJ",
+        "song_number": "9732",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:15.984Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dev1O5eUJOfk",
+      "metadata": {
+        "title": "[TJ노래방] 늦은후회 - 보보 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=ev1O5eUJOfk"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:35198",
+        "brand": "TJ",
+        "song_number": "35198",
+        "title": "나를사랑했던사람아",
+        "artist": "허각",
+        "tj_number": "35198",
+        "ky_number": null,
+        "youtube_video_id": "2_FqTO6Ee5o",
+        "source_url": "https://www.youtube.com/watch?v=2_FqTO6Ee5o",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "82169",
+        "tj_number": "35198",
+        "title": "나를사랑했던사람아",
+        "artist": "허각",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:18.000Z",
+        "updated_at": "2026-11-03T05:06:18.000Z",
+        "song_key": "TJ:n:35198",
+        "brand": "TJ",
+        "song_number": "35198",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:16.305Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D2_FqTO6Ee5o",
+      "metadata": {
+        "title": "[TJ노래방] 나를사랑했던사람아 - 허각 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=2_FqTO6Ee5o"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:81548",
+        "brand": "TJ",
+        "song_number": "81548",
+        "title": "나의X에게",
+        "artist": "경서",
+        "tj_number": "81548",
+        "ky_number": null,
+        "youtube_video_id": "zNQTrAE9JPc",
+        "source_url": "https://www.youtube.com/watch?v=zNQTrAE9JPc",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "103520",
+        "tj_number": "81548",
+        "title": "나의 X에게",
+        "artist": "경서",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:20.000Z",
+        "updated_at": "2026-11-03T05:06:20.000Z",
+        "song_key": "TJ:n:81548",
+        "brand": "TJ",
+        "song_number": "81548",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:16.626Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DzNQTrAE9JPc",
+      "metadata": {
+        "title": "[TJ노래방] 나의 X에게 - 경서 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=zNQTrAE9JPc"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:15435",
+        "brand": "TJ",
+        "song_number": "15435",
+        "title": "애인있어요",
+        "artist": "이은미",
+        "tj_number": "15435",
+        "ky_number": null,
+        "youtube_video_id": "55leBa0r3Z0",
+        "source_url": "https://www.youtube.com/watch?v=55leBa0r3Z0",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "62814",
+        "tj_number": "15435",
+        "title": "애인있어요",
+        "artist": "이은미",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:17.000Z",
+        "updated_at": "2026-11-03T05:06:17.000Z",
+        "song_key": "TJ:n:15435",
+        "brand": "TJ",
+        "song_number": "15435",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:17.015Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D55leBa0r3Z0",
+      "metadata": {
+        "title": "[TJ노래방] 애인있어요 - 이은미 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=55leBa0r3Z0"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:1807",
+        "brand": "TJ",
+        "song_number": "1807",
+        "title": "나는행복한사람",
+        "artist": "이문세",
+        "tj_number": "1807",
+        "ky_number": null,
+        "youtube_video_id": "VXygk3Jkw90",
+        "source_url": "https://www.youtube.com/watch?v=VXygk3Jkw90",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "65624",
+        "tj_number": "1807",
+        "title": "나는행복한사람",
+        "artist": "이문세",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:17.000Z",
+        "updated_at": "2026-11-03T05:06:17.000Z",
+        "song_key": "TJ:n:1807",
+        "brand": "TJ",
+        "song_number": "1807",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:17.145Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DVXygk3Jkw90",
+      "metadata": {
+        "title": "[TJ노래방] 나는행복한사람 - 이문세 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=VXygk3Jkw90"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:75943",
+        "brand": "TJ",
+        "song_number": "75943",
+        "title": "밤하늘의별을",
+        "artist": "경서",
+        "tj_number": "75943",
+        "ky_number": null,
+        "youtube_video_id": "ecRwWYkt4tc",
+        "source_url": "https://www.youtube.com/watch?v=ecRwWYkt4tc",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "99687",
+        "tj_number": "75943",
+        "title": "밤하늘의별을(2020)",
+        "artist": "경서",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:19.000Z",
+        "updated_at": "2026-11-03T05:06:19.000Z",
+        "song_key": "TJ:n:75943",
+        "brand": "TJ",
+        "song_number": "75943",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:17.335Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DecRwWYkt4tc",
+      "metadata": {
+        "title": "[TJ노래방] 밤하늘의별을(2020) - 경서 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=ecRwWYkt4tc"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:1740",
+        "brand": "TJ",
+        "song_number": "1740",
+        "title": "혼자만의사랑",
+        "artist": "김건모",
+        "tj_number": "1740",
+        "ky_number": null,
+        "youtube_video_id": "Rolc74LUpkg",
+        "source_url": "https://www.youtube.com/watch?v=Rolc74LUpkg",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "64909",
+        "tj_number": "1740",
+        "title": "혼자만의사랑",
+        "artist": "김건모",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:17.000Z",
+        "updated_at": "2026-11-03T05:06:17.000Z",
+        "song_key": "TJ:n:1740",
+        "brand": "TJ",
+        "song_number": "1740",
+        "ky_number": null
+      },
+      "status": "skipped",
+      "reason": "metadata_unavailable: 403 Forbidden",
+      "checked_at": "2026-11-03T14:21:17.874Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DRolc74LUpkg",
+      "metadata": {
+        "url": "https://www.youtube.com/watch?v=Rolc74LUpkg",
+        "error": "403 Forbidden"
+      }
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:13584",
+        "brand": "TJ",
+        "song_number": "13584",
+        "title": "나였으면",
+        "artist": "나윤권",
+        "tj_number": "13584",
+        "ky_number": null,
+        "youtube_video_id": "Y9IToc5_pec",
+        "source_url": "https://www.youtube.com/watch?v=Y9IToc5_pec",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "60802",
+        "tj_number": "13584",
+        "title": "나였으면(황태자의첫사랑OST)",
+        "artist": "나윤권",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:17.000Z",
+        "updated_at": "2026-11-03T05:06:17.000Z",
+        "song_key": "TJ:n:13584",
+        "brand": "TJ",
+        "song_number": "13584",
+        "ky_number": null
+      },
+      "status": "skipped",
+      "reason": "metadata_unavailable: 403 Forbidden",
+      "checked_at": "2026-11-03T14:21:18.025Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DY9IToc5_pec",
+      "metadata": {
+        "url": "https://www.youtube.com/watch?v=Y9IToc5_pec",
+        "error": "403 Forbidden"
+      }
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:24571",
+        "brand": "TJ",
+        "song_number": "24571",
+        "title": "우리왜헤어져야해",
+        "artist": "신예영",
+        "tj_number": "24571",
+        "ky_number": null,
+        "youtube_video_id": "3VbuWSc-HrA",
+        "source_url": "https://www.youtube.com/watch?v=3VbuWSc-HrA",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "72694",
+        "tj_number": "24571",
+        "title": "우리왜헤어져야해",
+        "artist": "신예영",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:18.000Z",
+        "updated_at": "2026-11-03T05:06:18.000Z",
+        "song_key": "TJ:n:24571",
+        "brand": "TJ",
+        "song_number": "24571",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:18.545Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D3VbuWSc-HrA",
+      "metadata": {
+        "title": "[TJ노래방] 우리왜헤어져야해 - 신예영 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=3VbuWSc-HrA"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:2031",
+        "brand": "TJ",
+        "song_number": "2031",
+        "title": "휘파람",
+        "artist": "이문세",
+        "tj_number": "2031",
+        "ky_number": null,
+        "youtube_video_id": "wL1NmVdeS1Y",
+        "source_url": "https://www.youtube.com/watch?v=wL1NmVdeS1Y",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "68067",
+        "tj_number": "2031",
+        "title": "휘파람",
+        "artist": "이문세",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:17.000Z",
+        "updated_at": "2026-11-03T05:06:17.000Z",
+        "song_key": "TJ:n:2031",
+        "brand": "TJ",
+        "song_number": "2031",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:18.744Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DwL1NmVdeS1Y",
+      "metadata": {
+        "title": "[TJ노래방] 휘파람 - 이문세 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=wL1NmVdeS1Y"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:9308",
+        "brand": "TJ",
+        "song_number": "9308",
+        "title": "I Love You",
+        "artist": "포지션",
+        "tj_number": "9308",
+        "ky_number": null,
+        "youtube_video_id": "0sULDwCwzys",
+        "source_url": "https://www.youtube.com/watch?v=0sULDwCwzys",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "111996",
+        "tj_number": "9308",
+        "title": "I Love You",
+        "artist": "포지션",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:20.000Z",
+        "updated_at": "2026-11-03T05:06:20.000Z",
+        "song_key": "TJ:n:9308",
+        "brand": "TJ",
+        "song_number": "9308",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:19.254Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D0sULDwCwzys",
+      "metadata": {
+        "title": "[TJ노래방] I love you - 포지션 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=0sULDwCwzys"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:48943",
+        "brand": "TJ",
+        "song_number": "48943",
+        "title": "상사화",
+        "artist": "안예은",
+        "tj_number": "48943",
+        "ky_number": null,
+        "youtube_video_id": "4vyOSN2kXRo",
+        "source_url": "https://www.youtube.com/watch?v=4vyOSN2kXRo",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "91096",
+        "tj_number": "48943",
+        "title": "상사화(역적: 백성을훔친도적OST)",
+        "artist": "안예은",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:19.000Z",
+        "updated_at": "2026-11-03T05:06:19.000Z",
+        "song_key": "TJ:n:48943",
+        "brand": "TJ",
+        "song_number": "48943",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:19.404Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D4vyOSN2kXRo",
+      "metadata": {
+        "title": "[TJ노래방] 상사화(역적: 백성을훔친도적OST) - 안예은 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=4vyOSN2kXRo"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:98727",
+        "brand": "TJ",
+        "song_number": "98727",
+        "title": "너를만나",
+        "artist": "폴킴",
+        "tj_number": "98727",
+        "ky_number": null,
+        "youtube_video_id": "lmj9nxiHRko",
+        "source_url": "https://www.youtube.com/watch?v=lmj9nxiHRko",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "114251",
+        "tj_number": "98727",
+        "title": "너를만나",
+        "artist": "폴킴",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:20.000Z",
+        "updated_at": "2026-11-03T05:06:20.000Z",
+        "song_key": "TJ:n:98727",
+        "brand": "TJ",
+        "song_number": "98727",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:20.025Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dlmj9nxiHRko",
+      "metadata": {
+        "title": "[TJ노래방] 너를만나 - 폴킴 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=lmj9nxiHRko"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:83488",
+        "brand": "TJ",
+        "song_number": "83488",
+        "title": "물론",
+        "artist": "허각",
+        "tj_number": "83488",
+        "ky_number": null,
+        "youtube_video_id": "CzdpSTw8cfc",
+        "source_url": "https://www.youtube.com/watch?v=CzdpSTw8cfc",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "105467",
+        "tj_number": "83488",
+        "title": "물론",
+        "artist": "허각",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:20.000Z",
+        "updated_at": "2026-11-03T05:06:20.000Z",
+        "song_key": "TJ:n:83488",
+        "brand": "TJ",
+        "song_number": "83488",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:20.085Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DCzdpSTw8cfc",
+      "metadata": {
+        "title": "[TJ노래방] 물론 - 허각 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=CzdpSTw8cfc"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:49522",
+        "brand": "TJ",
+        "song_number": "49522",
+        "title": "홍연",
+        "artist": "안예은",
+        "tj_number": "49522",
+        "ky_number": null,
+        "youtube_video_id": "NDwBlQ1KycY",
+        "source_url": "https://www.youtube.com/watch?v=NDwBlQ1KycY",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "91658",
+        "tj_number": "49522",
+        "title": "홍연",
+        "artist": "안예은",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:19.000Z",
+        "updated_at": "2026-11-03T05:06:19.000Z",
+        "song_key": "TJ:n:49522",
+        "brand": "TJ",
+        "song_number": "49522",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:20.745Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DNDwBlQ1KycY",
+      "metadata": {
+        "title": "[TJ노래방] 홍연 - 안예은 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=NDwBlQ1KycY"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:3",
+        "brand": "TJ",
+        "song_number": "3",
+        "title": "가로수그늘아래서면",
+        "artist": "이문세",
+        "tj_number": "3",
+        "ky_number": null,
+        "youtube_video_id": "49DZVyi98yo",
+        "source_url": "https://www.youtube.com/watch?v=49DZVyi98yo",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "77003",
+        "tj_number": "3",
+        "title": "가로수그늘아래서면",
+        "artist": "이문세",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:18.000Z",
+        "updated_at": "2026-11-03T05:06:18.000Z",
+        "song_key": "TJ:n:3",
+        "brand": "TJ",
+        "song_number": "3",
+        "ky_number": null
+      },
+      "status": "skipped",
+      "reason": "metadata_unavailable: 403 Forbidden",
+      "checked_at": "2026-11-03T14:21:20.784Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D49DZVyi98yo",
+      "metadata": {
+        "url": "https://www.youtube.com/watch?v=49DZVyi98yo",
+        "error": "403 Forbidden"
+      }
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:38466",
+        "brand": "TJ",
+        "song_number": "38466",
+        "title": "나의옛날이야기",
+        "artist": "아이유",
+        "tj_number": "38466",
+        "ky_number": null,
+        "youtube_video_id": "iwr8XYRhRZs",
+        "source_url": "https://www.youtube.com/watch?v=iwr8XYRhRZs",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "85290",
+        "tj_number": "38466",
+        "title": "나의옛날이야기",
+        "artist": "IU",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:18.000Z",
+        "updated_at": "2026-11-03T05:06:18.000Z",
+        "song_key": "TJ:n:38466",
+        "brand": "TJ",
+        "song_number": "38466",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:21.455Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Diwr8XYRhRZs",
+      "metadata": {
+        "title": "[TJ노래방] 나의옛날이야기 - IU / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=iwr8XYRhRZs"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:22852",
+        "brand": "TJ",
+        "song_number": "22852",
+        "title": "Love Yourself",
+        "artist": "Justin Bieber",
+        "tj_number": "22852",
+        "ky_number": null,
+        "youtube_video_id": "Oca3yMfnlMM",
+        "source_url": "https://www.youtube.com/watch?v=Oca3yMfnlMM",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "70852",
+        "tj_number": "22852",
+        "title": "Love Yourself",
+        "artist": "Justin Bieber",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:17.000Z",
+        "updated_at": "2026-11-03T05:06:17.000Z",
+        "song_key": "TJ:n:22852",
+        "brand": "TJ",
+        "song_number": "22852",
+        "ky_number": null
+      },
+      "status": "skipped",
+      "reason": "metadata_unavailable: 403 Forbidden",
+      "checked_at": "2026-11-03T14:21:21.474Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DOca3yMfnlMM",
+      "metadata": {
+        "url": "https://www.youtube.com/watch?v=Oca3yMfnlMM",
+        "error": "403 Forbidden"
+      }
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:54825",
+        "brand": "TJ",
+        "song_number": "54825",
+        "title": "너의번호를누르고",
+        "artist": "#안녕",
+        "tj_number": "54825",
+        "ky_number": null,
+        "youtube_video_id": "LQwVgL_mRvY",
+        "source_url": "https://www.youtube.com/watch?v=LQwVgL_mRvY",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "95790",
+        "tj_number": "54825",
+        "title": "너의번호를누르고",
+        "artist": "#안녕(Prod.영화처럼)",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:19.000Z",
+        "updated_at": "2026-11-03T05:06:19.000Z",
+        "song_key": "TJ:n:54825",
+        "brand": "TJ",
+        "song_number": "54825",
+        "ky_number": null
+      },
+      "status": "skipped",
+      "reason": "metadata_unavailable: 403 Forbidden",
+      "checked_at": "2026-11-03T14:21:21.984Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DLQwVgL_mRvY",
+      "metadata": {
+        "url": "https://www.youtube.com/watch?v=LQwVgL_mRvY",
+        "error": "403 Forbidden"
+      }
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:35774",
+        "brand": "TJ",
+        "song_number": "35774",
+        "title": "All for You(응답하라1977)",
+        "artist": "서인국,정은지",
+        "tj_number": "35774",
+        "ky_number": null,
+        "youtube_video_id": "Zemyq7gRTCA",
+        "source_url": "https://www.youtube.com/watch?v=Zemyq7gRTCA",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "82752",
+        "tj_number": "35774",
+        "title": "All For You(응답하라1997 OST)",
+        "artist": "서인국,정은지",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:18.000Z",
+        "updated_at": "2026-11-03T05:06:18.000Z",
+        "song_key": "TJ:n:35774",
+        "brand": "TJ",
+        "song_number": "35774",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:22.166Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DZemyq7gRTCA",
+      "metadata": {
+        "title": "[TJ노래방] All For You(응답하라1997 OST) - 서인국,정은지 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=Zemyq7gRTCA"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:39337",
+        "brand": "TJ",
+        "song_number": "39337",
+        "title": "광화문에서",
+        "artist": "규현",
+        "tj_number": "39337",
+        "ky_number": null,
+        "youtube_video_id": "lXdPSk1xBoA",
+        "source_url": "https://www.youtube.com/watch?v=lXdPSk1xBoA",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "86069",
+        "tj_number": "39337",
+        "title": "광화문에서(At Gwanghwamun)",
+        "artist": "규현",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:18.000Z",
+        "updated_at": "2026-11-03T05:06:18.000Z",
+        "song_key": "TJ:n:39337",
+        "brand": "TJ",
+        "song_number": "39337",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:22.686Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DlXdPSk1xBoA",
+      "metadata": {
+        "title": "[TJ노래방] 광화문에서(At Gwanghwamun) - 규현(KYUHYUN) / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=lXdPSk1xBoA"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:83573",
+        "brand": "TJ",
+        "song_number": "83573",
+        "title": "바람",
+        "artist": "윤하",
+        "tj_number": "83573",
+        "ky_number": null,
+        "youtube_video_id": "RF2LRqh63b8",
+        "source_url": "https://www.youtube.com/watch?v=RF2LRqh63b8",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "105553",
+        "tj_number": "83573",
+        "title": "바람",
+        "artist": "윤하",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:20.000Z",
+        "updated_at": "2026-11-03T05:06:20.000Z",
+        "song_key": "TJ:n:83573",
+        "brand": "TJ",
+        "song_number": "83573",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:22.846Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DRF2LRqh63b8",
+      "metadata": {
+        "title": "[TJ노래방] 바람 - 윤하 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=RF2LRqh63b8"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:82308",
+        "brand": "TJ",
+        "song_number": "82308",
+        "title": "Monologue",
+        "artist": "tei",
+        "tj_number": "82308",
+        "ky_number": null,
+        "youtube_video_id": "M9hpZIDgrFQ",
+        "source_url": "https://www.youtube.com/watch?v=M9hpZIDgrFQ",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "104281",
+        "tj_number": "82308",
+        "title": "Monologue",
+        "artist": "tei",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:20.000Z",
+        "updated_at": "2026-11-03T05:06:20.000Z",
+        "song_key": "TJ:n:82308",
+        "brand": "TJ",
+        "song_number": "82308",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:23.364Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DM9hpZIDgrFQ",
+      "metadata": {
+        "title": "[TJ노래방] Monologue - tei / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=M9hpZIDgrFQ"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:9741",
+        "brand": "TJ",
+        "song_number": "9741",
+        "title": "잘가요",
+        "artist": "정재욱",
+        "tj_number": "9741",
+        "ky_number": null,
+        "youtube_video_id": "EhZ4IR1BLdw",
+        "source_url": "https://www.youtube.com/watch?v=EhZ4IR1BLdw",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡발라드-TJ"
+      },
+      "before": {
+        "id": "113178",
+        "tj_number": "9741",
+        "title": "잘가요",
+        "artist": "정재욱",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:20.000Z",
+        "updated_at": "2026-11-03T05:06:20.000Z",
+        "song_key": "TJ:n:9741",
+        "brand": "TJ",
+        "song_number": "9741",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:23.534Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DEhZ4IR1BLdw",
+      "metadata": {
+        "title": "[TJ노래방] 잘가요 - 정재욱 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=EhZ4IR1BLdw"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:36502",
+        "brand": "TJ",
+        "song_number": "36502",
+        "title": "미운사랑",
+        "artist": "진미령",
+        "tj_number": "36502",
+        "ky_number": null,
+        "youtube_video_id": "RlOuZTUs_KA",
+        "source_url": "https://www.youtube.com/watch?v=RlOuZTUs_KA",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡트로트-TJ"
+      },
+      "before": {
+        "id": "83493",
+        "tj_number": "36502",
+        "title": "미운사랑",
+        "artist": "진미령",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:18.000Z",
+        "updated_at": "2026-11-03T05:06:18.000Z",
+        "song_key": "TJ:n:36502",
+        "brand": "TJ",
+        "song_number": "36502",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:24.024Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DRlOuZTUs_KA",
+      "metadata": {
+        "title": "[TJ노래방] 미운사랑 - 진미령 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=RlOuZTUs_KA"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:91415",
+        "brand": "TJ",
+        "song_number": "91415",
+        "title": "사랑이이런건가요",
+        "artist": "설운도",
+        "tj_number": "91415",
+        "ky_number": null,
+        "youtube_video_id": "RVRDEUp2Q-g",
+        "source_url": "https://www.youtube.com/watch?v=RVRDEUp2Q-g",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡트로트-TJ"
+      },
+      "before": {
+        "id": "111372",
+        "tj_number": "91415",
+        "title": "사랑이이런건가요",
+        "artist": "설운도",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:20.000Z",
+        "updated_at": "2026-11-03T05:06:20.000Z",
+        "song_key": "TJ:n:91415",
+        "brand": "TJ",
+        "song_number": "91415",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:24.325Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DRVRDEUp2Q-g",
+      "metadata": {
+        "title": "[TJ노래방] 사랑이이런건가요 - 설운도 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=RVRDEUp2Q-g"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:76523",
+        "brand": "TJ",
+        "song_number": "76523",
+        "title": "별빛같은나의사랑아",
+        "artist": "임영웅",
+        "tj_number": "76523",
+        "ky_number": null,
+        "youtube_video_id": "J9pSUDo1TSk",
+        "source_url": "https://www.youtube.com/watch?v=J9pSUDo1TSk",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡트로트-TJ"
+      },
+      "before": {
+        "id": "100271",
+        "tj_number": "76523",
+        "title": "별빛같은나의사랑아",
+        "artist": "임영웅",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:19.000Z",
+        "updated_at": "2026-11-03T05:06:19.000Z",
+        "song_key": "TJ:n:76523",
+        "brand": "TJ",
+        "song_number": "76523",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:24.334Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DJ9pSUDo1TSk",
+      "metadata": {
+        "title": "[TJ노래방] 별빛같은나의사랑아 - 임영웅 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=J9pSUDo1TSk"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:91927",
+        "brand": "TJ",
+        "song_number": "91927",
+        "title": "평행선",
+        "artist": "문희옥",
+        "tj_number": "91927",
+        "ky_number": null,
+        "youtube_video_id": "LFXIJcnh4tE",
+        "source_url": "https://www.youtube.com/watch?v=LFXIJcnh4tE",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡트로트-TJ"
+      },
+      "before": {
+        "id": "111891",
+        "tj_number": "91927",
+        "title": "평행선",
+        "artist": "문희옥",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:20.000Z",
+        "updated_at": "2026-11-03T05:06:20.000Z",
+        "song_key": "TJ:n:91927",
+        "brand": "TJ",
+        "song_number": "91927",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:24.634Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DLFXIJcnh4tE",
+      "metadata": {
+        "title": "[TJ노래방] 평행선 - 문희옥 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=LFXIJcnh4tE"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:29460",
+        "brand": "TJ",
+        "song_number": "29460",
+        "title": "보릿고개",
+        "artist": "진성",
+        "tj_number": "29460",
+        "ky_number": null,
+        "youtube_video_id": "2q-NPEdG7EQ",
+        "source_url": "https://www.youtube.com/watch?v=2q-NPEdG7EQ",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡트로트-TJ"
+      },
+      "before": {
+        "id": "76695",
+        "tj_number": "29460",
+        "title": "보릿고개",
+        "artist": "진성",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:18.000Z",
+        "updated_at": "2026-11-03T05:06:18.000Z",
+        "song_key": "TJ:n:29460",
+        "brand": "TJ",
+        "song_number": "29460",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:24.954Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D2q-NPEdG7EQ",
+      "metadata": {
+        "title": "[TJ노래방] 보릿고개 - 진성 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=2q-NPEdG7EQ"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:48226",
+        "brand": "TJ",
+        "song_number": "48226",
+        "title": "보라빛엽서",
+        "artist": "설운도",
+        "tj_number": "48226",
+        "ky_number": null,
+        "youtube_video_id": "1LSl_Rn7gh8",
+        "source_url": "https://www.youtube.com/watch?v=1LSl_Rn7gh8",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡트로트-TJ"
+      },
+      "before": {
+        "id": "90500",
+        "tj_number": "48226",
+        "title": "보라빛엽서",
+        "artist": "설운도",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:19.000Z",
+        "updated_at": "2026-11-03T05:06:19.000Z",
+        "song_key": "TJ:n:48226",
+        "brand": "TJ",
+        "song_number": "48226",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:25.026Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D1LSl_Rn7gh8",
+      "metadata": {
+        "title": "[TJ노래방] 보라빛엽서 - 설운도 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=1LSl_Rn7gh8"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:75357",
+        "brand": "TJ",
+        "song_number": "75357",
+        "title": "못난놈",
+        "artist": "진성",
+        "tj_number": "75357",
+        "ky_number": null,
+        "youtube_video_id": "O_5EweIXd4g",
+        "source_url": "https://www.youtube.com/watch?v=O_5EweIXd4g",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡트로트-TJ"
+      },
+      "before": {
+        "id": "99085",
+        "tj_number": "75357",
+        "title": "못난놈",
+        "artist": "진성",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:19.000Z",
+        "updated_at": "2026-11-03T05:06:19.000Z",
+        "song_key": "TJ:n:75357",
+        "brand": "TJ",
+        "song_number": "75357",
+        "ky_number": null
+      },
+      "status": "skipped",
+      "reason": "metadata_unavailable: 403 Forbidden",
+      "checked_at": "2026-11-03T14:21:25.756Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DO_5EweIXd4g",
+      "metadata": {
+        "url": "https://www.youtube.com/watch?v=O_5EweIXd4g",
+        "error": "403 Forbidden"
+      }
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:75525",
+        "brand": "TJ",
+        "song_number": "75525",
+        "title": "테스형!",
+        "artist": "나훈아",
+        "tj_number": "75525",
+        "ky_number": null,
+        "youtube_video_id": "M-wTPaTwIKY",
+        "source_url": "https://www.youtube.com/watch?v=M-wTPaTwIKY",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡트로트-TJ"
+      },
+      "before": {
+        "id": "99256",
+        "tj_number": "75525",
+        "title": "테스형!",
+        "artist": "나훈아",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:19.000Z",
+        "updated_at": "2026-11-03T05:06:19.000Z",
+        "song_key": "TJ:n:75525",
+        "brand": "TJ",
+        "song_number": "75525",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:25.757Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DM-wTPaTwIKY",
+      "metadata": {
+        "title": "[TJ노래방] 테스형! - 나훈아 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=M-wTPaTwIKY"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:16982",
+        "brand": "TJ",
+        "song_number": "16982",
+        "title": "고장난벽시계",
+        "artist": "나훈아",
+        "tj_number": "16982",
+        "ky_number": null,
+        "youtube_video_id": "0euwKTejNDc",
+        "source_url": "https://www.youtube.com/watch?v=0euwKTejNDc",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡트로트-TJ"
+      },
+      "before": {
+        "id": "64494",
+        "tj_number": "16982",
+        "title": "고장난벽시계",
+        "artist": "나훈아",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:17.000Z",
+        "updated_at": "2026-11-03T05:06:17.000Z",
+        "song_key": "TJ:n:16982",
+        "brand": "TJ",
+        "song_number": "16982",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:26.474Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D0euwKTejNDc",
+      "metadata": {
+        "title": "[TJ노래방] 고장난벽시계 - 나훈아 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=0euwKTejNDc"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:33791",
+        "brand": "TJ",
+        "song_number": "33791",
+        "title": "초혼",
+        "artist": "장윤정",
+        "tj_number": "33791",
+        "ky_number": null,
+        "youtube_video_id": "5-KsZw3CCzQ",
+        "source_url": "https://www.youtube.com/watch?v=5-KsZw3CCzQ",
+        "discovery_source": "https://www.youtube.com/watch?v=5-KsZw3CCzQ"
+      },
+      "before": {
+        "id": "80740",
+        "tj_number": "33791",
+        "title": "초혼",
+        "artist": "장윤정",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:18.000Z",
+        "updated_at": "2026-11-03T05:06:18.000Z",
+        "song_key": "TJ:n:33791",
+        "brand": "TJ",
+        "song_number": "33791",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:26.475Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D5-KsZw3CCzQ",
+      "metadata": {
+        "title": "[TJ노래방] 초혼 - 장윤정 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=5-KsZw3CCzQ"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:49190",
+        "brand": "TJ",
+        "song_number": "49190",
+        "title": "사랑이 비를맞아요",
+        "artist": "배금성",
+        "tj_number": "49190",
+        "ky_number": null,
+        "youtube_video_id": "2EQ8diC25bs",
+        "source_url": "https://www.youtube.com/watch?v=2EQ8diC25bs",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡트로트-TJ"
+      },
+      "before": {
+        "id": "91343",
+        "tj_number": "49190",
+        "title": "사랑이비를맞아요",
+        "artist": "배금성",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:19.000Z",
+        "updated_at": "2026-11-03T05:06:19.000Z",
+        "song_key": "TJ:n:49190",
+        "brand": "TJ",
+        "song_number": "49190",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:26.796Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D2EQ8diC25bs",
+      "metadata": {
+        "title": "[TJ노래방] 사랑이비를맞아요 - 배금성 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=2EQ8diC25bs"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:38653",
+        "brand": "TJ",
+        "song_number": "38653",
+        "title": "아버지의강",
+        "artist": "강문경",
+        "tj_number": "38653",
+        "ky_number": null,
+        "youtube_video_id": "WBGL-My5LqE",
+        "source_url": "https://www.youtube.com/watch?v=WBGL-My5LqE",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡트로트-TJ"
+      },
+      "before": {
+        "id": "85477",
+        "tj_number": "38653",
+        "title": "아버지의강",
+        "artist": "강문경",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:18.000Z",
+        "updated_at": "2026-11-03T05:06:18.000Z",
+        "song_key": "TJ:n:38653",
+        "brand": "TJ",
+        "song_number": "38653",
+        "ky_number": null
+      },
+      "status": "skipped",
+      "reason": "metadata_unavailable: 403 Forbidden",
+      "checked_at": "2026-11-03T14:21:27.205Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DWBGL-My5LqE",
+      "metadata": {
+        "url": "https://www.youtube.com/watch?v=WBGL-My5LqE",
+        "error": "403 Forbidden"
+      }
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:8693",
+        "brand": "TJ",
+        "song_number": "8693",
+        "title": "둥지",
+        "artist": "남진",
+        "tj_number": "8693",
+        "ky_number": null,
+        "youtube_video_id": "HgUon6v_Jpw",
+        "source_url": "https://www.youtube.com/watch?v=HgUon6v_Jpw",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡트로트-TJ"
+      },
+      "before": {
+        "id": "108899",
+        "tj_number": "8693",
+        "title": "둥지",
+        "artist": "남진",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:20.000Z",
+        "updated_at": "2026-11-03T05:06:20.000Z",
+        "song_key": "TJ:n:8693",
+        "brand": "TJ",
+        "song_number": "8693",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:27.494Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DHgUon6v_Jpw",
+      "metadata": {
+        "title": "[TJ노래방] 둥지 - 남진(Nam Jin) / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=HgUon6v_Jpw"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:54955",
+        "brand": "TJ",
+        "song_number": "54955",
+        "title": "막걸리한잔",
+        "artist": "영탁",
+        "tj_number": "54955",
+        "ky_number": null,
+        "youtube_video_id": "ZxDZ33G1LyY",
+        "source_url": "https://www.youtube.com/watch?v=ZxDZ33G1LyY",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡트로트-TJ"
+      },
+      "before": {
+        "id": "95915",
+        "tj_number": "54955",
+        "title": "막걸리한잔",
+        "artist": "영탁",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:19.000Z",
+        "updated_at": "2026-11-03T05:06:19.000Z",
+        "song_key": "TJ:n:54955",
+        "brand": "TJ",
+        "song_number": "54955",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:27.864Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DZxDZ33G1LyY",
+      "metadata": {
+        "title": "[TJ노래방] 막걸리한잔 - 영탁 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=ZxDZ33G1LyY"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:97633",
+        "brand": "TJ",
+        "song_number": "97633",
+        "title": "동전인생",
+        "artist": "진성",
+        "tj_number": "97633",
+        "ky_number": null,
+        "youtube_video_id": "jjqioENG5Mo",
+        "source_url": "https://www.youtube.com/watch?v=jjqioENG5Mo",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡트로트-TJ"
+      },
+      "before": {
+        "id": "113339",
+        "tj_number": "97633",
+        "title": "동전인생",
+        "artist": "진성",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:20.000Z",
+        "updated_at": "2026-11-03T05:06:20.000Z",
+        "song_key": "TJ:n:97633",
+        "brand": "TJ",
+        "song_number": "97633",
+        "ky_number": null
+      },
+      "status": "verified",
+      "checked_at": "2026-11-03T14:21:28.174Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DjjqioENG5Mo",
+      "metadata": {
+        "title": "[TJ노래방] 동전인생 - 진성 / TJ Karaoke",
+        "author_name": "TJ노래방 공식 유튜브채널",
+        "author_url": "https://www.youtube.com/@TJ%EB%85%B8%EB%9E%98%EB%B0%A9TJKaraoke",
+        "url": "https://www.youtube.com/watch?v=jjqioENG5Mo"
+      },
+      "applied": true
+    },
+    {
+      "song": {
+        "song_key": "TJ:n:1214",
+        "brand": "TJ",
+        "song_number": "1214",
+        "title": "추억의소야곡",
+        "artist": "남인수",
+        "tj_number": "1214",
+        "ky_number": null,
+        "youtube_video_id": "-TmDEDeCpWQ",
+        "source_url": "https://www.youtube.com/watch?v=-TmDEDeCpWQ",
+        "discovery_source": "https://heart2north.tistory.com/entry/노래방-인기곡트로트-TJ"
+      },
+      "before": {
+        "id": "59247",
+        "tj_number": "1214",
+        "title": "추억의소야곡",
+        "artist": "남인수",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:17.000Z",
+        "updated_at": "2026-11-03T05:06:17.000Z",
+        "song_key": "TJ:n:1214",
+        "brand": "TJ",
+        "song_number": "1214",
+        "ky_number": null
+      },
+      "status": "skipped",
+      "reason": "metadata_unavailable: 403 Forbidden",
+      "checked_at": "2026-11-03T14:21:28.594Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D-TmDEDeCpWQ",
+      "metadata": {
+        "url": "https://www.youtube.com/watch?v=-TmDEDeCpWQ",
+        "error": "403 Forbidden"
+      }
+    },
+    {
+      "song": {
+        "song_key": "KY:n:27438",
+        "brand": "KY",
+        "song_number": "27438",
+        "title": "막걸리 한잔",
+        "artist": "영탁",
+        "tj_number": null,
+        "ky_number": "27438",
+        "youtube_video_id": "6Da6eP5mcJM",
+        "source_url": "https://www.youtube.com/watch?v=6Da6eP5mcJM",
+        "discovery_source": "https://lpcman6181.tistory.com/category/성인%20노래방"
+      },
+      "before": {
+        "id": "5515",
+        "tj_number": null,
+        "title": "막걸리 한잔",
+        "artist": "영탁",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:13.000Z",
+        "updated_at": "2026-11-03T05:06:13.000Z",
+        "song_key": "KY:n:27438",
+        "brand": "KY",
+        "song_number": "27438",
+        "ky_number": "27438"
+      },
+      "status": "skipped",
+      "reason": "metadata_unavailable: 401 Unauthorized",
+      "checked_at": "2026-11-03T14:21:28.914Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D6Da6eP5mcJM",
+      "metadata": {
+        "url": "https://www.youtube.com/watch?v=6Da6eP5mcJM",
+        "error": "401 Unauthorized"
+      }
+    },
+    {
+      "song": {
+        "song_key": "KY:n:92439",
+        "brand": "KY",
+        "song_number": "92439",
+        "title": "너를 만나",
+        "artist": "폴킴",
+        "tj_number": null,
+        "ky_number": "92439",
+        "youtube_video_id": "6G7Q2RNBV0w",
+        "source_url": "https://www.youtube.com/watch?v=6G7Q2RNBV0w",
+        "discovery_source": "https://www.youtube.com/watch?v=6G7Q2RNBV0w"
+      },
+      "before": {
+        "id": "50951",
+        "tj_number": null,
+        "title": "너를 만나",
+        "artist": "폴킴",
+        "youtube_video_id": null,
+        "source_url": "",
+        "created_at": "2026-11-03T05:06:16.000Z",
+        "updated_at": "2026-11-03T05:06:16.000Z",
+        "song_key": "KY:n:92439",
+        "brand": "KY",
+        "song_number": "92439",
+        "ky_number": "92439"
+      },
+      "status": "skipped",
+      "reason": "metadata_unavailable: 401 Unauthorized",
+      "checked_at": "2026-11-03T14:21:29.345Z",
+      "metadata_source": "https://noembed.com/embed?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D6G7Q2RNBV0w",
+      "metadata": {
+        "url": "https://www.youtube.com/watch?v=6G7Q2RNBV0w",
+        "error": "401 Unauthorized"
+      }
+    }
+  ],
+  "applied_count": 65
+}
