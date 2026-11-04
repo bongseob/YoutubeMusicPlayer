@@ -88,3 +88,32 @@ test('Legacy schema upgrade keeps IDs and videos and is safe to run twice', asyn
     await adminPool.end();
   }
 });
+
+test('MySQL rooms persist across store instances, serialize concurrent queues, rollback and expire', async () => {
+  const { mysqlRoomStore } = await import('../src/rooms.js');
+  const database = `tj_rooms_test_${Date.now()}`;
+  const adminPool = createPool({ ...process.env, MYSQL_USER: 'root', MYSQL_PASSWORD: process.env.MYSQL_ROOT_PASSWORD });
+  let pool;
+  try {
+    await adminPool.query(`CREATE DATABASE \`${database}\` CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci`);
+    pool = createPool({ ...process.env, MYSQL_USER: 'root', MYSQL_PASSWORD: process.env.MYSQL_ROOT_PASSWORD, MYSQL_DATABASE: database });
+    await initSchema(pool);
+    const repo = songRepository(pool);
+    await repo.upsert([normalizeSong({ title: '공유 노래', song_number: '123', youtube_url: 'Abc_def-123' })]);
+    const store = mysqlRoomStore(pool); await store.ensure(); await store.ensure();
+    await store.create('AABBCCDD', { queue: [], revision: 0 });
+    // More operations than pool connections catches nested pool-acquisition deadlocks.
+    await Promise.all(Array.from({ length: 12 }, (_, i) => store.transact('AABBCCDD', async (state, connection) => {
+      const song = await repo.getSong('1', connection); state.queue.push({ id: song.id, reservation: i }); state.revision++;
+    })));
+    const fresh = mysqlRoomStore(pool);
+    await fresh.transact('AABBCCDD', state => { assert.equal(state.queue.length, 12); assert.equal(state.revision, 12); });
+    await assert.rejects(store.transact('AABBCCDD', state => { state.queue = []; throw new Error('rollback'); }));
+    await fresh.transact('AABBCCDD', state => assert.equal(state.queue.length, 12));
+    await pool.query("UPDATE karaoke_rooms SET expires_at=DATE_SUB(NOW(), INTERVAL 1 DAY) WHERE code='AABBCCDD'");
+    await assert.rejects(store.transact('AABBCCDD', () => {}), { status: 404 });
+    await store.create('11223344', { queue: [] });
+    await store.transact('11223344', state => { state.closed = true; });
+    await assert.rejects(store.transact('11223344', () => {}), { status: 404 });
+  } finally { await pool?.end(); await adminPool.query(`DROP DATABASE IF EXISTS \`${database}\``); await adminPool.end(); }
+});

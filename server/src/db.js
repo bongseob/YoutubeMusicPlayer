@@ -48,6 +48,7 @@ export async function initSchema(pool) {
 
 export function songRepository(pool) {
   return {
+    async getSong(id, connection = pool) { const [rows] = await connection.execute('SELECT * FROM karaoke_songs WHERE id=?', [id]); return rows[0]; },
     async health() { await pool.query('SELECT 1'); },
     async list({ q, limit, offset }) {
       // Escape LIKE metacharacters with an explicit escape character.

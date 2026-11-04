@@ -16,9 +16,9 @@ function loadApi() {
   return apiPromise;
 }
 
-export default function Player({ current, onNext, queueLength }) {
-  const host = useRef(null), player = useRef(null), latest = useRef({ current, onNext });
-  latest.current = { current, onNext };
+export default function Player({ current, onNext, queueLength, onPlayback }) {
+  const host = useRef(null), player = useRef(null), latest = useRef({ current, onNext, onPlayback });
+  latest.current = { current, onNext, onPlayback };
   const [ready, setReady] = useState(false), [playing, setPlaying] = useState(false), [error, setError] = useState(''), [blocked, setBlocked] = useState(false);
   useEffect(() => {
     if (!current) return;
@@ -36,11 +36,13 @@ export default function Player({ current, onNext, queueLength }) {
           onStateChange: event => {
             if (cancelled) return;
             setPlaying(event.data === YT.PlayerState.PLAYING);
+            const status = ({ 1: 'playing', 2: 'paused', 3: 'loading' })[event.data];
+            if (status) latest.current.onPlayback?.(status);
             if (event.data === YT.PlayerState.PLAYING) setBlocked(false);
             if (event.data === YT.PlayerState.ENDED) latest.current.onNext();
           },
-          onAutoplayBlocked: () => { if (!cancelled) setBlocked(true); },
-          onError: event => { if (!cancelled) setError(({ 2: '영상 주소가 올바르지 않습니다.', 5: '이 브라우저에서 재생할 수 없습니다.', 100: '삭제되었거나 비공개인 영상입니다.', 101: '이 영상은 외부 재생을 허용하지 않습니다.', 150: '이 영상은 외부 재생을 허용하지 않습니다.', 153: 'YouTube가 재생 출처를 확인할 수 없습니다. 브라우저와 접속 주소를 확인해 주세요.' })[event.data] || '영상을 재생할 수 없습니다.'); },
+          onAutoplayBlocked: () => { if (!cancelled) { setBlocked(true); latest.current.onPlayback?.('blocked'); } },
+          onError: event => { if (!cancelled) { latest.current.onPlayback?.('error'); setError(({ 2: '영상 주소가 올바르지 않습니다.', 5: '이 브라우저에서 재생할 수 없습니다.', 100: '삭제되었거나 비공개인 영상입니다.', 101: '이 영상은 외부 재생을 허용하지 않습니다.', 150: '이 영상은 외부 재생을 허용하지 않습니다.', 153: 'YouTube가 재생 출처를 확인할 수 없습니다. 브라우저와 접속 주소를 확인해 주세요.' })[event.data] || '영상을 재생할 수 없습니다.'); } },
         },
       });
     }).catch(err => { if (!cancelled) setError(err.message); });

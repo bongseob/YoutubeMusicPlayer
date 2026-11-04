@@ -5,8 +5,9 @@ import { timingSafeEqual, createHash } from 'node:crypto';
 import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { normalizeSong, parseSongsCsv, searchParams } from './songs.js';
+import { roomRouter } from './rooms.js';
 
-export function createApp({ repository, adminToken, trustProxy = false, staticDir = fileURLToPath(new URL('../../web/dist', import.meta.url)) }) {
+export function createApp({ repository, adminToken, roomStore, trustProxy = false, staticDir = fileURLToPath(new URL('../../web/dist', import.meta.url)) }) {
   if (!adminToken || adminToken.length < 24) throw new Error('ADMIN_TOKEN을 24자 이상으로 설정해 주세요.');
   const app = express();
   app.set('trust proxy', trustProxy);
@@ -43,6 +44,7 @@ export function createApp({ repository, adminToken, trustProxy = false, staticDi
     const { songs, rows, duplicates } = parseSongsCsv(req.body);
     res.json({ ...await repository.upsert(songs), rows, duplicates, processed: songs.length });
   });
+  if (roomStore) app.use('/api/rooms', roomRouter({ store: roomStore, repository }));
   app.use('/api', (req, res) => res.status(404).json({ error: '요청한 API를 찾을 수 없습니다.' }));
   if (existsSync(staticDir)) {
     app.use(express.static(staticDir));

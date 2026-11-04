@@ -83,6 +83,10 @@ docker compose up -d --wait # 다시 실행
 
 기존 PM2 서버에서는 [PM2 배포 안내](docs/pm2-deploy.md)에 따라 이 앱만 등록·재시작하세요. 설정 파일은 `deploy/pm2/ecosystem.config.js`입니다.
 
+## 함께하는 노래방
+
+닉네임·방 코드로 입장하여 예약 목록을 공유할 수 있습니다. 방장 휴대폰에서만 반주와 USB 마이크를 출력하고 볼륨·에코를 조절합니다. [방 사용법과 서버 반영 안내](docs/karaoke-rooms.md)를 참고하세요.
+
 ## 검증
 
 ```sh
