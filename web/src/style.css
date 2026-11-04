@@ -18,3 +18,5 @@
 .mic-slider input { width: 100%; }
 .room-share { display: flex; gap: 10px; flex-wrap: wrap; margin: 14px 0; }
 .invite-notice { color: var(--green); margin-bottom: 12px; }
+.room-share button { min-width: 145px; }
+.room-share button.share-feedback { background: #b2ec7933; color: var(--green); box-shadow: inset 0 0 0 2px var(--green); }
