@@ -16,3 +16,5 @@
 .room-entry input { width: 100%; border: 1px solid var(--line); background: #11161e; color: inherit; border-radius: 8px; padding: 12px; }
 .mic-slider { display: grid; gap: 8px; margin-top: 20px; }
 .mic-slider input { width: 100%; }
+.room-share { display: flex; gap: 10px; flex-wrap: wrap; margin: 14px 0; }
+.invite-notice { color: var(--green); margin-bottom: 12px; }

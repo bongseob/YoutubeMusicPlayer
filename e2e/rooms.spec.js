@@ -22,13 +22,23 @@ test('Host and guest share queue, restore sessions, restrict playback and clean 
     const host = await hostContext.newPage(), guest = await guestContext.newPage();
     // Use a generated audio stream; this checks routing lifecycle, not USB hardware.
     await host.addInitScript(() => {
+      navigator.share = async data => { window.sharedInvitation = data; };
+      navigator.clipboard.writeText = async text => { window.copiedInvitation = text; };
       navigator.mediaDevices.getUserMedia = async () => { const c = new AudioContext(); const oscillator = c.createOscillator(); const output = c.createMediaStreamDestination(); oscillator.connect(output); oscillator.start(); window.mockMic = output.stream; window.mockSource = c; return output.stream; };
       navigator.mediaDevices.enumerateDevices = async () => [{ kind: 'audioinput', deviceId: 'usb-test', label: 'USB 테스트 마이크' }];
     });
     await host.goto('/'); await guest.goto('/');
     await host.getByLabel('방 닉네임').fill('방장'); await host.getByRole('button', { name: '새 방 만들기' }).click();
     const code = await host.locator('.room-code').innerText();
-    await guest.getByLabel('방 닉네임').fill('친구'); await guest.getByLabel('방 코드', { exact: true }).fill(code); await guest.getByRole('button', { name: '방 입장' }).click();
+    const invitation = await host.getByLabel('초대 링크', { exact: true }).inputValue();
+    expect(new URL(invitation).search).toBe(`?room=${code}`);
+    await host.getByRole('button', { name: '카카오톡으로 초대' }).click();
+    expect(await host.evaluate(() => window.sharedInvitation.url)).toBe(invitation);
+    await host.getByRole('button', { name: '초대 링크 복사', exact: true }).click();
+    expect(await host.evaluate(() => window.copiedInvitation)).toBe(invitation);
+    await guest.goto(invitation);
+    await expect(guest.getByLabel('방 코드', { exact: true })).toHaveValue(code);
+    await guest.getByLabel('방 닉네임').fill('친구'); await guest.getByRole('button', { name: '방 입장' }).click();
     await guest.getByRole('button', { name: '함께 부르는 노래 예약', exact: true }).click();
     await expect(host.locator('.queue-list li')).toHaveCount(1);
     await expect(guest.getByRole('button', { name: '노래 시작하기' })).toHaveCount(0);
@@ -54,7 +64,7 @@ test('Host and guest share queue, restore sessions, restrict playback and clean 
     host.once('dialog', d => d.accept()); await host.getByRole('button', { name: '방 종료', exact: true }).click();
     await expect(host.getByRole('button', { name: '새 방 만들기' })).toBeVisible();
     expect(await host.evaluate(() => window.mockMic.getTracks().every(t => t.readyState === 'ended'))).toBe(true);
-    await expect(guest.getByRole('button', { name: '새 방 만들기', exact: true })).toBeVisible({ timeout: 10000 });
+    await expect(guest.getByRole('button', { name: '방 입장', exact: true })).toBeVisible({ timeout: 10000 });
     await expect(guest.getByRole('alert')).toContainText('방이 종료되었습니다.');
   } finally { await hostContext.close(); await guestContext.close(); }
 });
