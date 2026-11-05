@@ -13,7 +13,7 @@ try {
   await initSchema(pool);
   await roomStore.ensure();
   const host = process.env.HOST || '0.0.0.0';
-  const server = app.listen(Number(process.env.PORT || 3001), host, () => console.log(`TJ 노래방: http://${host}:${process.env.PORT || 3001}`));
+  const server = app.listen(Number(process.env.PORT || 3001), host, () => console.log(`한곡같이: http://${host}:${process.env.PORT || 3001}`));
   const stop = () => server.close(async () => { await pool.end(); process.exit(0); });
   process.on('SIGTERM', stop);
   process.on('SIGINT', stop);
