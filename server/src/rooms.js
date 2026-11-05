@@ -11,6 +11,19 @@ export function mysqlRoomStore(pool) {
   return {
     async ensure() { await pool.query(`CREATE TABLE IF NOT EXISTS karaoke_rooms (code CHAR(8) CHARACTER SET ascii COLLATE ascii_bin PRIMARY KEY, state JSON NOT NULL, expires_at DATETIME NOT NULL, INDEX (expires_at)) ENGINE=InnoDB`); },
     async create(code, state) { await pool.query('DELETE FROM karaoke_rooms WHERE expires_at < NOW() LIMIT 100'); await pool.execute('INSERT INTO karaoke_rooms VALUES (?, ?, DATE_ADD(NOW(), INTERVAL 24 HOUR))', [code, JSON.stringify(state)]); },
+    async listPublic(q, offset, limit) {
+      const term = `%${q.replace(/[!%_]/g, '!$&')}%`;
+      const [rows] = await pool.query(`SELECT code,
+        JSON_UNQUOTE(JSON_EXTRACT(state, '$.title')) AS title,
+        JSON_UNQUOTE(JSON_EXTRACT(state, '$.members[0].name')) AS hostName,
+        JSON_LENGTH(JSON_EXTRACT(state, '$.members')) AS memberCount
+        FROM karaoke_rooms WHERE expires_at > NOW()
+        AND JSON_UNQUOTE(JSON_EXTRACT(state, '$.isPublic')) = 'true'
+        AND (JSON_UNQUOTE(JSON_EXTRACT(state, '$.title')) LIKE ? ESCAPE '!'
+          OR JSON_UNQUOTE(JSON_EXTRACT(state, '$.members[0].name')) LIKE ? ESCAPE '!')
+        ORDER BY JSON_EXTRACT(state, '$.createdAt') DESC, code ASC LIMIT ? OFFSET ?`, [term, term, limit, offset]);
+      return rows.map(row => ({ ...row, memberCount: Number(row.memberCount) }));
+    },
     async transact(code, change) {
       const c = await pool.getConnection();
       try {
@@ -37,13 +50,21 @@ export function roomRouter({ store, repository }) {
   const entryLimit = rateLimit({ windowMs: 60000, limit: 30 });
   const writeLimit = rateLimit({ windowMs: 60000, limit: 120 });
   function view(state, member) {
-    return { code: state.code, title: state.title, isHost: member.host, nickname: member.name, members: state.members.map(m => ({ id: m.id, name: m.name, host: m.host })), queue: state.queue, current: state.current, playback: state.playback, revision: state.revision };
+    return { code: state.code, title: state.title, isPublic: state.isPublic === true, isHost: member.host, nickname: member.name, members: state.members.map(m => ({ id: m.id, name: m.name, host: m.host })), queue: state.queue, current: state.current, playback: state.playback, revision: state.revision };
   }
+  router.get('/', async (req, res) => {
+    const q = req.query.q ?? '', page = Number(req.query.page ?? 1);
+    if (typeof q !== 'string' || q.length > 100 || !Number.isInteger(page) || page < 1 || page > 1000) fail(400, '방 검색 조건을 확인하세요.');
+    const rooms = await store.listPublic(q.trim(), (page - 1) * 20, 21);
+    res.json({ rooms: rooms.slice(0, 20), hasMore: rooms.length > 20, page });
+  });
   router.post('/', entryLimit, async (req, res) => {
     const name = nickname(req.body.nickname), token = randomBytes(32).toString('hex');
+    if (req.body.title !== undefined && (typeof req.body.title !== 'string' || req.body.title.trim().length > 60)) fail(400, '방 이름은 60자 이내로 입력하세요.');
+    if (req.body.isPublic !== undefined && typeof req.body.isPublic !== 'boolean') fail(400, '공개 설정을 확인하세요.');
     const code = randomBytes(4).toString('hex').toUpperCase();
     const member = { id: randomUUID(), name, host: true, secret: hash(token) };
-    const state = { code, title: `${name}의 노래방`, members: [member], queue: [], current: null, playback: 'ready', revision: 0, createdAt: Date.now(), expiresAt: Date.now() + lifetime };
+    const state = { code, title: req.body.title?.trim() || `${name}의 노래방`, isPublic: req.body.isPublic ?? true, members: [member], queue: [], current: null, playback: 'ready', revision: 0, createdAt: Date.now(), expiresAt: Date.now() + lifetime };
     await store.create(code, state); res.status(201).json({ token, room: view(state, member) });
   });
   router.param('code', (req, res, next, code) => { if (!/^[A-F0-9]{8}$/.test(code)) return next(Object.assign(new Error('방 코드를 확인하세요.'), { status: 400 })); next(); });
@@ -83,6 +104,9 @@ export function roomRouter({ store, repository }) {
           // A stale video-ended event must not skip a newly selected song.
           if (req.body.currentId !== (state.current?.queueId || null)) fail(409, '재생 곡이 변경되었습니다.');
           state.current = state.queue.shift() || null; state.playback = state.current ? 'loading' : 'ready';
+        } else if (action === 'visibility') {
+          if (typeof req.body.isPublic !== 'boolean') fail(400, '공개 설정을 확인하세요.');
+          state.isPublic = req.body.isPublic;
         } else if (action === 'fallback') {
           if (!state.current || req.body.currentId !== state.current.queueId) fail(409, '재생 곡이 변경되었습니다.');
           if (state.current.playback_brand || state.current.brand !== 'TJ') fail(409, '이미 대체 영상을 사용 중이거나 대상 곡이 아닙니다.');

@@ -5,7 +5,7 @@ let server, origin;
 const song = { id: '1', brand: 'TJ', song_number: '123', title: '가거라 삼팔선', artist: '남인수', youtube_video_id: 'Abc_def-123' };
 test.beforeAll(async () => {
   const states = new Map();
-  const store = { async create(code, state) { states.set(code, state); }, async transact(code, fn) { const state = states.get(code); if (!state) throw Object.assign(new Error('방이 종료되었습니다.'), { status: 404 }); const result = await fn(state); if (state.closed) states.delete(code); return result; } };
+  const store = { async listPublic(q, offset, limit) { return [...states.values()].filter(s => s.isPublic === true && `${s.title} ${s.members[0].name}`.includes(q)).slice(offset, offset + limit).map(s => ({ code: s.code, title: s.title, hostName: s.members[0].name, memberCount: s.members.length })); }, async create(code, state) { states.set(code, state); }, async transact(code, fn) { const state = states.get(code); if (!state) throw Object.assign(new Error('방이 종료되었습니다.'), { status: 404 }); const result = await fn(state); if (state.closed) states.delete(code); return result; } };
   server = createApp({ repository: { getSong: async () => song, getSongsByKeys: async () => [{ brand: 'KY', song_key: 'KY:n:101', song_number: '101', title: song.title, artist: song.artist, youtube_video_id: '7JDG2kxepz8' }], list: async () => ({ songs: [song], total: 1 }) }, roomStore: store, adminToken: 'room-browser-admin-token-at-least-24', staticDir: '/nonexistent' }).listen(0, '127.0.0.1');
   await new Promise(resolve => server.once('listening', resolve)); origin = `http://127.0.0.1:${server.address().port}`;
 });
@@ -91,4 +91,35 @@ test('Personal playback falls back once and retains the original TJ identity', a
     await expect(page.getByRole('link', { name: 'YouTube에서 열기' })).toHaveAttribute('href', 'https://www.youtube.com/watch?v=7JDG2kxepz8');
     expect(lookups).toBe(1);
   } finally { await context.close(); }
+});
+
+test('Public rooms can be found and selected, host alone can hide them and private codes still work', async ({ browser }) => {
+  const hostContext = await browser.newContext(), guestContext = await browser.newContext();
+  try {
+    await setup(hostContext); await setup(guestContext);
+    const host = await hostContext.newPage(), guest = await guestContext.newPage();
+    await host.goto('/');
+    await expect(host.getByLabel('새 방 공개', { exact: true })).toBeChecked();
+    await host.getByLabel('방 닉네임').fill('목록 방장');
+    await host.getByLabel('새 방 이름').fill('공개 모임 테스트');
+    await host.getByRole('button', { name: '새 방 만들기' }).click();
+    const code = await host.locator('.room-code').innerText();
+    await guest.goto('/'); await guest.getByLabel('공개 방 검색').fill('공개 모임');
+    await expect(guest.getByRole('button', { name: '공개 모임 테스트 방 선택' })).toBeVisible();
+    await host.getByLabel('방 공개', { exact: true }).uncheck();
+    await expect(host.getByText('비공개 방 · 코드 또는 초대 링크로 입장', { exact: true })).toBeVisible();
+    await guest.getByRole('button', { name: '목록 새로고침' }).click();
+    await expect(guest.getByText('검색된 공개 방이 없습니다.')).toBeVisible();
+    await host.getByLabel('방 공개', { exact: true }).check();
+    await guest.getByRole('button', { name: '목록 새로고침' }).click();
+    await guest.getByRole('button', { name: '공개 모임 테스트 방 선택' }).click();
+    await expect(guest.getByLabel('방 코드', { exact: true })).toHaveValue(code);
+    await host.getByLabel('방 공개', { exact: true }).uncheck();
+    await expect(host.getByLabel('방 공개', { exact: true })).not.toBeChecked();
+    await guest.getByLabel('방 닉네임').fill('참가자');
+    await guest.getByRole('button', { name: '방 입장', exact: true }).click();
+    await expect(guest.locator('.room-code')).toHaveText(code);
+    await expect(guest.getByLabel('방 공개', { exact: true })).toHaveCount(0);
+    host.once('dialog', d => d.accept()); await host.getByRole('button', { name: '방 종료', exact: true }).click();
+  } finally { await hostContext.close(); await guestContext.close(); }
 });

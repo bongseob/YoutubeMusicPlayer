@@ -6,6 +6,9 @@ function memoryStore() {
   const rooms = new Map(); let pending = Promise.resolve();
   return {
     async create(code, state) { rooms.set(code, structuredClone(state)); },
+    async listPublic(q, offset, limit) {
+      return [...rooms.values()].filter(s => s.isPublic === true && `${s.title} ${s.members[0].name}`.includes(q)).slice(offset, offset + limit).map(s => ({ code: s.code, title: s.title, hostName: s.members[0].name, memberCount: s.members.length }));
+    },
     transact(code, fn) {
       const result = pending.then(async () => {
         if (!rooms.has(code)) throw Object.assign(new Error('방이 종료되었습니다.'), { status: 404 });
@@ -33,12 +36,28 @@ test('Rooms share ordered reservations, enforce host permissions, survive re-ent
   const host = (await call('/', { nickname: '방장' })).body;
   const code = host.room.code;
   assert.equal(host.room.isHost, true);
+  assert.equal(host.room.isPublic, true);
+  let listed = (await call('/?q=방장')).body.rooms;
+  assert.equal(listed[0].code, code);
+  assert.deepEqual(Object.keys(listed[0]).sort(), ['code', 'hostName', 'memberCount', 'title']);
+  assert.equal((await call('/?page=0')).status, 400);
+  assert.equal((await call('/', { nickname: '검사', isPublic: 'false' })).status, 400);
   assert.doesNotMatch(JSON.stringify(host.room), /secret|token/);
   const guest = (await call(`/${code}/join`, { nickname: '친구' })).body;
   assert.equal(guest.room.isHost, false);
+  assert.equal((await call(`/${code}/actions`, { action: 'visibility', isPublic: 'false' }, host.token)).status, 400);
+  await call(`/${code}/actions`, { action: 'visibility', isPublic: false }, host.token);
+  assert.equal((await call('/?q=방장')).body.rooms.length, 0);
+  assert.equal((await call(`/${code}`, null, guest.token)).body.room.isPublic, false);
+  const privateJoin = await call(`/${code}/join`, { nickname: '코드 입장' });
+  assert.equal(privateJoin.status, 200);
+  await call(`/${code}/actions`, { action: 'visibility', isPublic: true }, host.token);
+  assert.equal((await call('/?q=방장')).body.rooms.length, 1);
+  await roomStore.create('AABBCCDD', { code: 'AABBCCDD', title: '기존 방', members: [{ name: '옛 방장' }] });
+  assert.equal((await call('/?q=기존')).body.rooms.length, 0);
   assert.equal((await call(`/${code}`)).status, 401);
   assert.equal((await call(`/${code}`, null, 'f'.repeat(64))).status, 401);
-  for (const action of ['close', 'clear', 'remove', 'next', 'playback', 'fallback']) assert.equal((await call(`/${code}/actions`, { action }, guest.token)).status, 403);
+  for (const action of ['close', 'clear', 'remove', 'next', 'playback', 'fallback', 'visibility']) assert.equal((await call(`/${code}/actions`, { action }, guest.token)).status, 403);
   assert.equal((await call(`/${code}/actions`, { action: 'reserve', songId: '2', title: 'forged', youtube_video_id: 'fake' }, guest.token)).status, 400);
   await Promise.all(Array.from({ length: 8 }, () => call(`/${code}/actions`, { action: 'reserve', songId: '1' }, guest.token)));
   let room = (await call(`/${code}`, null, host.token)).body.room;
@@ -67,5 +86,6 @@ test('Rooms share ordered reservations, enforce host permissions, survive re-ent
   await call(`/${code}/actions`, { action: 'close' }, host.token);
   assert.equal((await call(`/${code}`, null, host.token)).status, 404);
   assert.equal((await call(`/${code}/join`, { nickname: '친구' })).status, 404);
+  assert.equal((await call('/?q=방장')).body.rooms.length, 0);
   assert.equal((await call(`/${other.room.code}`, null, other.token)).status, 200);
 });

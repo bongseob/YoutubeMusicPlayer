@@ -101,7 +101,14 @@ test('MySQL rooms persist across store instances, serialize concurrent queues, r
     const repo = songRepository(pool);
     await repo.upsert([normalizeSong({ title: '공유 노래', song_number: '123', youtube_url: 'Abc_def-123' })]);
     const store = mysqlRoomStore(pool); await store.ensure(); await store.ensure();
-    await store.create('AABBCCDD', { queue: [], revision: 0 });
+    await store.create('AABBCCDD', { title: '공개100%방', isPublic: true, members: [{ name: '방장', secret: 'hidden' }], queue: [], revision: 0, createdAt: Date.now() });
+    const publicList = await store.listPublic('%', 0, 21);
+    assert.equal(publicList.length, 1); assert.equal(publicList[0].hostName, '방장');
+    assert.equal(publicList[0].memberCount, 1); assert.equal('state' in publicList[0], false);
+    assert.equal((await store.listPublic('_', 0, 21)).length, 0);
+    await store.transact('AABBCCDD', state => { state.isPublic = false; });
+    assert.equal((await store.listPublic('', 0, 21)).length, 0);
+    await store.transact('AABBCCDD', state => { state.isPublic = true; });
     // More operations than pool connections catches nested pool-acquisition deadlocks.
     await Promise.all(Array.from({ length: 12 }, (_, i) => store.transact('AABBCCDD', async (state, connection) => {
       const song = await repo.getSong('1', connection); state.queue.push({ id: song.id, reservation: i }); state.revision++;
@@ -112,6 +119,7 @@ test('MySQL rooms persist across store instances, serialize concurrent queues, r
     await fresh.transact('AABBCCDD', state => assert.equal(state.queue.length, 12));
     await pool.query("UPDATE karaoke_rooms SET expires_at=DATE_SUB(NOW(), INTERVAL 1 DAY) WHERE code='AABBCCDD'");
     await assert.rejects(store.transact('AABBCCDD', () => {}), { status: 404 });
+    assert.equal((await store.listPublic('', 0, 21)).length, 0);
     await store.create('11223344', { queue: [] });
     await store.transact('11223344', state => { state.closed = true; });
     await assert.rejects(store.transact('11223344', () => {}), { status: 404 });
