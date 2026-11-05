@@ -6,6 +6,7 @@ import { existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { normalizeSong, parseSongsCsv, searchParams } from './songs.js';
 import { roomRouter } from './rooms.js';
+import { findKyFallback } from './playback-fallback.js';
 
 export function createApp({ repository, adminToken, roomStore, trustProxy = false, staticDir = fileURLToPath(new URL('../../web/dist', import.meta.url)) }) {
   if (!adminToken || adminToken.length < 24) throw new Error('ADMIN_TOKEN을 24자 이상으로 설정해 주세요.');
@@ -39,6 +40,12 @@ export function createApp({ repository, adminToken, roomStore, trustProxy = fals
   app.post('/api/admin/songs', adminLimit, admin, express.json({ limit: '16kb' }), async (req, res) => {
     const song = normalizeSong(req.body);
     res.json({ ...await repository.upsert([song]), song });
+  });
+  app.get('/api/songs/:id/fallback', async (req, res) => {
+    if (!/^\d{1,20}$/.test(req.params.id)) return res.status(400).json({ error: '곡 번호를 확인하세요.' });
+    const song = await repository.getSong(req.params.id);
+    if (!song) return res.status(404).json({ error: '곡을 찾을 수 없습니다.' });
+    res.set('Cache-Control', 'no-store').json({ playback: await findKyFallback(song, repository) });
   });
   app.post('/api/admin/import', adminLimit, admin, express.text({ type: ['text/csv', 'text/plain'], limit: '20mb' }), async (req, res) => {
     const { songs, rows, duplicates } = parseSongsCsv(req.body);

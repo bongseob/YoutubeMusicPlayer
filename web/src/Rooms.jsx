@@ -34,7 +34,7 @@ export function useRoom() {
       const data = await request(`/${session.code}/actions`, session.token, { action, ...fields });
       if (generation.current !== version) return;
       if (['close', 'leave'].includes(action)) remember(null); else accept(data.room);
-      setError(''); return true;
+      setError(''); return data.room;
     } catch (e) { if (generation.current === version) setError(e.message); return false; }
   }
   return { room, session, busy, error, enter, action, forget: () => remember(null) };

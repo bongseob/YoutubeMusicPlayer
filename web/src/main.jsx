@@ -57,6 +57,17 @@ function App() {
     const [next, ...rest] = queueRef.current;
     queueRef.current = rest; setQueue(rest); setCurrent(next || null);
   }
+  async function fallbackSong(song) {
+    if (inRoom) {
+      const updated = await connection.action('fallback', { currentId: song.queueId });
+      return !!updated?.current?.playback_video_id;
+    }
+    if (!song.id) return false;
+    const data = await api(`/songs/${encodeURIComponent(song.id)}/fallback`);
+    if (!data.playback) return false;
+    setCurrent(previous => previous?.queueId === song.queueId ? { ...previous, ...data.playback } : previous);
+    return true;
+  }
   function favorite(song) {
     setFavorites(previous => previous.some(item => songKey(item) === songKey(song)) ? previous.filter(item => songKey(item) !== songKey(song)) : [...previous, song]);
   }
@@ -67,7 +78,7 @@ function App() {
     <main><div className="intro"><div><span className="eyebrow">SING YOUR MOMENT</span><h1>오늘의 기분을, <span>한 곡에.</span></h1><p>좋아하는 노래를 찾고, 나만의 무대를 시작하세요.</p></div><span className="intro-note">♪</span></div>
       {storageError && <p className="error-box" role="alert">{storageError}</p>}
       <Rooms connection={connection}/>
-      <div className="workspace"><div className="left-column">{canControl ? <Player key={inRoom ? room?.code : 'personal'} current={current} onNext={nextSong} queueLength={queue.length} onPlayback={inRoom ? status => connection.action('playback', { currentId: current?.queueId, status }) : undefined}/> : <section className="room-card"><h2>{current?.title || '다음 무대를 기다리고 있어요'}</h2><p>{current?.artist}</p><p>재생 상태: {({ playing: '재생 중', paused: '일시정지', loading: '준비 중', blocked: '방장 기기에서 재생 버튼을 눌러 주세요', error: '영상 재생 오류', ready: '대기 중' })[room?.playback] || '연결 중'}</p><p>소리는 방장 휴대폰에서 나옵니다.</p></section>}{room?.isHost && <Microphone key={room.code}/>}<section className="queue-card" id="queue"><div className="section-heading"><h2><ListMusic size={19}/> 예약 목록 <span className="count-pill">{queue.length}</span></h2>{canControl && queue.length > 0 && <button className="text-button" onClick={() => { if (inRoom) connection.action('clear'); else { queueRef.current = []; setQueue([]); } }}>전체 비우기</button>}</div>
+      <div className="workspace"><div className="left-column">{canControl ? <Player key={inRoom ? room?.code : 'personal'} current={current} onNext={nextSong} queueLength={queue.length} onFallback={fallbackSong} onPlayback={inRoom ? status => connection.action('playback', { currentId: current?.queueId, status }) : undefined}/> : <section className="room-card"><h2>{current?.title || '다음 무대를 기다리고 있어요'}</h2><p>{current?.artist}</p>{current?.playback_brand === 'KY' && <p className="fallback-notice">TJ 외부 재생 제한 · 금영 KY {current.playback_song_number} 대체 영상</p>}<p>재생 상태: {({ playing: '재생 중', paused: '일시정지', loading: '준비 중', blocked: '방장 기기에서 재생 버튼을 눌러 주세요', error: '영상 재생 오류', ready: '대기 중' })[room?.playback] || '연결 중'}</p><p>소리는 방장 휴대폰에서 나옵니다.</p></section>}{room?.isHost && <Microphone key={room.code}/>}<section className="queue-card" id="queue"><div className="section-heading"><h2><ListMusic size={19}/> 예약 목록 <span className="count-pill">{queue.length}</span></h2>{canControl && queue.length > 0 && <button className="text-button" onClick={() => { if (inRoom) connection.action('clear'); else { queueRef.current = []; setQueue([]); } }}>전체 비우기</button>}</div>
         {!queue.length ? <div className="queue-empty"><ListMusic size={28}/><p>다음 무대가 기다리고 있어요</p><span>곡 옆의 + 버튼을 눌러 예약해 주세요.</span></div> : <><ol className="queue-list">{queue.map((song, index) => <li key={song.queueId}><span className="queue-number">{String(index + 1).padStart(2, '0')}</span><div className="song-copy"><strong>{song.title}</strong><span>{song.artist || '가수 미등록'}{inRoom && ` · 예약: ${song.reservedBy}`}</span></div>{canControl && <div className="queue-actions">{!inRoom && <><button className="icon-button" aria-label={`${song.title} 위로`} disabled={index === 0} onClick={() => setQueue(previous => moveSong(previous, index, -1))}><ArrowUp size={15}/></button><button className="icon-button" aria-label={`${song.title} 아래로`} disabled={index === queue.length - 1} onClick={() => setQueue(previous => moveSong(previous, index, 1))}><ArrowDown size={15}/></button></>}<button className="icon-button" aria-label={`${song.title} 예약 취소`} onClick={() => inRoom ? connection.action('remove', { queueId: song.queueId }) : setQueue(previous => previous.filter(item => item.queueId !== song.queueId))}><X size={16}/></button></div>}</li>)}</ol>{canControl && !current && <button className="primary start-button" onClick={nextSong}><Play size={16} fill="currentColor"/> 노래 시작하기</button>}</>}
         <div className="local-note"><span className="tiny-dot"/> {inRoom ? '예약은 방 전체에 공유됩니다 · 즐겨찾기는 이 기기에 저장됩니다' : '예약과 즐겨찾기는 이 기기에 저장됩니다'}</div></section></div>
       <section className="library-card"><div className="library-tabs" role="tablist" aria-label="곡 목록"><button role="tab" aria-selected={tab === 'search'} className={tab === 'search' ? 'active' : ''} onClick={() => setTab('search')}><Search size={18}/> 노래 찾기</button><button role="tab" aria-selected={tab === 'favorites'} className={tab === 'favorites' ? 'active' : ''} onClick={() => setTab('favorites')}><Heart size={18}/> 즐겨찾기 <span>{favorites.length}</span></button></div>

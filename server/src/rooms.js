@@ -1,6 +1,7 @@
 import { randomBytes, randomUUID, createHash } from 'node:crypto';
 import express from 'express';
 import { rateLimit } from 'express-rate-limit';
+import { findKyFallback } from './playback-fallback.js';
 
 const fail = (status, message) => { throw Object.assign(new Error(message), { status }); };
 const hash = value => createHash('sha256').update(value).digest('hex');
@@ -82,6 +83,12 @@ export function roomRouter({ store, repository }) {
           // A stale video-ended event must not skip a newly selected song.
           if (req.body.currentId !== (state.current?.queueId || null)) fail(409, '재생 곡이 변경되었습니다.');
           state.current = state.queue.shift() || null; state.playback = state.current ? 'loading' : 'ready';
+        } else if (action === 'fallback') {
+          if (!state.current || req.body.currentId !== state.current.queueId) fail(409, '재생 곡이 변경되었습니다.');
+          if (state.current.playback_brand || state.current.brand !== 'TJ') fail(409, '이미 대체 영상을 사용 중이거나 대상 곡이 아닙니다.');
+          const playback = await findKyFallback(state.current, repository, connection);
+          if (!playback) fail(404, '제목·가수가 일치하는 금영 공식 대체 영상이 없습니다.');
+          Object.assign(state.current, playback); state.playback = 'loading';
         } else if (action === 'remove') state.queue = state.queue.filter(s => s.queueId !== req.body.queueId);
         else if (action === 'clear') state.queue = [];
         else if (action === 'playback') {

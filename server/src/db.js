@@ -49,6 +49,7 @@ export async function initSchema(pool) {
 export function songRepository(pool) {
   return {
     async getSong(id, connection = pool) { const [rows] = await connection.execute('SELECT * FROM karaoke_songs WHERE id=?', [id]); return rows[0]; },
+    async getSongsByKeys(keys, connection = pool) { if (!keys.length) return []; const [rows] = await connection.query("SELECT * FROM karaoke_songs WHERE brand='KY' AND song_key IN (?)", [keys]); return rows; },
     async health() { await pool.query('SELECT 1'); },
     async list({ q, limit, offset }) {
       // Escape LIKE metacharacters with an explicit escape character.
