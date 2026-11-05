@@ -32,3 +32,14 @@
 .public-room-list span { display: block; color: var(--muted); font-size: 12px; margin-top: 7px; }
 .room-pages { display: flex; align-items: center; gap: 12px; margin-top: 14px; font-size: 12px; }
 .room-entry .room-create-options { flex-basis: 100%; }
+.header-actions { gap: 10px; }
+.room-dialog { max-width: 640px; }
+.room-dialog p { line-height: 1.7; overflow-wrap: anywhere; }
+.room-dialog small { display: block; color: var(--muted); line-height: 1.7; margin-top: 12px; }
+.room-dialog .room-entry .room-visibility { display: flex; min-width: 0; }
+.room-summary { display: flex; align-items: center; gap: 14px; padding: 13px 16px; margin-bottom: 20px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); }
+.room-summary > div { flex: 1; min-width: 0; }
+.room-summary strong { display: block; font-size: 13px; overflow-wrap: anywhere; }
+.room-summary span { display: block; color: var(--muted); font-size: 11px; margin-top: 5px; }
+.room-summary button { flex-shrink: 0; }
+@media(max-width:380px) { .header-actions { gap: 6px; } .header-actions .settings-button { padding: 8px; } .header-actions .settings-button svg { display: none; } }

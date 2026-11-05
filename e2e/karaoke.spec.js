@@ -115,3 +115,22 @@ test('Same-number metadata rows keep separate favorites and connect a KY video',
   await expect(page.getByRole('button', { name: '금영 테스트곡 예약', exact: true })).toBeEnabled();
   await expect(page.getByRole('button', { name: '태진 테스트곡 예약', exact: true })).toBeDisabled();
 });
+
+test('Room management opens as a focused modal and returns focus when dismissed', async ({ page }) => {
+  await page.route('**/api/rooms/?**', route => route.fulfill({ json: { rooms: [], hasMore: false, page: 1 } }));
+  await expect(page.getByLabel('방 닉네임')).toHaveCount(0);
+  await expect(page.getByRole('heading', { name: '방 찾기', exact: true })).toHaveCount(0);
+  const opener = page.getByRole('button', { name: '방 관리 열기', exact: true });
+  await opener.click();
+  await expect(page.getByRole('dialog', { name: '방 관리', exact: true })).toBeVisible();
+  await expect(page.getByLabel('방 닉네임')).toBeFocused();
+  await page.screenshot({ path: 'test-results/room-management.png' });
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('dialog', { name: '방 관리', exact: true })).toHaveCount(0);
+  await expect(opener).toBeFocused();
+  await opener.click(); await page.getByRole('button', { name: '방 관리 닫기', exact: true }).click();
+  await expect(opener).toBeFocused();
+  await opener.click(); await page.mouse.click(1, 1);
+  await expect(page.getByRole('dialog', { name: '방 관리', exact: true })).toHaveCount(0);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});

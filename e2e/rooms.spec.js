@@ -28,6 +28,7 @@ test('Host and guest share queue, restore sessions, restrict playback and clean 
       navigator.mediaDevices.enumerateDevices = async () => [{ kind: 'audioinput', deviceId: 'usb-test', label: 'USB 테스트 마이크' }];
     });
     await host.goto('/'); await guest.goto('/');
+    await host.getByRole('button', { name: '방 관리 열기', exact: true }).click();
     await host.getByLabel('방 닉네임').fill('방장'); await host.getByRole('button', { name: '새 방 만들기' }).click();
     const code = await host.locator('.room-code').innerText();
     const invitation = await host.getByLabel('초대 링크', { exact: true }).inputValue();
@@ -39,6 +40,8 @@ test('Host and guest share queue, restore sessions, restrict playback and clean 
     await guest.goto(invitation);
     await expect(guest.getByLabel('방 코드', { exact: true })).toHaveValue(code);
     await guest.getByLabel('방 닉네임').fill('친구'); await guest.getByRole('button', { name: '방 입장' }).click();
+    await host.getByRole('button', { name: '방 관리 닫기', exact: true }).click();
+    await guest.getByRole('button', { name: '방 관리 닫기', exact: true }).click();
     await guest.getByRole('button', { name: '가거라 삼팔선 예약', exact: true }).click();
     await expect(host.locator('.queue-list li')).toHaveCount(1);
     await expect(guest.getByRole('button', { name: '노래 시작하기' })).toHaveCount(0);
@@ -54,7 +57,8 @@ test('Host and guest share queue, restore sessions, restrict playback and clean 
     await host.getByRole('button', { name: '일시정지', exact: true }).click();
     await expect(guest.getByText('재생 상태: 일시정지')).toBeVisible({ timeout: 10000 });
     await guest.reload(); await expect(guest.locator('.room-code')).toHaveText(code);
-    await host.reload(); await expect(host.locator('.room-code')).toHaveText(code);
+    await guest.getByRole('button', { name: '방 관리 닫기', exact: true }).click();
+    await host.reload(); await expect(host.getByLabel('현재 방', { exact: true })).toContainText(code);
     await expect(host.locator('.now-title h2')).toHaveText(song.title);
     await expect(host.getByText('금영 KY 101 영상으로 대체 재생합니다.', { exact: false })).toBeVisible();
     await host.getByRole('button', { name: '마이크 켜기', exact: true }).click();
@@ -66,10 +70,11 @@ test('Host and guest share queue, restore sessions, restrict playback and clean 
     await host.getByRole('button', { name: '마이크 켜기', exact: true }).click();
     await expect(host.getByRole('button', { name: '마이크 끄기', exact: true })).toBeVisible();
     expect(await host.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    await host.getByRole('button', { name: '방 관리 열기', exact: true }).click();
     host.once('dialog', d => d.accept()); await host.getByRole('button', { name: '방 종료', exact: true }).click();
     await expect(host.getByRole('button', { name: '새 방 만들기' })).toBeVisible();
     expect(await host.evaluate(() => window.mockMic.getTracks().every(t => t.readyState === 'ended'))).toBe(true);
-    await expect(guest.getByRole('button', { name: '방 입장', exact: true })).toBeVisible({ timeout: 10000 });
+    await expect(guest.getByLabel('현재 방', { exact: true })).toHaveCount(0, { timeout: 10000 });
     await expect(guest.getByRole('alert')).toContainText('방이 종료되었습니다.');
   } finally { await hostContext.close(); await guestContext.close(); }
 });
@@ -99,12 +104,13 @@ test('Public rooms can be found and selected, host alone can hide them and priva
     await setup(hostContext); await setup(guestContext);
     const host = await hostContext.newPage(), guest = await guestContext.newPage();
     await host.goto('/');
+    await host.getByRole('button', { name: '방 관리 열기', exact: true }).click();
     await expect(host.getByLabel('새 방 공개', { exact: true })).toBeChecked();
     await host.getByLabel('방 닉네임').fill('목록 방장');
     await host.getByLabel('새 방 이름').fill('공개 모임 테스트');
     await host.getByRole('button', { name: '새 방 만들기' }).click();
     const code = await host.locator('.room-code').innerText();
-    await guest.goto('/'); await guest.getByLabel('공개 방 검색').fill('공개 모임');
+    await guest.goto('/'); await guest.getByRole('button', { name: '방 관리 열기', exact: true }).click(); await guest.getByLabel('공개 방 검색').fill('공개 모임');
     await expect(guest.getByRole('button', { name: '공개 모임 테스트 방 선택' })).toBeVisible();
     await host.getByLabel('방 공개', { exact: true }).uncheck();
     await expect(host.getByText('비공개 방 · 코드 또는 초대 링크로 입장', { exact: true })).toBeVisible();
