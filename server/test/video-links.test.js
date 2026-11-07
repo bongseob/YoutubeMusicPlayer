@@ -36,3 +36,11 @@ test('Nested transliteration annotations leave the same credited artist', () => 
   const a = normalizeSong({ brand: 'TJ', song_number: '48803', title: '부담이돼', artist: '정키(Feat.휘인)', youtube_url: 'Abc_def-123' });
   assert.equal(validateMetadata(a, { ...metadata, url: a.source_url, title: '[TJ노래방] 부담이 돼 - 정키(Feat.휘인(Whee In)) / TJ Karaoke' }).ok, true);
 });
+
+test('Known trailing genre annotation matches without stripping artist identity brackets', () => {
+  const ky = normalizeSong({ brand: 'KY', song_number: '1102', title: '타타타', artist: '김국환[성인가요]', youtube_url: 'BcxMuVc1bAs' });
+  const record = { provider_name: 'YouTube', title: '[멜로디제거] 타타타 - 김국환 (KY.1102) / KY Karaoke', author_url: 'https://www.youtube.com/@KARAOKEKY', url: ky.source_url };
+  assert.equal(validateMetadata(ky, record, { allowMR: true }).ok, true);
+  assert.equal(validateMetadata(ky, { ...record, title: record.title.replace('김국환', '다른가수') }, { allowMR: true }).ok, false);
+  assert.equal(validateMetadata({ ...ky, artist: '김국환[다른그룹]' }, record, { allowMR: true }).ok, false);
+});

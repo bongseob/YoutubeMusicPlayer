@@ -10,7 +10,7 @@ export function sameTitle(a, b) {
 }
 export function sameArtist(a, b) {
   const aliases = { iu: '아이유', tei: '테이' };
-  const norm = value => { const key = compact(withoutParens(value)); return aliases[key] || key; };
+  const norm = value => { const key = compact(withoutParens(value).replace(/\[성인가요\]$/u, '')); return aliases[key] || key; };
   return !!norm(a) && norm(a) === norm(b);
 }
 export function creditParts(content) {

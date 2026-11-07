@@ -95,3 +95,11 @@ npm run videos:apply -- --cache-dir=.local/youtube-sync-new
 - 최신 배포용 결과는 [영상 링크 포함 전체 CSV](../examples/import/tj-ky-songs-with-videos.csv), [연결곡 전용 CSV](../examples/import/linked-songs-only.csv), [전곡 상태표](../examples/import/tj-ky-video-link-status.csv)에 있습니다.
 - 진행 상태는 `.local/youtube-sync/state.json`에 저장했습니다. 할당량 초기화 후 `npm run videos:apply -- --allow-mr --search-backfill` 명령으로 이어서 실행할 수 있습니다. 자동 재실행 스케줄은 설정하지 않았습니다.
 - 제목·가수 불일치, 번호 충돌, 임베드 금지, 공개 목록에서 찾지 못한 곡 등이 남아 있으므로 **전체 곡 연결 완료가 아닙니다**. 임베드 금지 영상이나 공개되지 않은 영상을 앱에서 재생할 수 있다고 가정하지 않습니다.
+
+## 2026-11-07 추가 작업 결과
+
+- 공식 검색 보완 100회와 기존 캐시 재대조로 1,050곡을 추가 연결했습니다(TJ 1,006곡, KY 44곡).
+- 연결 41,523곡, 미연결 73,445곡이며 배포용 CSV와 상태표를 갱신했습니다.
+- 가수명의 끝에 붙은 `[성인가요]`만 장르 주석으로 처리하도록 개선했습니다. 커버·키 변경·번호 충돌·임베드 불가 검사는 유지합니다.
+- 오늘 검색 한도에 도달해 체크포인트를 저장했으며 수집은 아직 미완료입니다. 운영 DB 반영 및 실제 기기 재생 검증은 수행하지 않았습니다.
+- 상세 내용은 [미연결 검토 및 작업 결과](unlinked-video-review.md)를 참고하세요.
