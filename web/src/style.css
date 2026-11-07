@@ -43,3 +43,14 @@
 .room-summary span { display: block; color: var(--muted); font-size: 11px; margin-top: 5px; }
 .room-summary button { flex-shrink: 0; }
 @media(max-width:380px) { .header-actions { gap: 6px; } .header-actions .settings-button { padding: 8px; } .header-actions .settings-button svg { display: none; } }
+
+.room-dialog .section-heading > div { min-width: 0; }
+.room-dialog .section-heading { align-items: flex-start; }
+.room-dialog #room-dialog-title { flex-wrap: wrap; align-items: baseline; }
+.room-title { font-weight: 500; overflow-wrap: anywhere; min-width: 0; }
+.room-members { margin: 16px 0 24px; color: var(--muted); font-size: 13px; }
+.room-invite-url { flex: 1; width: 0; border: 1px solid #394451; border-radius: 8px; background: #11161e; color: #e9eff6; padding: 12px; font-size: 12px; }
+.room-share { flex-wrap: nowrap; align-items: stretch; }
+.room-share button { min-width: auto; flex-shrink: 0; font-size: 12px; padding: 10px 12px; }
+.room-share-status { color: var(--muted); font-size: 12px; margin-bottom: 14px; }
+.room-exit { width: 100%; margin-top: 12px; font-size: 16px; }

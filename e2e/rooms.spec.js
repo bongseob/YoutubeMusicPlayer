@@ -33,8 +33,9 @@ test('Host and guest share queue, restore sessions, restrict playback and clean 
     const code = await host.locator('.room-code').innerText();
     const invitation = await host.getByLabel('초대 링크', { exact: true }).inputValue();
     expect(new URL(invitation).search).toBe(`?room=${code}`);
-    await host.getByRole('button', { name: '카카오톡으로 초대' }).click();
-    expect(await host.evaluate(() => window.sharedInvitation.url)).toBe(invitation);
+    await expect(host.getByRole('button', { name: '카카오톡으로 초대' })).toHaveCount(0);
+    await expect(host.locator('#room-dialog-title')).toContainText('방장의 노래방');
+    await expect(host.locator('.room-members')).toContainText('방장 (방장)');
     await host.getByRole('button', { name: '초대 링크 복사', exact: true }).click();
     expect(await host.evaluate(() => window.copiedInvitation)).toBe(invitation);
     await guest.goto(invitation);
@@ -113,7 +114,7 @@ test('Public rooms can be found and selected, host alone can hide them and priva
     await guest.goto('/'); await guest.getByRole('button', { name: '방 관리 열기', exact: true }).click(); await guest.getByLabel('공개 방 검색').fill('공개 모임');
     await expect(guest.getByRole('button', { name: '공개 모임 테스트 방 선택' })).toBeVisible();
     await host.getByLabel('방 공개', { exact: true }).uncheck();
-    await expect(host.getByText('비공개 방 · 코드 또는 초대 링크로 입장', { exact: true })).toBeVisible();
+    await expect(host.getByLabel('방 공개', { exact: true })).not.toBeChecked();
     await guest.getByRole('button', { name: '목록 새로고침' }).click();
     await expect(guest.getByText('검색된 공개 방이 없습니다.')).toBeVisible();
     await host.getByLabel('방 공개', { exact: true }).check();
