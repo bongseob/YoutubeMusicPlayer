@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Search, Heart, ListMusic, Plus, Mic2, Settings2, ArrowUp, ArrowDown, X, Music2, Upload, Check, ExternalLink, ChevronLeft, ChevronRight, Play, Headphones, LogOut, Users } from 'lucide-react';
 import Player from './Player.jsx';
+import Help from './Help.jsx';
 import Rooms, { useRoom, invitationCode } from './Rooms.jsx';
 import Microphone from './Microphone.jsx';
 import { readSongs, moveSong, songKey, songLabel, isPlayable } from './storage.js';
@@ -24,6 +25,7 @@ function App() {
   const [personalCurrent, setCurrent] = useState(null), [adminOpen, setAdminOpen] = useState(false), [adminSong, setAdminSong] = useState(null), [toast, setToast] = useState(''), [storageError, setStorageError] = useState('');
   const connection = useRoom();
   const [roomOpen, setRoomOpen] = useState(() => !!invitationCode());
+  const [helpOpen, setHelpOpen] = useState(false);
   const room = connection.room;
   const inRoom = !!connection.session;
   const canControl = !inRoom || !!room?.isHost;
@@ -76,7 +78,7 @@ function App() {
   const list = tab === 'favorites' ? favoriteSongs : songs;
   return <div className="app-shell">
     <header className="topbar"><a className="brand" href="/" aria-label="한곡같이 홈"><span className="brand-mark"><Mic2 size={23}/></span><span>한곡<b>같이</b><small>함께 부르는 노래방</small></span></a><div className="header-actions"><span className="private-label"><Headphones size={15}/> 내 손안의 노래방</span><button className="settings-button" onClick={() => setRoomOpen(true)} aria-label="방 관리 열기"><Users size={18}/><span>방 관리</span></button><button className="settings-button" onClick={() => openAdmin()} aria-label="곡 관리 열기"><Settings2 size={18}/><span>곡 관리</span></button></div></header>
-    <main><div className="intro"><div><span className="eyebrow">SING YOUR MOMENT</span><h1>오늘의 기분을, <span>한 곡에.</span></h1><p>한 곡 같이, 즐거움도 같이.</p></div><span className="intro-note">♪</span></div>
+    <main><div className="intro"><div><span className="eyebrow">SING YOUR MOMENT</span><h1>오늘의 기분을, <span>한 곡에.</span></h1><p>한 곡 같이, 즐거움도 같이.</p></div><button className="secondary help-open" onClick={() => setHelpOpen(true)}>사용 방법</button></div>
       {storageError && <p className="error-box" role="alert">{storageError}</p>}
       {connection.session && <div className="room-summary" aria-label="현재 방"><div><strong>{room?.title || '방에 다시 연결하고 있습니다…'}</strong>{room && <span>{room.isHost ? '방장' : '참가자'} · {room.isPublic ? '공개' : '비공개'} · {room.members.length}명 · 코드 {room.code}</span>}</div><button className="text-button" onClick={() => setRoomOpen(true)}>방 설정</button></div>}
       {!roomOpen && connection.error && <p className="error-box" role="alert">{connection.error}</p>}
@@ -96,6 +98,7 @@ function App() {
     </main><footer><span className="footer-logo">한곡같이</span><span>좋은 노래와 함께, 좋은 시간.</span><a href="https://www.youtube.com/channel/UCZUhx8ClCv6paFW7qi3qljg" target="_blank" rel="noreferrer">TJ YouTube 채널 <ExternalLink size={12}/></a><small>TJ미디어와 무관한 개인용 앱입니다.</small></footer>
     <nav className="mobile-nav" aria-label="빠른 이동"><button onClick={() => { setTab('search'); document.querySelector('.library-card')?.scrollIntoView({ behavior: 'smooth' }); }}><Search size={20}/>노래 찾기</button><button onClick={() => document.getElementById('queue').scrollIntoView({ behavior: 'smooth' })}><ListMusic size={20}/>예약 {queue.length > 0 ? queue.length : ''}</button><button onClick={() => { setTab('favorites'); document.querySelector('.library-card')?.scrollIntoView({ behavior: 'smooth' }); }}><Heart size={20}/>즐겨찾기</button></nav>
     {toast && <div className="toast" role="status"><Check size={17}/>{toast}</div>}
+    {helpOpen && <Help onClose={() => setHelpOpen(false)}/>}
     {roomOpen && <Rooms connection={connection} onClose={() => setRoomOpen(false)}/>}
     {adminOpen && <Admin initialSong={adminSong} onClose={() => setAdminOpen(false)} onSaved={song => { setRevision(value => value + 1); if (song) setFavorites(previous => previous.map(item => songKey(item) === songKey(song) ? song : item)); }}/>}
   </div>;

@@ -54,3 +54,18 @@
 .room-share button { min-width: auto; flex-shrink: 0; font-size: 12px; padding: 10px 12px; }
 .room-share-status { color: var(--muted); font-size: 12px; margin-bottom: 14px; }
 .room-exit { width: 100%; margin-top: 12px; font-size: 16px; }
+
+.help-open { min-height: 48px; flex-shrink: 0; font-size: 16px; color: var(--green); border-color: var(--green); margin-left: 12px; }
+.help-dialog { max-width: 600px; font-size: 18px; line-height: 1.8; }
+.help-dialog .section-heading h2 { font-size: 26px; margin: 0; }
+.help-dialog .icon-button { min-width: 48px; min-height: 48px; }
+.help-section { margin-top: 24px; }
+.help-section h3 { font-size: 21px; margin-bottom: 12px; }
+.help-section ol { padding-left: 28px; margin: 0; }
+.help-section li { padding-left: 6px; margin-bottom: 16px; }
+.help-section li::marker { color: var(--green); font-weight: 700; }
+.help-section > p, .help-section details p { margin-bottom: 14px; }
+.help-note { padding: 14px; border-radius: 10px; background: #ffffff08; color: #c3ccd8; }
+.help-section summary { cursor: pointer; padding: 12px 0; color: var(--green); font-weight: 700; min-height: 48px; }
+.help-done { width: 100%; min-height: 52px; font-size: 18px; margin-top: 24px; }
+@media(max-width:380px) { .intro { flex-wrap: wrap; gap: 16px; } .help-open { margin-left: 0; } }
