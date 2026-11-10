@@ -1,29 +1,29 @@
 {
-  "exportedAt": "2026-11-08T11:51:37.159Z",
+  "exportedAt": "2026-11-10T08:32:30.392Z",
   "total": 114968,
-  "linked": 42843,
-  "unlinked": 72125,
+  "linked": 43270,
+  "unlinked": 71698,
   "statusCounts": {
-    "not_found_in_indexed_public_videos": 56525,
-    "needs_review": 15600,
-    "linked": 42843
+    "not_found_in_indexed_public_videos": 56047,
+    "needs_review": 15651,
+    "linked": 43270
   },
   "scanComplete": false,
   "allCatalogSongsLinked": false,
   "allPublicVideosCovered": false,
-  "stopReason": "오늘의 영상 검색 한도 100회에 도달했습니다. 다음 할당량 날짜에 같은 명령으로 이어서 조회할 수 있습니다.",
+  "stopReason": "YouTube API 요청 실패: HTTP 429 (rateLimitExceeded). 키의 API 활성화·사용 제한·할당량을 확인하세요.",
   "coverage": [
     {
       "brand": "TJ",
-      "publicVideoCount": 75072,
+      "publicVideoCount": 75074,
       "uniqueVideosIndexed": 44272,
       "publicPlaylists": 256,
       "unavailablePlaylists": 0
     },
     {
       "brand": "KY",
-      "publicVideoCount": 76943,
-      "uniqueVideosIndexed": 50553,
+      "publicVideoCount": 77052,
+      "uniqueVideosIndexed": 52405,
       "publicPlaylists": 548,
       "unavailablePlaylists": 0
     }
@@ -31,7 +31,9 @@
   "searchRequests": {
     "2026-11-03": 100,
     "2026-11-07": 100,
-    "2026-11-08": 100
+    "2026-11-08": 100,
+    "2026-11-09": 100,
+    "2026-11-10": 100
   },
   "playbackTested": false,
   "primarySource": "YouTube Data API v3",

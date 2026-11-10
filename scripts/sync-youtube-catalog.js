@@ -12,6 +12,7 @@ const plan = args.includes('--plan'), apply = args.includes('--apply');
 const allowMR = args.includes('--allow-mr');
 const searchBackfill = args.includes('--search-backfill');
 const option = (name, fallback) => args.find(arg => arg.startsWith(`${name}=`))?.slice(name.length + 1) || fallback;
+const priorityBrand = option('--priority-brand', '').toUpperCase();
 const budget = Number(option('--max-requests', '9000'));
 const region = option('--region', 'KR').toUpperCase();
 const cacheDir = resolve(option('--cache-dir', '.local/youtube-sync'));
@@ -26,6 +27,7 @@ async function readJson(path, fallback) {
 async function main() {
   if (!Number.isSafeInteger(budget) || budget < 1 || budget > 10000 || !/^[A-Z]{2}$/.test(region)) throw new Error('실행 옵션을 확인하세요. 요청 한도: 1~10,000, 지역: KR 등의 국가 코드.');
   if (!plan && !key) throw new Error('.env의 YOUTUBE_DATA_API_KEY가 비어 있습니다. 키를 설정한 뒤 다시 실행하세요. 키 없이 npm run videos:plan 으로 준비 상태를 확인할 수 있습니다.');
+  if (priorityBrand && !CHANNELS.some(channel => channel.brand === priorityBrand)) throw new Error('--priority-brand는 TJ 또는 KY여야 합니다.');
   pool = createPool();
   const [songs] = await pool.query('SELECT * FROM karaoke_songs ORDER BY brand, song_number, id');
   const existing = songs.filter(song => song.youtube_video_id).length;
@@ -185,7 +187,7 @@ async function main() {
     }
     try {
       while (true) {
-        const window = state.searchWindows.filter(item => !item.complete && !item.split).sort((a, b) => a.depth - b.depth || a.pages - b.pages || a.from - b.from)[0];
+        const window = state.searchWindows.filter(item => !item.complete && !item.split).sort((a, b) => Number(b.brand === priorityBrand) - Number(a.brand === priorityBrand) || a.depth - b.depth || a.pages - b.pages || a.from - b.from)[0];
         if (!window) break;
         const channel = CHANNELS.find(item => item.brand === window.brand);
         if (!window.pending) {
@@ -286,7 +288,7 @@ async function main() {
     allPublicVideosCovered: coverage.every(channel => channel.publicVideoCount > 0 && channel.uniqueVideosIndexed >= channel.publicVideoCount),
     allCatalogSongsLinked: statusCounts.linked === songs.length,
     stopReason, uniqueVideosChecked: seen.size, candidates: verified.length, applied: applied.size, statusCounts, videoReasons,
-    region, allowMR, melodyRemovedCandidates: verified.filter(song => candidates.get(song.song_key).variant === 'melody_removed').length,
+    region, allowMR, priorityBrand: priorityBrand || null, melodyRemovedCandidates: verified.filter(song => candidates.get(song.song_key).variant === 'melody_removed').length,
     playbackTested: false, requests: state.requests, searchRequests: state.searchRequests || {}, searchBackfill, backfillComplete, mode: apply ? 'apply' : 'dry-run' };
   await writeFile(`${cacheDir}/report.json`, JSON.stringify(report, null, 2) + '\n');
   console.log(JSON.stringify(report, null, 2));
