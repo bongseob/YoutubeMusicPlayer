@@ -121,3 +121,7 @@ npm run videos:apply -- --allow-mr --search-backfill --priority-brand=KY
 ## 2026-11-10 금영 우선 수집 결과
 
 한국 시간 17시 이후 검색을 재개하여 금영 224곡을 추가 연결했습니다. 전체 연결 43,270곡, 미연결 71,698곡입니다. 검색 요청 100회째 YouTube API의 HTTP 429 (rateLimitExceeded)로 중단해 위치를 저장했습니다. 수집은 아직 미완료이며 운영 DB에는 적용하지 않았습니다. [이번 추가분 CSV](../examples/import/video-links-added-2026-11-10.csv)를 별도로 생성했습니다.
+
+## 2026-11-11 금영 우선 수집 결과
+
+금영 11곡을 추가 연결했습니다. 전체 연결 43,281곡, 미연결 71,687곡입니다. 고유 영상 345개를 추가 수집했고 오늘 검색 한도 100회에 도달해 진행 위치를 저장했습니다. 수집은 아직 미완료입니다. [이번 추가분 CSV](../examples/import/video-links-added-2026-11-11.csv)를 만들었으며 운영 DB 적용은 별도로 필요합니다.
