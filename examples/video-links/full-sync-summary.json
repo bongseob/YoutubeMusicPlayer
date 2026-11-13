@@ -1,12 +1,12 @@
 {
-  "exportedAt": "2026-11-11T11:52:01.205Z",
+  "exportedAt": "2026-11-13T11:12:49.340Z",
   "total": 114968,
-  "linked": 43281,
-  "unlinked": 71687,
+  "linked": 43451,
+  "unlinked": 71517,
   "statusCounts": {
-    "not_found_in_indexed_public_videos": 56040,
-    "needs_review": 15647,
-    "linked": 43281
+    "not_found_in_indexed_public_videos": 55866,
+    "needs_review": 15651,
+    "linked": 43451
   },
   "scanComplete": false,
   "allCatalogSongsLinked": false,
@@ -15,15 +15,15 @@
   "coverage": [
     {
       "brand": "TJ",
-      "publicVideoCount": 75091,
+      "publicVideoCount": 75120,
       "uniqueVideosIndexed": 44272,
       "publicPlaylists": 256,
       "unavailablePlaylists": 0
     },
     {
       "brand": "KY",
-      "publicVideoCount": 77146,
-      "uniqueVideosIndexed": 52750,
+      "publicVideoCount": 77157,
+      "uniqueVideosIndexed": 53240,
       "publicPlaylists": 548,
       "unavailablePlaylists": 0
     }
@@ -34,7 +34,8 @@
     "2026-11-08": 100,
     "2026-11-09": 100,
     "2026-11-10": 100,
-    "2026-11-11": 100
+    "2026-11-11": 100,
+    "2026-11-13": 100
   },
   "playbackTested": false,
   "primarySource": "YouTube Data API v3",
