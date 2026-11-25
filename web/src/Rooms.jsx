@@ -25,7 +25,7 @@ export function useRoom() {
   }, [session]);
   async function enter(nickname, code, options = {}) {
     setBusy(true); setError('');
-    try { const data = await request(code ? `/${code}/join` : '/', null, { nickname, ...(code ? {} : options) }); remember({ code: data.room.code, token: data.token }); setRoom(data.room); }
+    try { const data = await request(code ? `/${code}/join` : '/', null, { nickname, ...(code ? {} : options) }); remember({ code: data.room.code, token: data.token }); setRoom(data.room); return data.room; }
     catch (e) { setError(e.message); } finally { setBusy(false); }
   }
   async function action(action, fields = {}) {
@@ -49,6 +49,7 @@ export default function Rooms({ connection, onClose }) {
   const [shareMessage, setShareMessage] = useState('');
   const [title, setTitle] = useState(''), [isPublic, setIsPublic] = useState(true), [visibilityBusy, setVisibilityBusy] = useState(false);
   const [visibilityChoice, setVisibilityChoice] = useState(null);
+  const [roomNotice, setRoomNotice] = useState(''), [managementBusy, setManagementBusy] = useState(false), [hostTarget, setHostTarget] = useState('');
   const nicknameInput = useRef(null), dialog = useRef(null);
   useEffect(() => {
     const previous = document.activeElement;
@@ -68,21 +69,45 @@ export default function Rooms({ connection, onClose }) {
   }
   const invitedCode = invitationCode();
   const { room, session, error, busy, enter, action, forget } = connection;
+  const previousRole = useRef(null);
+  useEffect(() => {
+    const previous = previousRole.current;
+    if (room && previous?.code === room.code && previous.isHost === false && room.isHost) setRoomNotice('새로운 방장이 되었습니다. 소리는 이 기기에서 재생됩니다.');
+    previousRole.current = room ? { code: room.code, isHost: room.isHost } : null;
+  }, [room?.code, room?.isHost]);
+  const locked = busy || visibilityBusy || managementBusy;
+  const hostCandidates = room?.members.filter(member => !member.host && member.online) || [];
+  async function enterRoom(event) {
+    event.preventDefault(); setRoomNotice('');
+    const result = await enter(name, code, { title, isPublic });
+    if (result) setRoomNotice(code ? '방에 입장했습니다.' : '새로운 방이 만들어졌습니다');
+  }
+  async function manageRoom(command, fields = {}) {
+    if (managementBusy) return;
+    setManagementBusy(true); setRoomNotice('');
+    try {
+      const result = await action(command, fields);
+      if (result && command === 'claimHost') setRoomNotice('새로운 방장이 되었습니다. 소리는 이 기기에서 재생됩니다.');
+      if (result && command === 'transferHost') { setRoomNotice('방장 권한을 넘겼습니다. 소리는 새 방장 기기에서 재생됩니다.'); setHostTarget(''); }
+    } finally { setManagementBusy(false); }
+  }
   const inviteUrl = room ? new URL(`/?room=${room.code}`, window.location.origin).href : '';
   async function copyInvite() {
     flashButton('copy', '✓ 눌렀어요');
     try { await navigator.clipboard.writeText(inviteUrl); flashButton('copy', '✓ 복사됨'); setShareMessage('초대 링크를 복사했습니다. 원하는 곳에 붙여넣어 보내세요.'); }
     catch { flashButton('copy', '직접 복사해 주세요'); setShareMessage('초대 링크를 길게 누르거나 선택하여 복사해 주세요.'); }
   }
-  return <dialog ref={dialog} className="admin-dialog room-dialog" aria-labelledby="room-dialog-title" onCancel={e => { e.preventDefault(); if (!busy && !visibilityBusy) onClose(); }} onClick={e => { if (e.target === dialog.current && !busy && !visibilityBusy) onClose(); }}><div className="dialog-inner">
-    <div className="section-heading"><div><span className="eyebrow">SING TOGETHER</span><h2 id="room-dialog-title">방 관리{room && <span className="room-title">/ {room.title}</span>}</h2></div><button className="icon-button" disabled={busy || visibilityBusy} aria-label="방 관리 닫기" onClick={onClose}><X size={22}/></button></div>
+  return <dialog ref={dialog} className="admin-dialog room-dialog" aria-labelledby="room-dialog-title" closedby="none" onCancel={e => e.preventDefault()}><div className="dialog-inner">
+    <div className="section-heading"><div><span className="eyebrow">SING TOGETHER</span><h2 id="room-dialog-title">방 관리{room && <span className="room-title">/ {room.title}</span>}</h2></div><button className="icon-button" disabled={locked} aria-label="방 관리 닫기" onClick={onClose}><X size={22}/></button></div>
+    <p className="room-action-status" role="status" aria-atomic="true">{roomNotice}</p>
     {room ? <p className="room-members">참가자 {room.members.length}명 · {room.members.map(m => `${m.name}${m.host ? ' (방장)' : ''}`).join(', ')}</p> : <p className="dialog-description">방을 만들거나 찾아 입장하세요.</p>}
-    {invitedCode && session && session.code !== invitedCode && <p className="error-box">다른 방의 초대 링크입니다. 현재 방에서 나간 뒤 코드 {invitedCode}로 입장하세요. 방장은 먼저 방을 종료해야 합니다.</p>}
-    {room ? <>{room.isHost && <label className="room-visibility"><input type="checkbox" aria-label="방 공개" checked={visibilityChoice ?? room.isPublic} disabled={visibilityBusy} onChange={async e => { const checked = e.target.checked; setVisibilityChoice(checked); setVisibilityBusy(true); try { await action('visibility', { isPublic: checked }); } finally { setVisibilityBusy(false); setVisibilityChoice(null); } }}/>방 찾기에 공개</label>}<p>입장 코드 <strong className="room-code">{room.code}</strong></p><div className="room-share">
+    {invitedCode && session && session.code !== invitedCode && <p className="error-box">다른 방의 초대 링크입니다. 현재 방에서 나간 뒤 코드 {invitedCode}로 입장하세요. 방장은 먼저 방을 삭제해야 합니다.</p>}
+    {room ? <>{room.isHost && <label className="room-visibility"><input type="checkbox" aria-label="방 공개" checked={visibilityChoice ?? room.isPublic} disabled={locked} onChange={async e => { const checked = e.target.checked; setVisibilityChoice(checked); setVisibilityBusy(true); try { await action('visibility', { isPublic: checked }); } finally { setVisibilityBusy(false); setVisibilityChoice(null); } }}/>방 찾기에 공개</label>}<p>입장 코드 <strong className="room-code">{room.code}</strong></p><div className="room-share">
       <button aria-label="초대 링크 복사" className={`secondary ${buttonFeedback.copy ? 'share-feedback' : ''}`} onClick={copyInvite}>{buttonFeedback.copy || '초대 링크 복사'}</button>
       <input className="room-invite-url" aria-label="초대 링크" readOnly value={inviteUrl} onFocus={e => e.target.select()}/>
     </div>{shareMessage && <p className="room-share-status" role="status">{shareMessage}</p>}
-    <button className="primary room-exit" onClick={() => { if (!room.isHost || window.confirm('방과 예약 목록을 모두 삭제할까요?')) action(room.isHost ? 'close' : 'leave'); }}>{room.isHost ? '방 종료' : '나가기'}</button></> : session ? <><p>방에 다시 연결하고 있습니다…</p><button className="secondary" onClick={forget}>재입장 취소</button></> : <>{invitedCode && <p className="invite-notice">노래방에 초대받았어요! 닉네임을 입력하고 입장하세요.</p>}<p>방장 휴대폰 한 대로 재생하고, 각자 휴대폰에서 예약하세요.</p><form className="room-entry" onSubmit={e => { e.preventDefault(); enter(name, code, { title, isPublic }); }}><label>닉네임<input ref={nicknameInput} aria-label="방 닉네임" required maxLength={30} value={name} onChange={e => setName(e.target.value)}/></label><label>방 코드<input aria-label="방 코드" maxLength={8} value={code} onChange={e => setCode(e.target.value.toUpperCase().replace(/[^A-F0-9]/g, ''))}/></label>{!code && <div className="room-create-options"><label className="field">방 이름 (선택)<input aria-label="새 방 이름" maxLength={60} placeholder="예: 오늘의 한곡 모임" value={title} onChange={e => setTitle(e.target.value)}/></label><label className="room-visibility"><input type="checkbox" aria-label="새 방 공개" checked={isPublic} onChange={e => setIsPublic(e.target.checked)}/>공개 방으로 만들기 (방 찾기에 표시)</label></div>}<button className="primary" disabled={busy || !name.trim() || (code.length > 0 && code.length !== 8)}>{busy ? '연결 중…' : code ? '방 입장' : '새 방 만들기'}</button></form><small>코드를 비워 두면 새 방을 만듭니다. 기본은 공개이며, 방장만 공개 여부를 변경할 수 있습니다.</small><PublicRooms onSelect={selected => { setCode(selected.code); nicknameInput.current?.focus(); }}/></>}
+    {room.isHost ? <section className="host-management"><h3>방장 넘기기</h3><p>접속 중인 참가자에게 재생과 방 관리 권한을 넘깁니다.</p><label className="field">새 방장<select aria-label="새 방장" value={hostCandidates.some(member => member.id === hostTarget) ? hostTarget : ''} disabled={locked} onChange={event => setHostTarget(event.target.value)}><option value="">참가자를 선택하세요</option>{hostCandidates.map(member => <option key={member.id} value={member.id}>{member.name}</option>)}</select></label><button className="secondary" disabled={locked || !hostCandidates.some(member => member.id === hostTarget)} onClick={() => { if (window.confirm('선택한 참가자에게 방장 권한을 넘길까요? 소리는 새 방장 기기에서 재생됩니다.')) manageRoom('transferHost', { memberId: hostTarget }); }}>방장 넘기기</button></section> : <section className="host-management"><h3>방장 연결</h3>{room.canClaimHost ? <><p>방장 기기의 응답이 60초 이상 없습니다. 방장을 맡아 계속 진행할 수 있습니다.</p><button className="secondary" disabled={locked} onClick={() => { if (window.confirm('새 방장을 맡을까요? 소리는 이 기기에서 재생됩니다.')) manageRoom('claimHost'); }}>방장 맡기</button></> : <p>방장이 접속 중입니다. 권한을 넘겨받으려면 방장에게 요청하세요. 방장 기기의 응답이 60초 이상 없으면 ‘방장 맡기’가 표시됩니다.</p>}</section>}
+    <button className="primary room-exit" disabled={locked} onClick={() => { if (!room.isHost || window.confirm('방과 예약 목록을 모두 삭제할까요?')) manageRoom(room.isHost ? 'close' : 'leave'); }}>{room.isHost ? '방 삭제' : '나가기'}</button></> : session ? <><p>방에 다시 연결하고 있습니다…</p><button className="secondary" onClick={forget}>재입장 취소</button></> : <>{invitedCode && <p className="invite-notice">노래방에 초대받았어요! 닉네임을 입력하고 입장하세요.</p>}<p>방장 휴대폰 한 대로 재생하고, 각자 휴대폰에서 예약하세요.</p><form className="room-entry" onSubmit={enterRoom}><label>닉네임<input ref={nicknameInput} aria-label="방 닉네임" required maxLength={30} value={name} onChange={e => setName(e.target.value)}/></label><label>방 코드<input aria-label="방 코드" maxLength={8} value={code} onChange={e => setCode(e.target.value.toUpperCase().replace(/[^A-F0-9]/g, ''))}/></label>{!code && <div className="room-create-options"><label className="field">방 이름 (선택)<input aria-label="새 방 이름" maxLength={60} placeholder="예: 오늘의 한곡 모임" value={title} onChange={e => setTitle(e.target.value)}/></label><label className="room-visibility"><input type="checkbox" aria-label="새 방 공개" checked={isPublic} onChange={e => setIsPublic(e.target.checked)}/>공개 방으로 만들기 (방 찾기에 표시)</label></div>}<button className="primary" disabled={busy || !name.trim() || (code.length > 0 && code.length !== 8)}>{busy ? '연결 중…' : code ? '방 입장' : '새 방 만들기'}</button></form><small>코드를 비워 두면 새 방을 만듭니다. 기본은 공개이며, 방장만 공개 여부를 변경할 수 있습니다.</small><PublicRooms onSelect={selected => { setCode(selected.code); nicknameInput.current?.focus(); }}/></>}
     {error && <p className="error-box" role="alert">{error}</p>}
   </div></dialog>;
 }

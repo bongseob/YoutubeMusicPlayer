@@ -116,7 +116,7 @@ test('Same-number metadata rows keep separate favorites and connect a KY video',
   await expect(page.getByRole('button', { name: '태진 테스트곡 예약', exact: true })).toBeDisabled();
 });
 
-test('Room management opens as a focused modal and returns focus when dismissed', async ({ page }) => {
+test('Room management preserves input on outside click and Escape, and closes only with X', async ({ page }) => {
   await page.route('**/api/rooms/?**', route => route.fulfill({ json: { rooms: [], hasMore: false, page: 1 } }));
   await expect(page.getByLabel('방 닉네임')).toHaveCount(0);
   await expect(page.getByRole('heading', { name: '방 찾기', exact: true })).toHaveCount(0);
@@ -124,13 +124,41 @@ test('Room management opens as a focused modal and returns focus when dismissed'
   await opener.click();
   await expect(page.getByRole('dialog', { name: '방 관리', exact: true })).toBeVisible();
   await expect(page.getByLabel('방 닉네임')).toBeFocused();
+  await page.getByLabel('방 닉네임').fill('입력 중인 이름');
+  await page.getByLabel('새 방 이름').fill('작성 중인 방');
   await page.screenshot({ path: 'test-results/room-management.png' });
+  // Exercise the cancel-event fallback used by browsers without closedby support.
+  await page.getByRole('dialog', { name: '방 관리', exact: true }).evaluate(dialog => dialog.removeAttribute('closedby'));
   await page.keyboard.press('Escape');
-  await expect(page.getByRole('dialog', { name: '방 관리', exact: true })).toHaveCount(0);
+  await expect(page.getByRole('dialog', { name: '방 관리', exact: true })).toBeVisible();
+  await page.mouse.click(1, 1);
+  await expect(page.getByLabel('방 닉네임')).toHaveValue('입력 중인 이름');
+  await expect(page.getByLabel('새 방 이름')).toHaveValue('작성 중인 방');
+  await page.getByRole('button', { name: '방 관리 닫기', exact: true }).click();
   await expect(opener).toBeFocused();
-  await opener.click(); await page.getByRole('button', { name: '방 관리 닫기', exact: true }).click();
-  await expect(opener).toBeFocused();
-  await opener.click(); await page.mouse.click(1, 1);
   await expect(page.getByRole('dialog', { name: '방 관리', exact: true })).toHaveCount(0);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+});
+
+test('Song management and help close only with X while preserving the song draft', async ({ page }) => {
+  const opener = page.getByRole('button', { name: '곡 관리 열기', exact: true });
+  await opener.click();
+  await page.getByLabel('노래 제목').fill('작성 중인 노래');
+  await page.getByLabel('가수', { exact: true }).fill('작성 중인 가수');
+  await page.mouse.click(1, 1);
+  await page.keyboard.press('Escape');
+  await expect(page.getByLabel('노래 제목')).toHaveValue('작성 중인 노래');
+  await expect(page.getByLabel('가수', { exact: true })).toHaveValue('작성 중인 가수');
+  await page.getByRole('button', { name: '곡 관리 닫기', exact: true }).click();
+  await expect(page.getByRole('dialog')).toHaveCount(0);
+  await expect(opener).toBeFocused();
+  const help = page.getByRole('button', { name: '사용 방법', exact: true });
+  await help.click();
+  await page.mouse.click(1, 1);
+  await page.keyboard.press('Escape');
+  await expect(page.getByRole('dialog', { name: '사용 방법', exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: '알겠어요', exact: true })).toHaveCount(0);
+  await page.getByRole('button', { name: '사용 방법 닫기', exact: true }).click();
+  await expect(help).toBeFocused();
+  await expect(page.getByRole('dialog')).toHaveCount(0);
 });

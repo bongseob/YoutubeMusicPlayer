@@ -21,6 +21,75 @@ function memoryStore() {
   };
 }
 
+test('Only an absent host can be replaced, and host transfers preserve the room and revoke old privileges', async t => {
+  const roomStore = memoryStore();
+  const repository = { getSong: async id => ({ id, brand: 'TJ', title: '노래', artist: '가수', youtube_video_id: 'Abc_def-123' }) };
+  const server = createApp({ repository, roomStore, adminToken: 'test-token-with-more-than-24-characters', staticDir: '/nonexistent' }).listen(0, '127.0.0.1');
+  await new Promise(resolve => server.once('listening', resolve));
+  t.after(() => new Promise(resolve => server.close(resolve)));
+  const base = `http://127.0.0.1:${server.address().port}/api/rooms`;
+  async function call(path, body, token) {
+    const response = await fetch(base + path, { method: body ? 'POST' : 'GET', headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) }, ...(body ? { body: JSON.stringify(body) } : {}) });
+    return { status: response.status, ...(await response.json()) };
+  }
+  const host = await call('/', { nickname: '원래 방장' });
+  const code = host.room.code, path = `/${code}`;
+  const guest = await call(`${path}/join`, { nickname: '친구' });
+  const other = await call(`${path}/join`, { nickname: '다른 친구' });
+  const guestId = guest.room.members.find(m => m.name === '친구').id;
+  const otherId = other.room.members.find(m => m.name === '다른 친구').id;
+  const action = (token, fields) => call(`${path}/actions`, fields, token);
+  const view = async token => (await call(path, null, token)).room;
+  assert.equal((await view(guest.token)).canClaimHost, false);
+  assert.equal((await action(guest.token, { action: 'claimHost', lastSeen: 0 })).status, 409);
+  assert.equal((await action(guest.token, { action: 'transferHost', memberId: otherId })).status, 403);
+  for (const memberId of [undefined, {}, 'missing', host.room.members[0].id]) assert.equal((await action(host.token, { action: 'transferHost', memberId })).status, 409);
+  await action(host.token, { action: 'reserve', songId: '1' });
+  await action(host.token, { action: 'next', currentId: null });
+  await action(guest.token, { action: 'reserve', songId: '1' });
+  const before = await view(guest.token);
+  await action(guest.token, { action: 'vote', queueId: before.queue[0].queueId });
+  // Simulate a closed host tab, without using sleeps or touching an actual DB.
+  await roomStore.transact(code, state => { state.members.find(m => m.host).lastSeen = Date.now() - 61000; });
+  assert.equal((await view(guest.token)).canClaimHost, true);
+  // A successful authenticated host heartbeat makes the room unavailable again.
+  await view(host.token);
+  assert.equal((await action(guest.token, { action: 'claimHost' })).status, 409);
+  await roomStore.transact(code, state => { state.members.find(m => m.host).lastSeen = Date.now() - 61000; });
+  assert.equal((await action('f'.repeat(64), { action: 'claimHost' })).status, 401);
+  const claims = await Promise.all([action(guest.token, { action: 'claimHost' }), action(other.token, { action: 'claimHost' })]);
+  assert.deepEqual(claims.map(result => result.status).sort(), [200, 409]);
+  const winner = claims[0].status === 200 ? guest : other;
+  const winnerView = await view(winner.token);
+  assert.equal(winnerView.isHost, true);
+  assert.equal(winnerView.members.filter(m => m.host).length, 1);
+  assert.equal(winnerView.members[0].host, true);
+  assert.equal(winnerView.current.queueId, before.current.queueId);
+  assert.equal(winnerView.queue[0].queueId, before.queue[0].queueId);
+  assert.equal(winnerView.queue[0].voteCount, 1);
+  assert.equal((await action(host.token, { action: 'close' })).status, 403);
+  assert.equal((await action(host.token, { action: 'next', currentId: before.current.queueId })).status, 403);
+  assert.equal((await action(host.token, { action: 'playback', currentId: before.current.queueId, status: 'playing' })).status, 403);
+  const target = winner === guest ? other : guest;
+  const targetId = winner === guest ? otherId : guestId;
+  await roomStore.transact(code, state => { state.members.find(m => m.id === targetId).lastSeen = Date.now() - 61000; });
+  assert.equal((await action(winner.token, { action: 'transferHost', memberId: targetId })).status, 409);
+  await view(target.token);
+  const transferred = await action(winner.token, { action: 'transferHost', memberId: targetId });
+  assert.equal(transferred.status, 200);
+  assert.equal(transferred.room.isHost, false);
+  assert.equal((await view(target.token)).isHost, true);
+  assert.equal((await call('/?q=' + encodeURIComponent(target.room.nickname))).rooms[0].hostName, target.room.nickname);
+  assert.equal((await action(winner.token, { action: 'close' })).status, 403);
+  assert.doesNotMatch(JSON.stringify(await view(target.token)), /lastSeen|secret|token/);
+  // Existing persisted rooms receive a grace period rather than immediate takeover.
+  await roomStore.transact(code, state => { delete state.members.find(m => m.host).lastSeen; });
+  assert.equal((await view(winner.token)).canClaimHost, false);
+  await roomStore.transact(code, state => { state.members = state.members.filter(m => !m.host); });
+  assert.equal((await action(winner.token, { action: 'claimHost' })).status, 200);
+  assert.equal((await action(winner.token, { action: 'close' })).status, 200);
+});
+
 test('Queue votes are private, single-choice, transactional and cleared as reservations end', async t => {
   const roomStore = memoryStore();
   const repository = { getSong: async id => ({ id, brand: 'TJ', title: '같은 노래', artist: '가수', youtube_video_id: 'Abc_def-123' }) };

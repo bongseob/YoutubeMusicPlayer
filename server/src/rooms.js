@@ -7,6 +7,7 @@ const fail = (status, message) => { throw Object.assign(new Error(message), { st
 const hash = value => createHash('sha256').update(value).digest('hex');
 const nickname = value => { if (typeof value !== 'string' || !value.trim() || value.trim().length > 30) fail(400, '닉네임을 1~30자로 입력하세요.'); return value.trim(); };
 const lifetime = 24 * 60 * 60 * 1000;
+const hostTimeout = 60 * 1000;
 export function mysqlRoomStore(pool) {
   return {
     async ensure() { await pool.query(`CREATE TABLE IF NOT EXISTS karaoke_rooms (code CHAR(8) CHARACTER SET ascii COLLATE ascii_bin PRIMARY KEY, state JSON NOT NULL, expires_at DATETIME NOT NULL, INDEX (expires_at)) ENGINE=InnoDB`); },
@@ -49,11 +50,20 @@ export function roomRouter({ store, repository }) {
   });
   const entryLimit = rateLimit({ windowMs: 60000, limit: 30 });
   const writeLimit = rateLimit({ windowMs: 60000, limit: 120 });
+  function hostAvailable(state) {
+    return state.members.some(member => member.host && Date.now() - member.lastSeen < hostTimeout);
+  }
+  function appointHost(state, target) {
+    for (const member of state.members) member.host = member.id === target.id;
+    // Public room queries use members[0] as the host.
+    state.members = [target, ...state.members.filter(member => member.id !== target.id)];
+    state.playback = state.current ? 'loading' : 'ready';
+  }
   function view(state, member) {
     const counts = new Map();
     for (const voter of state.members) if (voter.voteQueueId) counts.set(voter.voteQueueId, (counts.get(voter.voteQueueId) || 0) + 1);
     const queue = state.queue.map(song => ({ ...song, voteCount: counts.get(song.queueId) || 0, votedByMe: member.voteQueueId === song.queueId }));
-    return { code: state.code, title: state.title, isPublic: state.isPublic === true, isHost: member.host, nickname: member.name, members: state.members.map(m => ({ id: m.id, name: m.name, host: m.host })), queue, current: state.current, playback: state.playback, revision: state.revision };
+    return { code: state.code, title: state.title, isPublic: state.isPublic === true, isHost: member.host, canClaimHost: !member.host && !hostAvailable(state), nickname: member.name, members: state.members.map(m => ({ id: m.id, name: m.name, host: m.host, online: Date.now() - m.lastSeen < hostTimeout })), queue, current: state.current, playback: state.playback, revision: state.revision };
   }
   router.get('/', async (req, res) => {
     const q = req.query.q ?? '', page = Number(req.query.page ?? 1);
@@ -66,7 +76,7 @@ export function roomRouter({ store, repository }) {
     if (req.body.title !== undefined && (typeof req.body.title !== 'string' || req.body.title.trim().length > 60)) fail(400, '방 이름은 60자 이내로 입력하세요.');
     if (req.body.isPublic !== undefined && typeof req.body.isPublic !== 'boolean') fail(400, '공개 설정을 확인하세요.');
     const code = randomBytes(4).toString('hex').toUpperCase();
-    const member = { id: randomUUID(), name, host: true, secret: hash(token) };
+    const member = { id: randomUUID(), name, host: true, secret: hash(token), lastSeen: Date.now() };
     const state = { code, title: req.body.title?.trim() || `${name}의 노래방`, isPublic: req.body.isPublic ?? true, members: [member], queue: [], current: null, playback: 'ready', revision: 0, createdAt: Date.now(), expiresAt: Date.now() + lifetime };
     await store.create(code, state); res.status(201).json({ token, room: view(state, member) });
   });
@@ -74,8 +84,10 @@ export function roomRouter({ store, repository }) {
   router.post('/:code/join', entryLimit, async (req, res) => {
     const name = nickname(req.body.nickname), token = randomBytes(32).toString('hex');
     const result = await store.transact(req.params.code, state => {
+      const legacyHost = state.members.find(member => member.host && !Number.isFinite(member.lastSeen));
+      if (legacyHost) legacyHost.lastSeen = Date.now();
       if (state.members.length >= 50) fail(409, '방은 최대 50명까지 입장할 수 있습니다.');
-      const member = { id: randomUUID(), name, host: false, secret: hash(token) }; state.members.push(member); state.revision++;
+      const member = { id: randomUUID(), name, host: false, secret: hash(token), lastSeen: Date.now() }; state.members.push(member); state.revision++;
       return { token, room: view(state, member) };
     }); res.json(result);
   });
@@ -85,6 +97,9 @@ export function roomRouter({ store, repository }) {
     return store.transact(req.params.code, async (state, connection) => {
       const member = state.members.find(m => m.secret === hash(token));
       if (!member) fail(401, '방에 다시 입장하세요.');
+      const legacyHost = state.members.find(m => m.host && !Number.isFinite(m.lastSeen));
+      if (legacyHost) { legacyHost.lastSeen = Date.now(); state.revision++; }
+      member.lastSeen = Date.now();
       await action(state, member, connection); return view(state, member);
     });
   }
@@ -104,12 +119,19 @@ export function roomRouter({ store, repository }) {
         if (queueId !== null && !state.queue.some(song => song.queueId === queueId)) fail(409, '예약 목록이 변경되었습니다. 다시 선택하세요.');
         if (queueId === null) delete member.voteQueueId;
         else member.voteQueueId = queueId;
+      } else if (action === 'claimHost') {
+        if (member.host || hostAvailable(state)) fail(409, '현재 방장이 접속 중입니다. 방장에게 권한 이전을 요청하세요.');
+        appointHost(state, member);
       } else if (action === 'leave') {
-        if (member.host) fail(403, '방장은 방 종료를 사용하세요.');
+        if (member.host) fail(403, '방장은 권한을 넘긴 뒤 나가거나 방 삭제를 사용하세요.');
         state.members = state.members.filter(m => m.id !== member.id);
       } else {
         if (!member.host) fail(403, '방장만 재생과 예약 목록을 관리할 수 있습니다.');
-        if (action === 'next') {
+        if (action === 'transferHost') {
+          const target = state.members.find(m => m.id === req.body.memberId && m.id !== member.id);
+          if (!target || Date.now() - target.lastSeen >= hostTimeout || !Number.isFinite(target.lastSeen)) fail(409, '접속 중인 다른 참가자를 선택하세요.');
+          appointHost(state, target);
+        } else if (action === 'next') {
           // A stale video-ended event must not skip a newly selected song.
           if (req.body.currentId !== (state.current?.queueId || null)) fail(409, '재생 곡이 변경되었습니다.');
           state.current = state.queue.shift() || null; state.playback = state.current ? 'loading' : 'ready';

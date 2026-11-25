@@ -37,6 +37,11 @@
 .room-dialog p { line-height: 1.7; overflow-wrap: anywhere; }
 .room-dialog small { display: block; color: var(--muted); line-height: 1.7; margin-top: 12px; }
 .room-dialog .room-entry .room-visibility { display: flex; min-width: 0; }
+.room-action-status:not(:empty) { margin: 16px 0; padding: 12px; border: 1px solid #b2ec7944; border-radius: 8px; color: var(--green); background: #b2ec7910; line-height: 1.7; }
+.host-management { border-top: 1px solid var(--line); margin-top: 22px; padding-top: 18px; }
+.host-management h3 { font-size: 16px; margin-bottom: 10px; }
+.host-management p { font-size: 13px; margin-bottom: 12px; color: var(--muted); }
+.host-management button { min-height: 44px; }
 .room-summary { display: flex; align-items: center; gap: 14px; padding: 13px 16px; margin-bottom: 20px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); }
 .room-summary > div { flex: 1; min-width: 0; }
 .room-summary strong { display: block; font-size: 13px; overflow-wrap: anywhere; }

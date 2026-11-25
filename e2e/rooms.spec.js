@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
 import { createApp } from '../server/src/app.js';
 
-let server, origin;
+let server, origin, states;
 const song = { id: '1', brand: 'TJ', song_number: '123', title: '가거라 삼팔선', artist: '남인수', youtube_video_id: 'Abc_def-123' };
 test.beforeAll(async () => {
-  const states = new Map();
+  states = new Map();
   const store = { async listPublic(q, offset, limit) { return [...states.values()].filter(s => s.isPublic === true && `${s.title} ${s.members[0].name}`.includes(q)).slice(offset, offset + limit).map(s => ({ code: s.code, title: s.title, hostName: s.members[0].name, memberCount: s.members.length })); }, async create(code, state) { states.set(code, state); }, async transact(code, fn) { const state = states.get(code); if (!state) throw Object.assign(new Error('방이 종료되었습니다.'), { status: 404 }); const result = await fn(state); if (state.closed) states.delete(code); return result; } };
   server = createApp({ repository: { getSong: async () => song, getSongsByKeys: async () => [{ brand: 'KY', song_key: 'KY:n:101', song_number: '101', title: song.title, artist: song.artist, youtube_video_id: '7JDG2kxepz8' }], list: async () => ({ songs: [song], total: 1 }) }, roomStore: store, adminToken: 'room-browser-admin-token-at-least-24', staticDir: '/nonexistent' }).listen(0, '127.0.0.1');
   await new Promise(resolve => server.once('listening', resolve)); origin = `http://127.0.0.1:${server.address().port}`;
@@ -18,6 +18,54 @@ async function setup(context) {
   await context.route('**/api/**', async route => { const url = new URL(route.request().url()); const response = await route.fetch({ url: origin + url.pathname + url.search }); await route.fulfill({ response }); });
   await context.route('https://www.youtube.com/iframe_api', route => route.fulfill({ contentType: 'application/javascript', body: `window.YT={PlayerState:{PLAYING:1,ENDED:0},Player:class {constructor(node,o){this.o=o;window.testPlayer=this;window.testVideoId=o.videoId;node.innerHTML='<div>공동 플레이어</div>';setTimeout(()=>o.events.onReady({target:this}),0)}playVideo(){this.o.events.onStateChange({data:1})}pauseVideo(){this.o.events.onStateChange({data:2})}destroy(){}}};window.onYouTubeIframeAPIReady();` }));
 }
+
+test('Room creation confirms success, hosts can transfer ownership and an absent host can be replaced', async ({ browser }) => {
+  const hostContext = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const guestContext = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  let code;
+  try {
+    await setup(hostContext); await setup(guestContext);
+    const host = await hostContext.newPage(), guest = await guestContext.newPage();
+    await host.goto('/');
+    await host.getByRole('button', { name: '방 관리 열기', exact: true }).click();
+    await host.getByLabel('방 닉네임').fill('인계 방장');
+    await host.getByRole('button', { name: '새 방 만들기', exact: true }).click();
+    await expect(host.locator('.room-action-status')).toHaveText('새로운 방이 만들어졌습니다');
+    await expect(host.getByRole('button', { name: '방 삭제', exact: true })).toBeVisible();
+    await expect(host.getByRole('button', { name: '방 종료', exact: true })).toHaveCount(0);
+    code = await host.locator('.room-code').innerText();
+    await guest.goto(`/?room=${code}`);
+    await guest.getByLabel('방 닉네임').fill('새 방장 후보');
+    await guest.getByRole('button', { name: '방 입장', exact: true }).click();
+    await expect(guest.locator('.room-action-status')).toHaveText('방에 입장했습니다.');
+    await expect(guest.getByRole('button', { name: '방장 맡기', exact: true })).toHaveCount(0);
+    await host.getByLabel('새 방장', { exact: true }).selectOption({ label: '새 방장 후보' });
+    host.once('dialog', dialog => dialog.accept());
+    await host.getByRole('button', { name: '방장 넘기기', exact: true }).click();
+    await expect(host.locator('.room-action-status')).toContainText('방장 권한을 넘겼습니다');
+    await expect(host.getByRole('button', { name: '나가기', exact: true })).toBeVisible();
+    await expect(guest.getByRole('button', { name: '방 삭제', exact: true })).toBeVisible();
+    await expect(guest.locator('.room-action-status')).toContainText('새로운 방장이 되었습니다');
+    await expect(guest.locator('.room-members')).toContainText('새 방장 후보 (방장)');
+    await host.getByRole('button', { name: '방 관리 닫기', exact: true }).click();
+    await expect(host.getByRole('region', { name: '마이크 설정', exact: true })).toHaveCount(0);
+    await host.getByRole('button', { name: '방 관리 열기', exact: true }).click();
+    await guestContext.close();
+    // Fast-forward only the in-memory fixture's heartbeat, never the production DB.
+    states.get(code).members.find(member => member.host).lastSeen = Date.now() - 61000;
+    await expect(host.getByRole('button', { name: '방장 맡기', exact: true })).toBeVisible();
+    host.once('dialog', dialog => dialog.accept());
+    await host.getByRole('button', { name: '방장 맡기', exact: true }).click();
+    await expect(host.locator('.room-action-status')).toContainText('새로운 방장이 되었습니다');
+    await expect(host.getByRole('button', { name: '방 삭제', exact: true })).toBeVisible();
+    await host.locator('.room-dialog').screenshot({ path: 'test-results/room-host-management-mobile.png' });
+    expect(await host.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    host.once('dialog', dialog => dialog.accept());
+    await host.getByRole('button', { name: '방 삭제', exact: true }).click();
+    await expect(host.getByRole('button', { name: '새 방 만들기', exact: true })).toBeVisible();
+    expect(states.has(code)).toBe(false);
+  } finally { await hostContext.close(); await guestContext.close(); if (code) states.delete(code); }
+});
 
 test('Reservation confirmation appears after room success and pending clicks cannot duplicate requests', async ({ browser }) => {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
@@ -191,7 +239,7 @@ test('Host and guest share queue, restore sessions, restrict playback and clean 
     await expect(host.getByRole('button', { name: '마이크 끄기', exact: true })).toBeVisible();
     expect(await host.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
     await host.getByRole('button', { name: '방 관리 열기', exact: true }).click();
-    host.once('dialog', d => d.accept()); await host.getByRole('button', { name: '방 종료', exact: true }).click();
+    host.once('dialog', d => d.accept()); await host.getByRole('button', { name: '방 삭제', exact: true }).click();
     await expect(host.getByRole('button', { name: '새 방 만들기' })).toBeVisible();
     expect(await host.evaluate(() => window.mockMic.getTracks().every(t => t.readyState === 'ended'))).toBe(true);
     await expect(guest.getByLabel('현재 방', { exact: true })).toHaveCount(0, { timeout: 10000 });
@@ -246,6 +294,6 @@ test('Public rooms can be found and selected, host alone can hide them and priva
     await guest.getByRole('button', { name: '방 입장', exact: true }).click();
     await expect(guest.locator('.room-code')).toHaveText(code);
     await expect(guest.getByLabel('방 공개', { exact: true })).toHaveCount(0);
-    host.once('dialog', d => d.accept()); await host.getByRole('button', { name: '방 종료', exact: true }).click();
+    host.once('dialog', d => d.accept()); await host.getByRole('button', { name: '방 삭제', exact: true }).click();
   } finally { await hostContext.close(); await guestContext.close(); }
 });
