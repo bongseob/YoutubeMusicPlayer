@@ -55,7 +55,7 @@ export function createApp({ repository, adminToken, roomStore, trustProxy = fals
   app.use('/api', (req, res) => res.status(404).json({ error: '요청한 API를 찾을 수 없습니다.' }));
   if (existsSync(staticDir)) {
     app.use(express.static(staticDir));
-    app.get('/{*path}', (req, res) => res.sendFile(`${staticDir}/index.html`));
+    app.get('/{*path}', (req, res) => res.status(404).sendFile(`${staticDir}/404.html`));
   }
   app.use((err, req, res, next) => {
     const status = err.status || 500;
