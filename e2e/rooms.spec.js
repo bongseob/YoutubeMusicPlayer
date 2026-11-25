@@ -31,9 +31,11 @@ test('Room creation confirms success, hosts can transfer ownership and an absent
     await host.getByLabel('방 닉네임').fill('인계 방장');
     await host.getByRole('button', { name: '새 방 만들기', exact: true }).click();
     await expect(host.locator('.room-action-status')).toHaveText('새로운 방이 만들어졌습니다');
+    await expect(host.locator('.room-code')).toHaveCount(0);
+    await expect(host.getByText('입장 코드', { exact: false })).toHaveCount(0);
     await expect(host.getByRole('button', { name: '방 삭제', exact: true })).toBeVisible();
     await expect(host.getByRole('button', { name: '방 종료', exact: true })).toHaveCount(0);
-    code = await host.locator('.room-code').innerText();
+    code = new URL(await host.getByLabel('초대 링크', { exact: true }).inputValue()).searchParams.get('room');
     await guest.goto(`/?room=${code}`);
     await guest.getByLabel('방 닉네임').fill('새 방장 후보');
     await guest.getByRole('button', { name: '방 입장', exact: true }).click();
@@ -197,7 +199,7 @@ test('Host and guest share queue, restore sessions, restrict playback and clean 
     await host.goto('/'); await guest.goto('/');
     await host.getByRole('button', { name: '방 관리 열기', exact: true }).click();
     await host.getByLabel('방 닉네임').fill('방장'); await host.getByRole('button', { name: '새 방 만들기' }).click();
-    const code = await host.locator('.room-code').innerText();
+    const code = new URL(await host.getByLabel('초대 링크', { exact: true }).inputValue()).searchParams.get('room');
     const invitation = await host.getByLabel('초대 링크', { exact: true }).inputValue();
     expect(new URL(invitation).search).toBe(`?room=${code}`);
     await expect(host.getByRole('button', { name: '카카오톡으로 초대' })).toHaveCount(0);
@@ -224,7 +226,7 @@ test('Host and guest share queue, restore sessions, restrict playback and clean 
     await expect(guest.locator('.youtube-host')).toHaveCount(0);
     await host.getByRole('button', { name: '일시정지', exact: true }).click();
     await expect(guest.getByText('재생 상태: 일시정지')).toBeVisible({ timeout: 10000 });
-    await guest.reload(); await expect(guest.locator('.room-code')).toHaveText(code);
+    await guest.reload(); await expect(guest.getByLabel('초대 링크', { exact: true })).toHaveValue(new RegExp('room=' + code));
     await guest.getByRole('button', { name: '방 관리 닫기', exact: true }).click();
     await host.reload(); await expect(host.getByLabel('현재 방', { exact: true })).toContainText(code);
     await expect(host.locator('.now-title h2')).toHaveText(song.title);
@@ -277,7 +279,7 @@ test('Public rooms can be found and selected, host alone can hide them and priva
     await host.getByLabel('방 닉네임').fill('목록 방장');
     await host.getByLabel('새 방 이름').fill('공개 모임 테스트');
     await host.getByRole('button', { name: '새 방 만들기' }).click();
-    const code = await host.locator('.room-code').innerText();
+    const code = new URL(await host.getByLabel('초대 링크', { exact: true }).inputValue()).searchParams.get('room');
     await guest.goto('/'); await guest.getByRole('button', { name: '방 관리 열기', exact: true }).click(); await guest.getByLabel('공개 방 검색').fill('공개 모임');
     await expect(guest.getByRole('button', { name: '공개 모임 테스트 방 선택' })).toBeVisible();
     await host.getByLabel('방 공개', { exact: true }).uncheck();
@@ -292,7 +294,7 @@ test('Public rooms can be found and selected, host alone can hide them and priva
     await expect(host.getByLabel('방 공개', { exact: true })).not.toBeChecked();
     await guest.getByLabel('방 닉네임').fill('참가자');
     await guest.getByRole('button', { name: '방 입장', exact: true }).click();
-    await expect(guest.locator('.room-code')).toHaveText(code);
+    await expect(guest.getByLabel('초대 링크', { exact: true })).toHaveValue(new RegExp('room=' + code));
     await expect(guest.getByLabel('방 공개', { exact: true })).toHaveCount(0);
     host.once('dialog', d => d.accept()); await host.getByRole('button', { name: '방 삭제', exact: true }).click();
   } finally { await hostContext.close(); await guestContext.close(); }
