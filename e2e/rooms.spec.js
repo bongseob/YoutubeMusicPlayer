@@ -275,6 +275,7 @@ test('Public rooms can be found and selected, host alone can hide them and priva
     const host = await hostContext.newPage(), guest = await guestContext.newPage();
     await host.goto('/');
     await host.getByRole('button', { name: '방 관리 열기', exact: true }).click();
+    await host.locator('.room-entry-options > summary').click();
     await expect(host.getByLabel('새 방 공개', { exact: true })).toBeChecked();
     await host.getByLabel('방 닉네임').fill('목록 방장');
     await host.getByLabel('새 방 이름').fill('공개 모임 테스트');

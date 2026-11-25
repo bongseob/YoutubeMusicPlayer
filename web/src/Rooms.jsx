@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import { X } from 'lucide-react';
 
 async function request(path, token, body, signal) {
@@ -47,6 +47,8 @@ export function invitationCode() {
 export default function Rooms({ connection, onClose }) {
   const [name, setName] = useState(''), [code, setCode] = useState(invitationCode);
   const [shareMessage, setShareMessage] = useState('');
+  const entryId = useId();
+  const [selectedRoomName, setSelectedRoomName] = useState('');
   const [title, setTitle] = useState(''), [isPublic, setIsPublic] = useState(true), [visibilityBusy, setVisibilityBusy] = useState(false);
   const [visibilityChoice, setVisibilityChoice] = useState(null);
   const [roomNotice, setRoomNotice] = useState(''), [managementBusy, setManagementBusy] = useState(false), [hostTarget, setHostTarget] = useState('');
@@ -107,7 +109,21 @@ export default function Rooms({ connection, onClose }) {
       <input className="room-invite-url" aria-label="초대 링크" readOnly value={inviteUrl} onFocus={e => e.target.select()}/>
     </div>{shareMessage && <p className="room-share-status" role="status">{shareMessage}</p>}
     {room.isHost ? <section className="host-management"><h3>방장 넘기기</h3><p>접속 중인 참가자에게 재생과 방 관리 권한을 넘깁니다.</p><label className="field">새 방장<select aria-label="새 방장" value={hostCandidates.some(member => member.id === hostTarget) ? hostTarget : ''} disabled={locked} onChange={event => setHostTarget(event.target.value)}><option value="">참가자를 선택하세요</option>{hostCandidates.map(member => <option key={member.id} value={member.id}>{member.name}</option>)}</select></label><button className="secondary" disabled={locked || !hostCandidates.some(member => member.id === hostTarget)} onClick={() => { if (window.confirm('선택한 참가자에게 방장 권한을 넘길까요? 소리는 새 방장 기기에서 재생됩니다.')) manageRoom('transferHost', { memberId: hostTarget }); }}>방장 넘기기</button></section> : <section className="host-management"><h3>방장 연결</h3>{room.canClaimHost ? <><p>방장 기기의 응답이 60초 이상 없습니다. 방장을 맡아 계속 진행할 수 있습니다.</p><button className="secondary" disabled={locked} onClick={() => { if (window.confirm('새 방장을 맡을까요? 소리는 이 기기에서 재생됩니다.')) manageRoom('claimHost'); }}>방장 맡기</button></> : <p>방장이 접속 중입니다. 권한을 넘겨받으려면 방장에게 요청하세요. 방장 기기의 응답이 60초 이상 없으면 ‘방장 맡기’가 표시됩니다.</p>}</section>}
-    <button className="primary room-exit" disabled={locked} onClick={() => { if (!room.isHost || window.confirm('방과 예약 목록을 모두 삭제할까요?')) manageRoom(room.isHost ? 'close' : 'leave'); }}>{room.isHost ? '방 삭제' : '나가기'}</button></> : session ? <><p>방에 다시 연결하고 있습니다…</p><button className="secondary" onClick={forget}>재입장 취소</button></> : <>{invitedCode && <p className="invite-notice">노래방에 초대받았어요! 닉네임을 입력하고 입장하세요.</p>}<p>방장 휴대폰 한 대로 재생하고, 각자 휴대폰에서 예약하세요.</p><form className="room-entry" onSubmit={enterRoom}><label>닉네임<input ref={nicknameInput} aria-label="방 닉네임" required maxLength={30} value={name} onChange={e => setName(e.target.value)}/></label><label>방 코드<input aria-label="방 코드" maxLength={8} value={code} onChange={e => setCode(e.target.value.toUpperCase().replace(/[^A-F0-9]/g, ''))}/></label>{!code && <div className="room-create-options"><label className="field">방 이름 (선택)<input aria-label="새 방 이름" maxLength={60} placeholder="예: 오늘의 한곡 모임" value={title} onChange={e => setTitle(e.target.value)}/></label><label className="room-visibility"><input type="checkbox" aria-label="새 방 공개" checked={isPublic} onChange={e => setIsPublic(e.target.checked)}/>공개 방으로 만들기 (방 찾기에 표시)</label></div>}<button className="primary" disabled={busy || !name.trim() || (code.length > 0 && code.length !== 8)}>{busy ? '연결 중…' : code ? '방 입장' : '새 방 만들기'}</button></form><small>코드를 비워 두면 새 방을 만듭니다. 기본은 공개이며, 방장만 공개 여부를 변경할 수 있습니다.</small><PublicRooms onSelect={selected => { setCode(selected.code); nicknameInput.current?.focus(); }}/></>}
+    <button className="primary room-exit" disabled={locked} onClick={() => { if (!room.isHost || window.confirm('방과 예약 목록을 모두 삭제할까요?')) manageRoom(room.isHost ? 'close' : 'leave'); }}>{room.isHost ? '방 삭제' : '나가기'}</button></> : session ? <><p>방에 다시 연결하고 있습니다…</p><button className="secondary" onClick={forget}>재입장 취소</button></> : <>{invitedCode && <p className="invite-notice">노래방에 초대받았어요! 닉네임을 입력하고 입장하세요.</p>}{code && <p className="room-selection">{selectedRoomName || '선택한 방'}에 입장합니다. <button type="button" className="text-button" disabled={busy} onClick={() => { setCode(''); setSelectedRoomName(''); }}>새 방 만들기로 전환</button></p>}
+    <form className="room-entry" aria-label="방 만들기 또는 입장" onSubmit={enterRoom}>
+      <div className="room-entry-main">
+        <label htmlFor={`${entryId}-nickname`}>닉네임<input id={`${entryId}-nickname`} name="nickname" ref={nicknameInput} aria-label="방 닉네임" autoComplete="nickname" required maxLength={30} value={name} onChange={e => setName(e.target.value)} disabled={busy}/></label>
+        <button type="submit" className="primary" disabled={busy || !name.trim() || (code.length > 0 && code.length !== 8)}>{busy ? '연결 중…' : code ? '방 입장' : '새 방 만들기'}</button>
+      </div>
+      <details className="room-entry-options">
+        <summary>추가 설정</summary>
+        <label htmlFor={`${entryId}-code`}>방 코드<input id={`${entryId}-code`} name="code" aria-label="방 코드" autoComplete="off" autoCapitalize="characters" spellCheck={false} maxLength={8} value={code} disabled={busy} onChange={e => { setCode(e.target.value.toUpperCase().replace(/[^A-F0-9]/g, '')); setSelectedRoomName(''); }}/></label>
+        {!code && <div className="room-create-options">
+          <label className="field" htmlFor={`${entryId}-title`}>방 이름 (선택)<input id={`${entryId}-title`} name="title" aria-label="새 방 이름" maxLength={60} placeholder="예: 오늘의 한곡 모임" value={title} disabled={busy} onChange={e => setTitle(e.target.value)}/></label>
+          <label className="room-visibility" htmlFor={`${entryId}-public`}><input id={`${entryId}-public`} name="isPublic" type="checkbox" aria-label="새 방 공개" checked={isPublic} disabled={busy} onChange={e => setIsPublic(e.target.checked)}/>공개 방으로 만들기 (방 찾기에 표시)</label>
+        </div>}
+      </details>
+    </form><PublicRooms onSelect={selected => { setCode(selected.code); setSelectedRoomName(selected.title); nicknameInput.current?.focus(); }}/></>}
     {error && <p className="error-box" role="alert">{error}</p>}
   </div></dialog>;
 }

@@ -124,7 +124,24 @@ test('Room management preserves input on outside click and Escape, and closes on
   await opener.click();
   await expect(page.getByRole('dialog', { name: '방 관리', exact: true })).toBeVisible();
   await expect(page.getByLabel('방 닉네임')).toBeFocused();
+  await expect(page.getByLabel('방 코드', { exact: true })).not.toBeVisible();
+  await expect(page.getByLabel('새 방 이름')).not.toBeVisible();
+  await expect(page.getByText('방장 휴대폰 한 대로 재생하고, 각자 휴대폰에서 예약하세요.', { exact: true })).toHaveCount(0);
+  await expect(page.getByText('코드를 비워 두면 새 방을 만듭니다.', { exact: false })).toHaveCount(0);
+  for (const width of [320, 390, 1280]) {
+    await page.setViewportSize({ width, height: 844 });
+    const input = await page.getByLabel('방 닉네임').boundingBox();
+    const button = await page.getByRole('button', { name: '새 방 만들기', exact: true }).boundingBox();
+    expect(Math.abs(input.y + input.height - button.y - button.height)).toBeLessThan(4);
+    expect(button.x).toBeGreaterThanOrEqual(input.x + input.width);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  }
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.screenshot({ path: 'test-results/room-create-simple-mobile.png' });
   await page.getByLabel('방 닉네임').fill('입력 중인 이름');
+  await page.keyboard.press('Tab');
+  await expect(page.getByRole('button', { name: '새 방 만들기', exact: true })).toBeFocused();
+  await page.locator('.room-entry-options > summary').click();
   await page.getByLabel('새 방 이름').fill('작성 중인 방');
   await page.screenshot({ path: 'test-results/room-management.png' });
   // Exercise the cancel-event fallback used by browsers without closedby support.

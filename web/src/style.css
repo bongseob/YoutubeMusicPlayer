@@ -14,6 +14,18 @@
 .room-entry { display: flex; gap: 12px; flex-wrap: wrap; align-items: end; }
 .room-entry label { display: grid; gap: 7px; flex: 1; min-width: 130px; }
 .room-entry input { width: 100%; border: 1px solid var(--line); background: #11161e; color: inherit; border-radius: 8px; padding: 12px; }
+.room-entry-main { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: end; flex-basis: 100%; }
+.room-entry-main > label { min-width: 0; }
+.room-entry-main input { min-height: 48px; font-size: 16px; }
+.room-entry-main > button { min-height: 48px; padding: 10px 12px; white-space: nowrap; font-size: 14px; }
+.room-entry-options { flex-basis: 100%; min-width: 0; }
+.room-entry-options > summary { padding: 10px 0; cursor: pointer; color: var(--muted); font-size: 13px; }
+.room-entry-options > summary:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+.room-entry-options > label { margin-top: 8px; }
+.room-entry-options .room-create-options { display: grid; gap: 12px; margin-top: 16px; }
+.room-entry-options .room-create-options .field { margin-bottom: 0; }
+.room-selection { margin-bottom: 14px; font-size: 13px; }
+.room-selection button { min-height: 36px; }
 .mic-slider { display: grid; gap: 8px; margin-top: 20px; }
 .mic-slider input { width: 100%; }
 .room-share { display: flex; gap: 10px; flex-wrap: wrap; margin: 14px 0; }
