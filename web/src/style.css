@@ -55,6 +55,8 @@
 .room-share-status { color: var(--muted); font-size: 12px; margin-bottom: 14px; }
 .room-exit { width: 100%; margin-top: 12px; font-size: 16px; }
 
+.reserve-button.reserved:disabled { opacity: 1; background: #b2ec7933; color: var(--green); }
+.toast.toast-error { background: #38211e; border-color: #9b5145; color: #efb4a6; }
 .queue-vote-help { padding: 0 20px; font-size: 12px; line-height: 1.8; color: var(--muted); }
 .queue-list .shared-queue-song { flex-wrap: wrap; }
 .shared-queue-song > .song-copy { flex: 1; min-width: 0; }

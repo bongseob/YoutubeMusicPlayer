@@ -25,6 +25,10 @@ function App() {
   const [favorites, setFavorites] = useState(() => readSongs({ getItem: key => window.localStorage.getItem(key) }, 'tj.favorites'));
   const [personalCurrent, setCurrent] = useState(null), [adminOpen, setAdminOpen] = useState(false), [adminSong, setAdminSong] = useState(null), [toast, setToast] = useState(''), [storageError, setStorageError] = useState('');
   const connection = useRoom();
+  const [reservationState, setReservationState] = useState({});
+  const reservationLocks = useRef(new Set());
+  const reservationTimers = useRef(new Map());
+  useEffect(() => () => { for (const timer of reservationTimers.current.values()) clearTimeout(timer); }, []);
   const [queueBusy, setQueueBusy] = useState(false);
   const queueActionLock = useRef(false);
   async function roomQueueAction(action, fields) {
@@ -42,7 +46,7 @@ function App() {
   const current = inRoom ? room?.current || null : personalCurrent;
   const queueRef = useRef(queue); queueRef.current = queue;
   const toastTimer = useRef();
-  function notify(message) { clearTimeout(toastTimer.current); setToast(message); toastTimer.current = setTimeout(() => setToast(''), 2800); }
+  function notify(message, error = false) { clearTimeout(toastTimer.current); setToast({ message, error }); toastTimer.current = setTimeout(() => setToast(''), 2800); }
   useEffect(() => () => clearTimeout(toastTimer.current), []);
   useEffect(() => {
     try { localStorage.setItem('tj.queue', JSON.stringify(personalQueue)); localStorage.setItem('tj.favorites', JSON.stringify(favorites)); setStorageError(''); }
@@ -57,12 +61,29 @@ function App() {
     return () => { clearTimeout(timer); controller.abort(); };
   }, [query, page, revision]);
   function openAdmin(song = null) { setAdminSong(song); setAdminOpen(true); }
-  function reserve(song) {
-    if (inRoom) { if (room) connection.action('reserve', { songId: song.id }); return; }
+  function reservationKey(song) { return `${connection.session?.code || 'personal'}:${songKey(song)}`; }
+  async function reserve(song) {
+    const key = reservationKey(song);
+    if (reservationLocks.current.has(key) || inRoom && !room) return;
     if (!isPlayable(song)) return notify('영상 링크를 연결한 후 예약할 수 있습니다.');
-    if (queueRef.current.length >= 500) return notify('예약은 최대 500곡까지 가능합니다.');
-    const entry = { ...song, queueId: globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random()}` };
-    const next = [...queueRef.current, entry]; queueRef.current = next; setQueue(next); notify(`‘${song.title}’ 예약했어요`);
+    if (!inRoom && queueRef.current.length >= 500) return notify('예약은 최대 500곡까지 가능합니다.');
+    reservationLocks.current.add(key);
+    setReservationState(previous => ({ ...previous, [key]: 'pending' }));
+    const release = () => {
+      reservationLocks.current.delete(key);
+      reservationTimers.current.delete(key);
+      setReservationState(previous => { const next = { ...previous }; delete next[key]; return next; });
+    };
+    if (inRoom) {
+      const updated = await connection.action('reserve', { songId: song.id });
+      if (!updated) { release(); if (updated === false) notify('예약하지 못했습니다. 잠시 후 다시 시도해 주세요.', true); return; }
+    } else {
+      const entry = { ...song, queueId: globalThis.crypto?.randomUUID?.() || `${Date.now()}-${Math.random()}` };
+      const next = [...queueRef.current, entry]; queueRef.current = next; setQueue(next);
+    }
+    setReservationState(previous => ({ ...previous, [key]: 'done' }));
+    notify(`‘${song.title}’ 예약했어요`);
+    reservationTimers.current.set(key, setTimeout(release, 2000));
   }
   function nextSong() {
     if (inRoom) { if (room?.isHost) connection.action('next', { currentId: current?.queueId || null }); return; }
@@ -100,14 +121,15 @@ function App() {
         <div className="results-heading"><h2>{tab === 'favorites' ? '내가 좋아하는 노래' : query ? '검색 결과' : '나의 노래 라이브러리'}</h2><span>{tab === 'favorites' ? favoriteSongs.length : total}곡</span></div>
         {tab === 'search' && searchError ? <div className="empty-library"><p role="alert">{searchError}</p><button className="secondary" onClick={() => setRevision(value => value + 1)}>다시 연결</button></div> : tab === 'search' && loading ? <div className="loading" role="status">곡을 찾고 있어요<span>···</span></div> : list.length ? <div className="song-list">{list.map(song => {
           const saved = favorites.some(item => songKey(item) === songKey(song));
-          return <article className="song-row" key={songKey(song)}><div className="song-art"><Music2 size={22}/></div><div className="song-copy"><strong>{song.title}</strong><span>{song.artist || '가수 미등록'} <i>·</i> {songLabel(song)}{!isPlayable(song) && <em className="unlinked-label">영상 미연결</em>}</span></div><button className={`icon-button favorite-button ${saved ? 'saved' : ''}`} aria-label={`${song.title} 즐겨찾기 ${saved ? '해제' : '추가'}`} aria-pressed={saved} onClick={() => favorite(song)}><Heart size={18} fill={saved ? 'currentColor' : 'none'}/></button><button className="reserve-button" disabled={!isPlayable(song)} title={!isPlayable(song) ? '영상 링크를 연결해야 예약할 수 있습니다' : '예약'} onClick={() => reserve(song)} aria-label={`${song.title} 예약`}><Plus size={19}/><span>예약</span></button>{!isPlayable(song) && <button className="link-video-button" onClick={() => openAdmin(song)} aria-label={`${song.title} 영상 연결`}>영상 연결</button>}</article>;
+          const reservation = reservationState[reservationKey(song)];
+          return <article className="song-row" key={songKey(song)}><div className="song-art"><Music2 size={22}/></div><div className="song-copy"><strong>{song.title}</strong><span>{song.artist || '가수 미등록'} <i>·</i> {songLabel(song)}{!isPlayable(song) && <em className="unlinked-label">영상 미연결</em>}</span></div><button className={`icon-button favorite-button ${saved ? 'saved' : ''}`} aria-label={`${song.title} 즐겨찾기 ${saved ? '해제' : '추가'}`} aria-pressed={saved} onClick={() => favorite(song)}><Heart size={18} fill={saved ? 'currentColor' : 'none'}/></button><button className={`reserve-button${reservation === 'done' ? ' reserved' : ''}`} disabled={!isPlayable(song) || !!reservation || inRoom && !room} aria-busy={reservation === 'pending'} title={!isPlayable(song) ? '영상 링크를 연결해야 예약할 수 있습니다' : '예약'} onClick={() => reserve(song)} aria-label={`${song.title} 예약`}>{reservation === 'done' ? <Check size={19} aria-hidden="true"/> : <Plus size={19} aria-hidden="true"/>}<span>{reservation === 'pending' ? '예약 중' : reservation === 'done' ? '예약됨' : '예약'}</span></button>{!isPlayable(song) && <button className="link-video-button" onClick={() => openAdmin(song)} aria-label={`${song.title} 영상 연결`}>영상 연결</button>}</article>;
         })}</div> : <div className="empty-library"><div className="empty-icon">{tab === 'favorites' ? <Heart size={30}/> : <Music2 size={32}/>}</div><h3>{query ? '찾으시는 노래가 없어요' : tab === 'favorites' ? '좋아하는 노래를 모아 보세요' : '첫 번째 노래를 담아 보세요'}</h3><p>{tab === 'favorites' ? '노래 옆 하트를 누르면 여기에 모아 드려요.' : 'YouTube 링크나 CSV 파일로 곡을 등록하면\n언제든 검색하고 예약할 수 있어요.'}</p>{tab !== 'favorites' && <button className="primary" onClick={() => openAdmin()}><Plus size={17}/> 곡 등록하기</button>}</div>}
         {tab === 'search' && !loading && !searchError && total > 30 && <div className="pagination"><button className="icon-button" aria-label="이전 페이지" disabled={page === 1} onClick={() => setPage(value => value - 1)}><ChevronLeft size={19}/></button><span>{page} / {Math.ceil(total / 30)}</span><button className="icon-button" aria-label="다음 페이지" disabled={page * 30 >= total} onClick={() => setPage(value => value + 1)}><ChevronRight size={19}/></button></div>}
         <div className="library-tip"><span>TIP</span><p>등록된 곡에서 검색해요. 새로운 곡은 <button onClick={() => openAdmin()}>곡 관리</button>에서 추가하세요.</p></div></div>
       </section></div>
     </main><footer><span className="footer-logo">한곡같이</span><span>좋은 노래와 함께, 좋은 시간.</span><a href="https://www.youtube.com/channel/UCZUhx8ClCv6paFW7qi3qljg" target="_blank" rel="noreferrer">TJ YouTube 채널 <ExternalLink size={12}/></a><small>TJ미디어와 무관한 개인용 앱입니다.</small></footer>
     <nav className="mobile-nav" aria-label="빠른 이동"><button onClick={() => { setTab('search'); document.querySelector('.library-card')?.scrollIntoView({ behavior: 'smooth' }); }}><Search size={20}/>노래 찾기</button><button onClick={() => document.getElementById('queue').scrollIntoView({ behavior: 'smooth' })}><ListMusic size={20}/>예약 {queue.length > 0 ? queue.length : ''}</button><button onClick={() => { setTab('favorites'); document.querySelector('.library-card')?.scrollIntoView({ behavior: 'smooth' }); }}><Heart size={20}/>즐겨찾기</button></nav>
-    {toast && <div className="toast" role="status"><Check size={17}/>{toast}</div>}
+    {toast && <div className={`toast${toast.error ? ' toast-error' : ''}`} role={toast.error ? 'alert' : 'status'}>{toast.error ? <X size={17} aria-hidden="true"/> : <Check size={17} aria-hidden="true"/>}{toast.message}</div>}
     {helpOpen && <Help onClose={() => setHelpOpen(false)}/>}
     {roomOpen && <Rooms connection={connection} onClose={() => setRoomOpen(false)}/>}
     {adminOpen && <Admin initialSong={adminSong} onClose={() => setAdminOpen(false)} onSaved={song => { setRevision(value => value + 1); if (song) setFavorites(previous => previous.map(item => songKey(item) === songKey(song) ? song : item)); }}/>}

@@ -19,6 +19,63 @@ async function setup(context) {
   await context.route('https://www.youtube.com/iframe_api', route => route.fulfill({ contentType: 'application/javascript', body: `window.YT={PlayerState:{PLAYING:1,ENDED:0},Player:class {constructor(node,o){this.o=o;window.testPlayer=this;window.testVideoId=o.videoId;node.innerHTML='<div>공동 플레이어</div>';setTimeout(()=>o.events.onReady({target:this}),0)}playVideo(){this.o.events.onStateChange({data:1})}pauseVideo(){this.o.events.onStateChange({data:2})}destroy(){}}};window.onYouTubeIframeAPIReady();` }));
 }
 
+test('Reservation confirmation appears after room success and pending clicks cannot duplicate requests', async ({ browser }) => {
+  const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  let session;
+  try {
+    const response = await fetch(origin + '/api/rooms/', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ nickname: '예약 확인' }) });
+    const created = await response.json();
+    session = { code: created.room.code, token: created.token };
+    await setup(context);
+    await context.addInitScript(value => sessionStorage.setItem('tj.room', JSON.stringify(value)), session);
+    const page = await context.newPage();
+    await page.goto('/');
+    await expect(page.getByLabel('현재 방', { exact: true })).toContainText(session.code);
+    const reserve = page.getByRole('button', { name: '가거라 삼팔선 예약', exact: true });
+    await reserve.click();
+    await expect(page.locator('.queue-list li')).toHaveCount(1);
+    await expect(page.locator('.toast')).toContainText('예약했어요');
+    await expect(reserve.locator('svg')).toBeVisible();
+    await expect(reserve).toHaveClass(/reserved/);
+    await expect(reserve).toBeEnabled();
+    await expect(page.locator('.toast')).toHaveCount(0);
+    let release, requests = 0;
+    const gate = new Promise(resolve => { release = resolve; });
+    const actions = '**/api/rooms/*/actions';
+    await page.route(actions, async route => {
+      if (route.request().postDataJSON().action === 'reserve') { requests++; await gate; }
+      await route.fallback();
+    });
+    await reserve.click();
+    await expect(reserve).toBeDisabled();
+    await expect(reserve).toHaveAttribute('aria-busy', 'true');
+    await expect(page.locator('.toast')).toHaveCount(0);
+    await reserve.evaluate(button => { button.click(); button.click(); });
+    expect(requests).toBe(1);
+    release();
+    await expect(page.locator('.queue-list li')).toHaveCount(2);
+    await expect(page.locator('.toast')).toContainText('가거라 삼팔선');
+    await expect(page.locator('.toast')).toContainText('예약했어요');
+    await expect(reserve).toBeEnabled();
+    // A rejected request must stay retryable and never show success.
+    await page.unroute(actions);
+    await page.route(actions, route => route.request().postDataJSON().action === 'reserve'
+      ? route.fulfill({ status: 409, json: { error: '테스트 예약 실패' } }) : route.fallback());
+    await reserve.click();
+    await expect(page.locator('.toast')).toContainText('예약하지 못했습니다');
+    await expect(reserve).toBeEnabled();
+    await expect(reserve).not.toHaveClass(/reserved/);
+    await expect(page.locator('.queue-list li')).toHaveCount(2);
+    await page.unroute(actions);
+    await reserve.click();
+    await expect(page.locator('.queue-list li')).toHaveCount(3);
+    await expect(page.locator('.toast')).toContainText('예약했어요');
+  } finally {
+    await context.close();
+    if (session) await fetch(`${origin}/api/rooms/${session.code}/actions`, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${session.token}` }, body: JSON.stringify({ action: 'close' }) });
+  }
+});
+
 test('Queue voting syncs across members, supports keyboard selection and leaves the host in control', async ({ browser }) => {
   const hostContext = await browser.newContext({ viewport: { width: 390, height: 844 } });
   const guestContext = await browser.newContext({ viewport: { width: 390, height: 844 } });
