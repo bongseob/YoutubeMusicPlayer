@@ -50,7 +50,10 @@ export function roomRouter({ store, repository }) {
   const entryLimit = rateLimit({ windowMs: 60000, limit: 30 });
   const writeLimit = rateLimit({ windowMs: 60000, limit: 120 });
   function view(state, member) {
-    return { code: state.code, title: state.title, isPublic: state.isPublic === true, isHost: member.host, nickname: member.name, members: state.members.map(m => ({ id: m.id, name: m.name, host: m.host })), queue: state.queue, current: state.current, playback: state.playback, revision: state.revision };
+    const counts = new Map();
+    for (const voter of state.members) if (voter.voteQueueId) counts.set(voter.voteQueueId, (counts.get(voter.voteQueueId) || 0) + 1);
+    const queue = state.queue.map(song => ({ ...song, voteCount: counts.get(song.queueId) || 0, votedByMe: member.voteQueueId === song.queueId }));
+    return { code: state.code, title: state.title, isPublic: state.isPublic === true, isHost: member.host, nickname: member.name, members: state.members.map(m => ({ id: m.id, name: m.name, host: m.host })), queue, current: state.current, playback: state.playback, revision: state.revision };
   }
   router.get('/', async (req, res) => {
     const q = req.query.q ?? '', page = Number(req.query.page ?? 1);
@@ -95,6 +98,12 @@ export function roomRouter({ store, repository }) {
         const song = await repository.getSong(id, connection);
         if (!song?.youtube_video_id) fail(400, '영상이 연결된 곡만 예약할 수 있습니다.');
         state.queue.push({ ...song, queueId: randomUUID(), reservedBy: member.name });
+      } else if (action === 'vote') {
+        const { queueId } = req.body;
+        if (queueId !== null && (typeof queueId !== 'string' || !queueId || queueId.length > 100)) fail(400, '투표할 예약곡을 확인하세요.');
+        if (queueId !== null && !state.queue.some(song => song.queueId === queueId)) fail(409, '예약 목록이 변경되었습니다. 다시 선택하세요.');
+        if (queueId === null) delete member.voteQueueId;
+        else member.voteQueueId = queueId;
       } else if (action === 'leave') {
         if (member.host) fail(403, '방장은 방 종료를 사용하세요.');
         state.members = state.members.filter(m => m.id !== member.id);
@@ -104,6 +113,11 @@ export function roomRouter({ store, repository }) {
           // A stale video-ended event must not skip a newly selected song.
           if (req.body.currentId !== (state.current?.queueId || null)) fail(409, '재생 곡이 변경되었습니다.');
           state.current = state.queue.shift() || null; state.playback = state.current ? 'loading' : 'ready';
+        } else if (action === 'chooseNext') {
+          const index = state.queue.findIndex(song => song.queueId === req.body.queueId);
+          if (index < 0) fail(409, '예약 목록이 변경되었습니다. 다시 선택하세요.');
+          const [selected] = state.queue.splice(index, 1);
+          state.queue.unshift(selected);
         } else if (action === 'visibility') {
           if (typeof req.body.isPublic !== 'boolean') fail(400, '공개 설정을 확인하세요.');
           state.isPublic = req.body.isPublic;
@@ -122,6 +136,8 @@ export function roomRouter({ store, repository }) {
         } else if (action === 'close') { state.closed = true; state.queue = []; state.current = null; }
         else fail(400, '지원하지 않는 동작입니다.');
       }
+      const queuedIds = new Set(state.queue.map(song => song.queueId));
+      for (const voter of state.members) if (!queuedIds.has(voter.voteQueueId)) delete voter.voteQueueId;
       state.revision++;
     }); res.json({ room });
   });

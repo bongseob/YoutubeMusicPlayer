@@ -30,6 +30,11 @@ export default function Help({ onClose }) {
         <p className="help-note">노래는 각자 담을 수 있어요. 노래 시작과 소리는 <b>방을 만든 사람(방장)</b>이 맡아요.</p>
         <details><summary>내가 방을 만들려면</summary><p><b>방 관리</b>에서 내 이름을 쓰고, 방 코드는 비워 둔 채 <b>새 방 만들기</b>를 누르세요. <b>초대 링크 복사</b>를 눌러 함께 부를 사람에게 보내세요.</p><p>노래가 끝날 때까지 방장 화면을 열어 두세요. <b>방 종료</b>를 누르면 모두의 방이 없어져요.</p></details>
       </section>
+      <section className="help-section">
+        <h3>다음 곡 투표</h3>
+        <p>방의 예약 목록에서 <b>다음 곡 투표</b>를 누르세요. 한 사람당 한 곡에 투표할 수 있고, 다른 곡을 누르면 선택이 바뀝니다. 같은 곡을 다시 누르면 취소됩니다.</p>
+        <p>투표는 예약 순서를 자동으로 바꾸지 않습니다. 방장이 <b>다음 곡으로 지정</b>을 누르면 해당 곡이 예약 맨 앞으로 이동합니다. 재생 중인 곡은 계속됩니다.</p>
+      </section>
       <button className="primary help-done" onClick={onClose}>알겠어요</button>
     </div>
   </dialog>;

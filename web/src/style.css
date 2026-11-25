@@ -55,6 +55,17 @@
 .room-share-status { color: var(--muted); font-size: 12px; margin-bottom: 14px; }
 .room-exit { width: 100%; margin-top: 12px; font-size: 16px; }
 
+.queue-vote-help { padding: 0 20px; font-size: 12px; line-height: 1.8; color: var(--muted); }
+.queue-list .shared-queue-song { flex-wrap: wrap; }
+.shared-queue-song > .song-copy { flex: 1; min-width: 0; }
+.queue-vote-controls { display: flex; flex-basis: 100%; order: 2; gap: 8px; flex-wrap: wrap; padding-left: 30px; }
+.queue-vote-button, .queue-choose-next { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 44px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; background: #11161e; color: #d4dce7; font-size: 12px; }
+.queue-vote-button[aria-pressed="true"] { color: var(--green); border-color: var(--green); background: #b2ec7915; }
+.queue-vote-button strong { white-space: nowrap; }
+.queue-choose-next { color: var(--green); }
+.queue-vote-controls button:focus-visible { outline: 3px solid var(--green); outline-offset: 3px; }
+.queue-vote-controls button:disabled { opacity: .6; cursor: default; }
+.shared-queue-song > .queue-actions { margin-left: auto; order: 1; }
 .help-open { min-height: 48px; flex-shrink: 0; font-size: 16px; color: var(--green); border-color: var(--green); margin-left: 12px; }
 .help-dialog { max-width: 600px; font-size: 18px; line-height: 1.8; }
 .help-dialog .section-heading h2 { font-size: 26px; margin: 0; }

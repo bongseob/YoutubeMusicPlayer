@@ -9,11 +9,73 @@ test.beforeAll(async () => {
   server = createApp({ repository: { getSong: async () => song, getSongsByKeys: async () => [{ brand: 'KY', song_key: 'KY:n:101', song_number: '101', title: song.title, artist: song.artist, youtube_video_id: '7JDG2kxepz8' }], list: async () => ({ songs: [song], total: 1 }) }, roomStore: store, adminToken: 'room-browser-admin-token-at-least-24', staticDir: '/nonexistent' }).listen(0, '127.0.0.1');
   await new Promise(resolve => server.once('listening', resolve)); origin = `http://127.0.0.1:${server.address().port}`;
 });
-test.afterAll(async () => { await new Promise(resolve => server.close(resolve)); });
+test.afterAll(async () => {
+  // Polling clients can leave pooled HTTP connections alive during teardown.
+  server.closeAllConnections();
+  await new Promise(resolve => server.close(resolve));
+});
 async function setup(context) {
   await context.route('**/api/**', async route => { const url = new URL(route.request().url()); const response = await route.fetch({ url: origin + url.pathname + url.search }); await route.fulfill({ response }); });
   await context.route('https://www.youtube.com/iframe_api', route => route.fulfill({ contentType: 'application/javascript', body: `window.YT={PlayerState:{PLAYING:1,ENDED:0},Player:class {constructor(node,o){this.o=o;window.testPlayer=this;window.testVideoId=o.videoId;node.innerHTML='<div>공동 플레이어</div>';setTimeout(()=>o.events.onReady({target:this}),0)}playVideo(){this.o.events.onStateChange({data:1})}pauseVideo(){this.o.events.onStateChange({data:2})}destroy(){}}};window.onYouTubeIframeAPIReady();` }));
 }
+
+test('Queue voting syncs across members, supports keyboard selection and leaves the host in control', async ({ browser }) => {
+  const hostContext = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const guestContext = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  let code, hostToken;
+  async function call(path, body, token) {
+    const response = await fetch(origin + '/api/rooms' + path, { method: body ? 'POST' : 'GET', headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) }, ...(body ? { body: JSON.stringify(body) } : {}) });
+    expect(response.ok).toBe(true);
+    return response.json();
+  }
+  try {
+    const created = await call('/', { nickname: '투표 방장' });
+    code = created.room.code; hostToken = created.token;
+    const joined = await call(`/${code}/join`, { nickname: '투표 친구' });
+    for (let i = 0; i < 3; i++) await call(`/${code}/actions`, { action: 'reserve', songId: '1' }, hostToken);
+    await setup(hostContext); await setup(guestContext);
+    await hostContext.addInitScript(session => sessionStorage.setItem('tj.room', JSON.stringify(session)), { code, token: hostToken });
+    await guestContext.addInitScript(session => sessionStorage.setItem('tj.room', JSON.stringify(session)), { code, token: joined.token });
+    const host = await hostContext.newPage(), guest = await guestContext.newPage();
+    await host.goto('/'); await guest.goto('/');
+    const hostRows = host.locator('.queue-list li'), guestRows = guest.locator('.queue-list li');
+    await expect(hostRows).toHaveCount(3); await expect(guestRows).toHaveCount(3);
+    await expect(guest.getByRole('button', { name: /다음 곡으로 지정/ })).toHaveCount(0);
+    const vote = guestRows.nth(1).getByRole('button', { name: /다음 곡 투표/ });
+    await vote.focus(); await guest.keyboard.press('Space');
+    await expect(vote).toHaveAttribute('aria-pressed', 'true');
+    await expect(hostRows.nth(1).locator('.queue-vote-button')).toContainText('1표');
+    await expect(hostRows.first().locator('.queue-vote-button')).toContainText('0표');
+    await guest.reload();
+    await expect(guestRows.nth(1).locator('.queue-vote-button')).toHaveAttribute('aria-pressed', 'true');
+    // Another click cancels, while choosing a different reservation moves the vote.
+    await guestRows.nth(1).locator('.queue-vote-button').click();
+    await expect(guestRows.nth(1).locator('.queue-vote-button')).toHaveAttribute('aria-pressed', 'false');
+    await guestRows.first().locator('.queue-vote-button').click();
+    await guestRows.nth(1).locator('.queue-vote-button').click();
+    await expect(guestRows.first().locator('.queue-vote-button')).toHaveAttribute('aria-pressed', 'false');
+    await expect(guestRows.nth(1).locator('.queue-vote-button')).toHaveAttribute('aria-pressed', 'true');
+    await hostRows.nth(1).getByRole('button', { name: /다음 곡으로 지정/ }).click();
+    await expect(guestRows.first().locator('.queue-vote-button')).toHaveAttribute('aria-pressed', 'true');
+    await expect(host.getByRole('button', { name: '노래 시작하기' })).toBeVisible();
+    for (const page of [host, guest]) {
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+      const box = await page.locator('.queue-vote-button').first().boundingBox();
+      expect(box.height).toBeGreaterThanOrEqual(44);
+    }
+    await host.locator('#queue').screenshot({ path: 'test-results/queue-voting-host-mobile.png' });
+    await guest.locator('#queue').screenshot({ path: 'test-results/queue-voting-guest-mobile.png' });
+    await host.getByRole('button', { name: '노래 시작하기' }).click();
+    await expect(hostRows).toHaveCount(2);
+    await expect(guest.locator('.queue-vote-button[aria-pressed="true"]')).toHaveCount(0);
+    await expect(host.getByRole('button', { name: '일시정지', exact: true })).toBeEnabled();
+    await hostRows.nth(1).getByRole('button', { name: /다음 곡으로 지정/ }).click();
+    await expect(host.getByRole('button', { name: '일시정지', exact: true })).toBeEnabled();
+  } finally {
+    await hostContext.close(); await guestContext.close();
+    if (code) await call(`/${code}/actions`, { action: 'close' }, hostToken);
+  }
+});
 test('Host and guest share queue, restore sessions, restrict playback and clean up microphone on close', async ({ browser }) => {
   const hostContext = await browser.newContext({ viewport: { width: 390, height: 844 } });
   const guestContext = await browser.newContext({ viewport: { width: 390, height: 844 } });

@@ -20,6 +20,69 @@ function memoryStore() {
     },
   };
 }
+
+test('Queue votes are private, single-choice, transactional and cleared as reservations end', async t => {
+  const roomStore = memoryStore();
+  const repository = { getSong: async id => ({ id, brand: 'TJ', title: '같은 노래', artist: '가수', youtube_video_id: 'Abc_def-123' }) };
+  const server = createApp({ repository, roomStore, adminToken: 'test-token-with-more-than-24-characters', staticDir: '/nonexistent' }).listen(0, '127.0.0.1');
+  await new Promise(resolve => server.once('listening', resolve));
+  t.after(() => new Promise(resolve => server.close(resolve)));
+  const base = `http://127.0.0.1:${server.address().port}/api/rooms`;
+  async function call(path, body, token) {
+    const response = await fetch(base + path, { method: body ? 'POST' : 'GET', headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) }, ...(body ? { body: JSON.stringify(body) } : {}) });
+    return { status: response.status, ...(await response.json()) };
+  }
+  const host = await call('/', { nickname: '방장' });
+  const path = `/${host.room.code}`;
+  const guest = await call(`${path}/join`, { nickname: '친구' });
+  const action = (body, token = guest.token) => call(`${path}/actions`, body, token);
+  const view = async token => (await call(path, null, token)).room;
+  for (let i = 0; i < 3; i++) await action({ action: 'reserve', songId: '1' });
+  const original = await view(host.token);
+  const [a, b, c] = original.queue.map(song => song.queueId);
+  assert.deepEqual(original.queue.map(song => song.voteCount), [0, 0, 0]);
+  assert.equal((await action({ action: 'vote', queueId: a }, 'f'.repeat(64))).status, 401);
+  for (const queueId of [undefined, {}, 1, '']) assert.equal((await action({ action: 'vote', queueId })).status, 400);
+  assert.equal((await action({ action: 'vote', queueId: 'missing' })).status, 409);
+  await Promise.all([action({ action: 'vote', queueId: b }), action({ action: 'vote', queueId: b }, host.token)]);
+  assert.deepEqual((await view(guest.token)).queue.map(song => song.voteCount), [0, 2, 0]);
+  // Retrying the same explicit selection cannot add another vote.
+  await action({ action: 'vote', queueId: b, voteCount: 99, memberId: original.members[0].id });
+  assert.equal((await view(host.token)).queue[1].voteCount, 2);
+  await action({ action: 'vote', queueId: c });
+  assert.deepEqual((await view(host.token)).queue.map(song => song.voteCount), [0, 1, 1]);
+  assert.deepEqual((await view(guest.token)).queue.map(song => song.votedByMe), [false, false, true]);
+  assert.deepEqual((await view(host.token)).queue.map(song => song.votedByMe), [false, true, false]);
+  assert.doesNotMatch(JSON.stringify((await view(host.token)).members), /voteQueueId|secret|token/);
+  // Votes never reorder the queue or change playback, even in a tie.
+  assert.deepEqual((await view(host.token)).queue.map(song => song.queueId), [a, b, c]);
+  assert.equal((await view(host.token)).current, null);
+  assert.equal((await action({ action: 'chooseNext', queueId: c })).status, 403);
+  assert.equal((await action({ action: 'chooseNext', queueId: 'stale' }, host.token)).status, 409);
+  await action({ action: 'chooseNext', queueId: c }, host.token);
+  assert.deepEqual((await view(guest.token)).queue.map(song => song.queueId), [c, a, b]);
+  assert.equal((await view(guest.token)).queue[0].votedByMe, true);
+  await action({ action: 'next', currentId: null }, host.token);
+  assert.equal((await view(host.token)).current.queueId, c);
+  assert.equal((await view(guest.token)).queue.some(song => song.votedByMe), false);
+  assert.equal((await action({ action: 'vote', queueId: c })).status, 409);
+  await action({ action: 'chooseNext', queueId: b }, host.token);
+  assert.equal((await view(host.token)).current.queueId, c);
+  await action({ action: 'vote', queueId: a });
+  await action({ action: 'vote', queueId: null });
+  assert.equal((await view(guest.token)).queue.some(song => song.votedByMe), false);
+  await action({ action: 'vote', queueId: a });
+  await action({ action: 'remove', queueId: a }, host.token);
+  assert.equal((await view(guest.token)).queue.some(song => song.votedByMe), false);
+  await action({ action: 'vote', queueId: b });
+  await action({ action: 'leave' });
+  assert.equal((await view(host.token)).queue[0].voteCount, 1);
+  const returning = await call(`${path}/join`, { nickname: '친구' });
+  assert.equal((await view(returning.token)).queue[0].votedByMe, false);
+  await action({ action: 'clear' }, host.token);
+  await action({ action: 'reserve', songId: '1' }, host.token);
+  assert.equal((await view(host.token)).queue[0].voteCount, 0);
+});
 test('Rooms share ordered reservations, enforce host permissions, survive re-entry and close atomically', async t => {
   const roomStore = memoryStore();
   const repository = { getSong: async id => id === '1' ? { id: '1', brand: 'TJ', title: '가거라 삼팔선', artist: '남인수', youtube_video_id: 'Abc_def-123' } : null, getSongsByKeys: async () => [{ brand: 'KY', song_key: 'KY:n:101', song_number: '101', title: '가거라 삼팔선', artist: '남인수', youtube_video_id: '7JDG2kxepz8' }] };
@@ -57,7 +120,7 @@ test('Rooms share ordered reservations, enforce host permissions, survive re-ent
   assert.equal((await call('/?q=기존')).body.rooms.length, 0);
   assert.equal((await call(`/${code}`)).status, 401);
   assert.equal((await call(`/${code}`, null, 'f'.repeat(64))).status, 401);
-  for (const action of ['close', 'clear', 'remove', 'next', 'playback', 'fallback', 'visibility']) assert.equal((await call(`/${code}/actions`, { action }, guest.token)).status, 403);
+  for (const action of ['close', 'clear', 'remove', 'next', 'playback', 'fallback', 'visibility', 'chooseNext']) assert.equal((await call(`/${code}/actions`, { action }, guest.token)).status, 403);
   assert.equal((await call(`/${code}/actions`, { action: 'reserve', songId: '2', title: 'forged', youtube_video_id: 'fake' }, guest.token)).status, 400);
   await Promise.all(Array.from({ length: 8 }, () => call(`/${code}/actions`, { action: 'reserve', songId: '1' }, guest.token)));
   let room = (await call(`/${code}`, null, host.token)).body.room;
